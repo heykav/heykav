@@ -1,0 +1,59 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KAVY — Krishna Anubhav. Engineer, SaaS founder and operator, MBA, now investment banking. Rigorous thinking. Human explanations.">
+  <defs>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00FF66"/>
+      <stop offset="100%" stop-color="#B6FF2E"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00FF66" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#00FF66" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e3df" stroke-width="1"/>
+    </pattern>
+    <clipPath id="clip"><rect width="1200" height="300" rx="14"/></clipPath>
+  </defs>
+
+  <!-- No animation gates visibility here - a viewer that ignores <style>
+       entirely still sees the full banner. The blink is a pure bonus. -->
+  <style>
+    .mono { font-family: ui-monospace, "SFMono-Regular", "DM Mono", Menlo, Consolas, monospace; }
+    .serif { font-family: Georgia, "Times New Roman", serif; }
+    .cursor { animation: blink 1.1s steps(1) infinite; }
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  </style>
+
+  <g clip-path="url(#clip)">
+    <rect width="1200" height="300" fill="#F4F5F2"/>
+    <rect width="1200" height="300" fill="url(#grid)"/>
+    <rect x="430" y="0" width="770" height="300" fill="url(#fade)"/>
+
+    <!-- a plain "evidence line" motif, in the brand's editorial-chart spirit -->
+    <path d="M 430 220 C 520 216, 560 205, 610 196 S 700 172, 760 156
+             S 850 124, 920 112 S 1010 88, 1080 74 S 1150 64, 1180 58"
+          fill="none" stroke="url(#signal)" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="1180" cy="58" r="4" fill="#B6FF2E"/>
+
+    <g class="mono">
+      <text x="56" y="70" font-size="13" fill="#7a7c74" letter-spacing="1.5">KAVY</text>
+    </g>
+
+    <text x="56" y="132" font-size="36" font-weight="700" fill="#111211" class="serif">
+      Krishna Anubhav
+    </text>
+    <text x="56" y="164" font-size="17" fill="#3d3f3b">
+      Engineer <tspan fill="#B6FF2E">→</tspan> SaaS founder/operator <tspan fill="#B6FF2E">→</tspan> MBA <tspan fill="#B6FF2E">→</tspan> Investment banking
+    </text>
+
+    <g class="mono">
+      <text x="56" y="212" font-size="15" fill="#54564f">
+        Rigorous thinking. Human explanations.
+      </text>
+
+      <text x="56" y="252" font-size="13" fill="#7a7c74">
+        <tspan fill="#B6FF2E">◆</tspan> I spent years building businesses. Now I'm learning how investors value them.
+      </text>
+      <rect x="56" y="260" width="8" height="14" fill="#B6FF2E" class="cursor"/>
+    </g>
+  </g>
+</svg>

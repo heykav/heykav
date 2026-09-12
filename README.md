@@ -1,90 +1,93 @@
 <div align="center">
 
-<p><code>heykav@github ~ $ ./maintainer.sh</code></p>
-
-<p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/system-scan?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&style=terminal&v=oss-system-scan-1&mode=light" />
-  <img src="https://www.gitskins.com/api/section/system-scan?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&style=terminal&v=oss-system-scan-1&mode=dark" width="860" alt="Krishna Anubhav ( Kavy ) animated maintainer system scan" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg" />
+  <img src="assets/banner.svg" width="100%" alt="KAVY — Krishna Anubhav. Engineer, SaaS founder and operator, MBA, now investment banking. Rigorous thinking. Human explanations." />
 </picture>
-</p>
+
 </div>
 
-<h2>Why I build in public</h2>
+### The short version
+
+Engineer → SaaS founder/operator → MBA → investment banking. Somewhere in
+there I picked up the habit of not trusting a number until I've rebuilt the
+model myself — which is really just an excuse to keep writing code.
+
+Based in India. I underwrite deals during the day and, most nights, end up
+either in a spreadsheet arguing with an EBITDA bridge or in a terminal
+arguing with a segfault.
+
+**The question I keep asking:** does the tool actually help me *understand*
+the business, or does it just make the output look confident? Most finance
+software optimizes for the second one. I'd rather build the first.
+
+<br/>
+
+### What I've actually shipped
 
 <table width="100%">
 <tr>
-<td width="33%" valign="top"><h3>Focus</h3><p><code>JavaScript</code> · <code>C++</code> · <code>HTML</code></p></td>
-<td width="33%" valign="top"><h3>Proof</h3><p>3 public repositories · 0 stars</p></td>
-<td width="33%" valign="top"><h3>Contribution</h3><p>53 contributions · 4 active days</p></td>
+<td width="33%" valign="top">
+
+**[photoface](https://github.com/heykav/photoface)**
+
+Desktop face-detection & cataloging. OpenCV YuNet + SFace clustering, a
+PySide6 gallery, perceptual-hash duplicate detection, EXIF geolocation.
+
+`Python` `PySide6` `OpenCV`
+
+</td>
+<td width="33%" valign="top">
+
+**[pe-financial-calculator](https://github.com/heykav/pe-financial-calculator)**
+
+LBO modeling, DCF analysis, and deal-analysis tooling for the actual
+workflow — not a demo, the thing I use to underwrite.
+
+`JavaScript` `HTML/CSS`
+
+</td>
+<td width="33%" valign="top">
+
+**[fpga-sim-core](https://github.com/heykav/fpga-sim-core)**
+
+A cycle-accurate FPGA datapath simulator: deterministic scheduling, PCS
+encode/decode, order-book state, zero-allocation simulation.
+
+`C++` `CMake`
+
+</td>
 </tr>
 </table>
 
-<p>Investment Banker | SaaS Founder turned finance professional | Building tools to understand businesses, markets &amp; capital</p>
+<br/>
 
-<h2>Open-source toolbox</h2>
+### Stack
 
-<p><code>heykav@github ~ $ toolbox --list</code></p>
-
-<p align="center">
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/stack?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&style=terminal&v=oss-stack-1&mode=light" />
-  <img src="https://www.gitskins.com/api/section/stack?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&style=terminal&v=oss-stack-1&mode=dark" width="100%" alt="Krishna Anubhav ( Kavy ) open-source technology toolbox" />
-</picture>
+<p>
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+<img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white" alt="C++" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript" />
+<img src="https://img.shields.io/badge/Qt%20%2F%20PySide6-41CD52?style=flat-square&logo=qt&logoColor=white" alt="Qt / PySide6" />
+<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white" alt="OpenCV" />
+<img src="https://img.shields.io/badge/CMake-064F8C?style=flat-square&logo=cmake&logoColor=white" alt="CMake" />
+<img src="https://img.shields.io/badge/Excel%20%2F%20VBA-217346?style=flat-square&logo=microsoftexcel&logoColor=white" alt="Excel / VBA" />
+<img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git" />
 </p>
 
-<table width="100%">
-<tr>
-<td width="25%" align="center"><strong>JavaScript</strong><br /><sub>45%</sub></td>
-<td width="25%" align="center"><strong>C++</strong><br /><sub>29%</sub></td>
-<td width="25%" align="center"><strong>HTML</strong><br /><sub>26%</sub></td>
-<td width="25%" align="center"><strong>CMake</strong><br /><sub>1%</sub></td>
-</tr>
-</table>
+<br/>
 
-<h2>Repositories worth exploring</h2>
-
-<p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/projects?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&repos=heykav%2Fheykav%2Cheykav%2Ffpga-sim-core%2Cheykav%2Fpe-financial-calculator&v=oss-projects-1&mode=light" />
-  <img src="https://www.gitskins.com/api/section/projects?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&repos=heykav%2Fheykav%2Cheykav%2Ffpga-sim-core%2Cheykav%2Fpe-financial-calculator&v=oss-projects-1&mode=dark" width="860" alt="Krishna Anubhav ( Kavy ) maintainer repositories" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 3 projects shipped, on GitHub since 2022, based in India, open-source patches including QuantLib; language mix across own repos is Python 52%, JavaScript 22%, C++ 14%, HTML 12%" />
 </picture>
-</p>
 
-<table width="100%">
-<tr>
-<td width="25%" valign="top"><h3><a href="https://github.com/heykav/fpga-sim-core">fpga-sim-core</a></h3><p>A public project looking for its next contributor.</p><p><sub>C++ · ⭐ 0</sub></p></td>
-<td width="25%" valign="top"><h3><a href="https://github.com/heykav/pe-financial-calculator">pe-financial-calculator</a></h3><p>A comprehensive financial calculator for investment bankers and private equity professionals with LBO modeling, DCF analysis, and deal analysis tools.</p><p><sub>JavaScript · ⭐ 0</sub></p></td>
-</tr>
-</table>
+<br/><br/>
 
-<h2>Contribution activity</h2>
+<div align="center">
 
-<p align="center">
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/stats?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&style=terminal&v=oss-stats-1&mode=light" />
-  <img src="https://www.gitskins.com/api/section/stats?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&style=terminal&v=oss-stats-1&mode=dark" width="100%" alt="Krishna Anubhav ( Kavy ) open-source signal" />
-</picture>
-</p>
+**[GitHub](https://github.com/heykav)** · **[Website](https://krishnaanubhav.com)** · **[X](https://x.com/heykav)**
 
-<h2>Contribution trail</h2>
-
-<p align="center">
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/heatmap?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&v=oss-heatmap-1&mode=light" />
-  <img src="https://www.gitskins.com/api/section/heatmap?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&v=oss-heatmap-1&mode=dark" width="100%" alt="Krishna Anubhav ( Kavy ) contribution trail" />
-</picture>
-</p>
-
-<hr />
-
-<h2>Contribute together</h2>
-
-<p>If the work is useful, open an issue, improve the docs, share a project, or start a conversation.</p>
-
-<p align="center"><picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/social?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&v=oss-social-1&mode=light" />
-  <img src="https://www.gitskins.com/api/section/social?username=heykav&theme=neon&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F96972518%3Fu%3D25e092ca9e986f8fac78031833d5c7752f1bdac2%26v%3D4&v=oss-social-1&mode=dark" width="100%" alt="Krishna Anubhav ( Kavy ) community links" />
-</picture></p>
-<p align="center"><a href="https://github.com/heykav">GitHub</a> &nbsp;·&nbsp; <a href="https://krishnaanubhav.com">Website</a> &nbsp;·&nbsp; <a href="https://x.com/heykav">X</a></p>
-<p align="center"><sub>Krishna Anubhav ( Kavy ) · open-source profile generated with <a href="https://www.gitskins.com/readme-generator">GitSkins</a></sub></p>
+</div>

@@ -1,0 +1,51 @@
+<svg width="1200" height="220" viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Krishna Anubhav GitHub signal: 3 projects shipped, on GitHub since 2022, based in India, open-source patches including QuantLib; language mix across own repos is Python 52%, JavaScript 22%, C++ 14%, HTML 12%">
+  <defs>
+    <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e3df" stroke-width="1"/>
+    </pattern>
+    <clipPath id="clip2"><rect width="1200" height="220" rx="14"/></clipPath>
+  </defs>
+  <style>
+    .mono { font-family: ui-monospace, "SFMono-Regular", "DM Mono", Menlo, Consolas, monospace; }
+  </style>
+
+  <g clip-path="url(#clip2)">
+    <rect width="1200" height="220" fill="#F4F5F2"/>
+    <rect width="1200" height="220" fill="url(#grid2)"/>
+
+    <g class="mono">
+      <text x="56" y="50" font-size="13" fill="#7a7c74" letter-spacing="1.5">SIGNAL</text>
+
+      <text x="56" y="94" font-size="30" font-weight="700" fill="#111211">3</text>
+      <text x="56" y="114" font-size="12" fill="#54564f">projects shipped</text>
+
+      <text x="230" y="94" font-size="30" font-weight="700" fill="#111211">2022</text>
+      <text x="230" y="114" font-size="12" fill="#54564f">on GitHub since</text>
+
+      <text x="430" y="94" font-size="30" font-weight="700" fill="#111211">IN</text>
+      <text x="430" y="114" font-size="12" fill="#54564f">based in India</text>
+
+      <text x="630" y="94" font-size="30" font-weight="700" fill="#B6FF2E">OSS</text>
+      <text x="630" y="114" font-size="12" fill="#54564f">patches: QuantLib &amp; more</text>
+    </g>
+
+    <text x="56" y="156" font-size="12" class="mono" fill="#7a7c74" letter-spacing="1">LANGUAGE MIX (BY BYTES, OWN REPOS)</text>
+    <g>
+      <rect x="56" y="168" width="1088" height="10" rx="5" fill="#e2e3df"/>
+      <rect x="56" y="168" width="566" height="10" rx="5" fill="#00FF66"/>
+      <rect x="622" y="168" width="238" height="10" fill="#6fd94f"/>
+      <rect x="860" y="168" width="148" height="10" fill="#3d3f3b"/>
+      <rect x="1008" y="168" width="133" height="10" ry="5" rx="5" fill="#54564f"/>
+    </g>
+    <g class="mono" font-size="12">
+      <circle cx="60" cy="200" r="4" fill="#00FF66"/>
+      <text x="70" y="204" fill="#54564f">Python 52%</text>
+      <circle cx="180" cy="200" r="4" fill="#6fd94f"/>
+      <text x="190" y="204" fill="#54564f">JavaScript 22%</text>
+      <circle cx="330" cy="200" r="4" fill="#3d3f3b"/>
+      <text x="340" y="204" fill="#54564f">C++ 14%</text>
+      <circle cx="440" cy="200" r="4" fill="#54564f"/>
+      <text x="450" y="204" fill="#54564f">HTML 12%</text>
+    </g>
+  </g>
+</svg>
