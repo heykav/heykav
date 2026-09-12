@@ -28,11 +28,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md assets/stats.svg assets/stats-light.svg
-          git commit -m "chore: automated profile refresh
-
-Recomputed from real GitHub data (project list, upstream PRs, language
-mix, account age/location) by scripts/update_profile.py. Anything with a
-hand-written entry in data/projects.json or data/patches.json is left
-exactly as written; only genuinely new repos/patches get a plain
-placeholder description until someone adds an override for them."
+          git commit -m "chore: automated profile refresh" -m "Recomputed from real GitHub data by scripts/update_profile.py. Hand-written entries in data/projects.json and data/patches.json are left as-written; only genuinely new repos/patches get a plain placeholder until someone adds an override."
           git push
