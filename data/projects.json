@@ -10,5 +10,9 @@
   "fpga-sim-core": {
     "description": "Cycle-accurate FPGA datapath sim: deterministic callback scheduling, PCS encode/decode, a five-level order book, zero heap allocation on the hot path — because \"close enough\" isn't a real answer at the clock-cycle level.",
     "tags": ["C++", "CMake"]
+  },
+  "vanna": {
+    "description": "Named after the real second-order Greek. Prices options from first principles (Black-Scholes, a binomial tree for early exercise) instead of bucketing historical fills, then decomposes every trade's P&L into delta/gamma/theta/vega/vanna/volga via a Taylor expansion — with the leftover reported honestly as residual, not hidden in whichever bucket makes the total look clean.",
+    "tags": ["Python", "PySide6", "NumPy"]
   }
 }

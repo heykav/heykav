@@ -63,6 +63,17 @@ Cycle-accurate FPGA datapath sim: deterministic callback scheduling, PCS encode/
 
 </td>
 </tr>
+<tr>
+<td width="33%" valign="top">
+
+**[vanna](https://github.com/heykav/vanna)**
+
+Named after the real second-order Greek. Prices options from first principles (Black-Scholes, a binomial tree for early exercise) instead of bucketing historical fills, then decomposes every trade's P&L into delta/gamma/theta/vega/vanna/volga via a Taylor expansion — with the leftover reported honestly as residual, not hidden in whichever bucket makes the total look clean.
+
+`Python` `PySide6` `NumPy`
+
+</td>
+</tr>
 </table>
 <!-- AUTO:projects:end -->
 
@@ -99,7 +110,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 3 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 1 more; language mix across own repos is Python 52%, JavaScript 22%, C++ 14%, HTML 12%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 4 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 1 more; language mix across own repos is Python 63%, JavaScript 17%, C++ 10%, HTML 9%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
