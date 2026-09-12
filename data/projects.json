@@ -1,0 +1,14 @@
+{
+  "photoface": {
+    "description": "Face detection (YuNet) + embeddings (SFace), clustered with a greedy online pass and then a proper average-linkage recluster — and once you manually correct a face, it's *pinned*: the algorithm is no longer allowed to have opinions about that one.",
+    "tags": ["Python", "PySide6", "OpenCV"]
+  },
+  "pe-financial-calculator": {
+    "description": "LBO modeling, DCF analysis, deal-analysis tooling — the thing I actually underwrite with, not a portfolio-piece demo. If a sensitivity table lies to you, it's this one's fault, and I'd want to know.",
+    "tags": ["JavaScript", "HTML/CSS"]
+  },
+  "fpga-sim-core": {
+    "description": "Cycle-accurate FPGA datapath sim: deterministic callback scheduling, PCS encode/decode, a five-level order book, zero heap allocation on the hot path — because \"close enough\" isn't a real answer at the clock-cycle level.",
+    "tags": ["C++", "CMake"]
+  }
+}

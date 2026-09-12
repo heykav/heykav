@@ -32,16 +32,14 @@ if that means the "financial model" is a Python script with opinions.
 
 ### What I've actually shipped
 
+<!-- AUTO:projects:start -->
 <table width="100%">
 <tr>
 <td width="33%" valign="top">
 
 **[photoface](https://github.com/heykav/photoface)**
 
-Face detection (YuNet) + embeddings (SFace), clustered with a greedy
-online pass and then a proper average-linkage recluster — and once you
-manually correct a face, it's *pinned*: the algorithm is no longer allowed
-to have opinions about that one.
+Face detection (YuNet) + embeddings (SFace), clustered with a greedy online pass and then a proper average-linkage recluster — and once you manually correct a face, it's *pinned*: the algorithm is no longer allowed to have opinions about that one.
 
 `Python` `PySide6` `OpenCV`
 
@@ -50,9 +48,7 @@ to have opinions about that one.
 
 **[pe-financial-calculator](https://github.com/heykav/pe-financial-calculator)**
 
-LBO modeling, DCF analysis, deal-analysis tooling — the thing I actually
-underwrite with, not a portfolio-piece demo. If a sensitivity table lies
-to you, it's this one's fault, and I'd want to know.
+LBO modeling, DCF analysis, deal-analysis tooling — the thing I actually underwrite with, not a portfolio-piece demo. If a sensitivity table lies to you, it's this one's fault, and I'd want to know.
 
 `JavaScript` `HTML/CSS`
 
@@ -61,39 +57,26 @@ to you, it's this one's fault, and I'd want to know.
 
 **[fpga-sim-core](https://github.com/heykav/fpga-sim-core)**
 
-Cycle-accurate FPGA datapath sim: deterministic callback scheduling, PCS
-encode/decode, a five-level order book, zero heap allocation on the hot
-path — because "close enough" isn't a real answer at the clock-cycle
-level.
+Cycle-accurate FPGA datapath sim: deterministic callback scheduling, PCS encode/decode, a five-level order book, zero heap allocation on the hot path — because "close enough" isn't a real answer at the clock-cycle level.
 
 `C++` `CMake`
 
 </td>
 </tr>
 </table>
+<!-- AUTO:projects:end -->
 
 <br/>
 
 ### Patches upstream
 
-[**QuantLib**](https://github.com/lballabio/QuantLib/pull/2779) — the C++
-library half of quant finance is quietly built on — had a `NaN` hiding in
-its Gauss-Laguerre quadrature: past order ~200, one of the weights
-underflows to exactly `0.0`, and `inf × 0` in IEEE 754 is `NaN`, no
-questions asked. The fix isn't "add an epsilon and pray," it's re-deriving
-the weight in log-space so the underflow never has anywhere to hide —
-tested against the real consumer (`AnalyticHestonEngine`) and
-independently re-derived in NumPy just to be sure I wasn't fooling myself.
+<!-- AUTO:patches:start -->
+[**QuantLib**](https://github.com/lballabio/QuantLib/pull/2779) — the C++ library half of quant finance is quietly built on — had a `NaN` hiding in its Gauss-Laguerre quadrature: past order ~200, one of the weights underflows to exactly `0.0`, and `inf × 0` in IEEE 754 is `NaN`, no questions asked. The fix isn't "add an epsilon and pray," it's re-deriving the weight in log-space so the underflow never has anywhere to hide — tested against the real consumer (`AnalyticHestonEngine`) and independently re-derived in NumPy just to be sure I wasn't fooling myself.
 
-[**edgartools**](https://github.com/dgunning/edgartools/pull/1318) — much
-smaller, and I'll say so: the quickstart claimed Python 3.8 while
-`pyproject.toml` actually required 3.10, and its own docs quietly
-recommended a `cash_flow_statement()` alias that's deprecated for removal
-in v6.0. No math, just paying enough attention to notice the docs were
-lying to new users — merged.
+[**edgartools**](https://github.com/dgunning/edgartools/pull/1318) — much smaller, and I'll say so: the quickstart claimed Python 3.8 while `pyproject.toml` actually required 3.10, and its own docs quietly recommended a `cash_flow_statement()` alias that's deprecated for removal in v6.0. No math, just paying enough attention to notice the docs were lying to new users — merged.
 
-One of these is a rigor problem, the other is a reading-comprehension
-problem. Both count.
+One of these is a rigor problem, the other is a reading-comprehension problem. Both count.
+<!-- AUTO:patches:end -->
 
 <br/>
 
@@ -112,11 +95,13 @@ problem. Both count.
 
 <br/>
 
+<!-- AUTO:statsalt:start -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 3 projects shipped, on GitHub since 2022, based in India, open-source patches including QuantLib; language mix across own repos is Python 52%, JavaScript 22%, C++ 14%, HTML 12%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 3 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 1 more; language mix across own repos is Python 52%, JavaScript 22%, C++ 14%, HTML 12%" />
 </picture>
+<!-- AUTO:statsalt:end -->
 
 <br/><br/>
 
