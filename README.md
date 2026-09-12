@@ -74,19 +74,26 @@ level.
 
 <br/>
 
-### A bug I liked fixing
+### Patches upstream
 
-[QuantLib](https://github.com/lballabio/QuantLib) — the C++ library half
-of quant finance is quietly built on — had a `NaN` hiding in its
-Gauss-Laguerre quadrature: past order ~200, one of the weights underflows
-to exactly `0.0`, and `inf × 0` in IEEE 754 is `NaN`, no questions asked.
-The fix isn't "add an epsilon and pray" — it's re-deriving the weight in
-log-space so the underflow never has anywhere to hide. Filed, tested
-against the real consumer (`AnalyticHestonEngine`), and independently
-re-derived in NumPy just to be sure I wasn't fooling myself.
+[**QuantLib**](https://github.com/lballabio/QuantLib/pull/2779) — the C++
+library half of quant finance is quietly built on — had a `NaN` hiding in
+its Gauss-Laguerre quadrature: past order ~200, one of the weights
+underflows to exactly `0.0`, and `inf × 0` in IEEE 754 is `NaN`, no
+questions asked. The fix isn't "add an epsilon and pray," it's re-deriving
+the weight in log-space so the underflow never has anywhere to hide —
+tested against the real consumer (`AnalyticHestonEngine`) and
+independently re-derived in NumPy just to be sure I wasn't fooling myself.
 
-This is, unglamorously, most of what "rigorous" means to me: not being
-smarter than the bug, just refusing to let it stay invisible.
+[**edgartools**](https://github.com/dgunning/edgartools/pull/1318) — much
+smaller, and I'll say so: the quickstart claimed Python 3.8 while
+`pyproject.toml` actually required 3.10, and its own docs quietly
+recommended a `cash_flow_statement()` alias that's deprecated for removal
+in v6.0. No math, just paying enough attention to notice the docs were
+lying to new users — merged.
+
+One of these is a rigor problem, the other is a reading-comprehension
+problem. Both count.
 
 <br/>
 
