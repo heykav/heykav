@@ -12,15 +12,21 @@
 
 Engineer → SaaS founder/operator → MBA → investment banking. Somewhere in
 there I picked up the habit of not trusting a number until I've rebuilt the
-model myself — which is really just an excuse to keep writing code.
+model myself — which, if I'm honest, is really just an excuse to keep
+writing code for a living after finance told me to stop.
 
-Based in India. I underwrite deals during the day and, most nights, end up
-either in a spreadsheet arguing with an EBITDA bridge or in a terminal
-arguing with a segfault.
+Based in India. On a given night I am equally likely to be arguing with an
+EBITDA bridge in a spreadsheet or with a segfault in a terminal, and
+neither argument is going noticeably better than the other.
+
+A DCF and a `git rebase` have more in common than people think: both are
+just you insisting, with great confidence, that the past can be tidied up
+into a story that leads cleanly to the number you already believe.
 
 **The question I keep asking:** does the tool actually help me *understand*
 the business, or does it just make the output look confident? Most finance
-software optimizes for the second one. I'd rather build the first.
+software optimizes for the second one. I'd rather build the first — even
+if that means the "financial model" is a Python script with opinions.
 
 <br/>
 
@@ -32,8 +38,10 @@ software optimizes for the second one. I'd rather build the first.
 
 **[photoface](https://github.com/heykav/photoface)**
 
-Desktop face-detection & cataloging. OpenCV YuNet + SFace clustering, a
-PySide6 gallery, perceptual-hash duplicate detection, EXIF geolocation.
+Face detection (YuNet) + embeddings (SFace), clustered with a greedy
+online pass and then a proper average-linkage recluster — and once you
+manually correct a face, it's *pinned*: the algorithm is no longer allowed
+to have opinions about that one.
 
 `Python` `PySide6` `OpenCV`
 
@@ -42,8 +50,9 @@ PySide6 gallery, perceptual-hash duplicate detection, EXIF geolocation.
 
 **[pe-financial-calculator](https://github.com/heykav/pe-financial-calculator)**
 
-LBO modeling, DCF analysis, and deal-analysis tooling for the actual
-workflow — not a demo, the thing I use to underwrite.
+LBO modeling, DCF analysis, deal-analysis tooling — the thing I actually
+underwrite with, not a portfolio-piece demo. If a sensitivity table lies
+to you, it's this one's fault, and I'd want to know.
 
 `JavaScript` `HTML/CSS`
 
@@ -52,14 +61,32 @@ workflow — not a demo, the thing I use to underwrite.
 
 **[fpga-sim-core](https://github.com/heykav/fpga-sim-core)**
 
-A cycle-accurate FPGA datapath simulator: deterministic scheduling, PCS
-encode/decode, order-book state, zero-allocation simulation.
+Cycle-accurate FPGA datapath sim: deterministic callback scheduling, PCS
+encode/decode, a five-level order book, zero heap allocation on the hot
+path — because "close enough" isn't a real answer at the clock-cycle
+level.
 
 `C++` `CMake`
 
 </td>
 </tr>
 </table>
+
+<br/>
+
+### A bug I liked fixing
+
+[QuantLib](https://github.com/lballabio/QuantLib) — the C++ library half
+of quant finance is quietly built on — had a `NaN` hiding in its
+Gauss-Laguerre quadrature: past order ~200, one of the weights underflows
+to exactly `0.0`, and `inf × 0` in IEEE 754 is `NaN`, no questions asked.
+The fix isn't "add an epsilon and pray" — it's re-deriving the weight in
+log-space so the underflow never has anywhere to hide. Filed, tested
+against the real consumer (`AnalyticHestonEngine`), and independently
+re-derived in NumPy just to be sure I wasn't fooling myself.
+
+This is, unglamorously, most of what "rigorous" means to me: not being
+smarter than the bug, just refusing to let it stay invisible.
 
 <br/>
 
