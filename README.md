@@ -97,6 +97,10 @@ A research-grade, high-performance Rust implementation of Markov-chain limit-ord
 
 One of these is a rigor problem, the other is a reading-comprehension problem. Both count.
 
+[**AsthaMishra/matching-engine**](https://github.com/AsthaMishra/matching-engine/pull/2) — Give out-of-range-price rejections a distinct reason from genuinely invalid prices (open).
+
+[**vollib/py_lets_be_rational**](https://github.com/vollib/py_lets_be_rational/pull/10) — Add missing LICENSE file (blocks conda-forge packaging) (open).
+
 [**vollib/cody-special**](https://github.com/vollib/cody-special/pull/2) — Restore optional numba JIT decoration lost when erf_cody/normaldistribution were split out (open).
 <!-- AUTO:patches:end -->
 
@@ -121,7 +125,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 5 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 2 more; language mix across own repos is Rust 38%, Python 34%, HTML 14%, JavaScript 8%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 5 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 4 more; language mix across own repos is Rust 38%, Python 34%, HTML 14%, JavaScript 8%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
