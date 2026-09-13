@@ -96,6 +96,8 @@ A research-grade, high-performance Rust implementation of Markov-chain limit-ord
 [**edgartools**](https://github.com/dgunning/edgartools/pull/1318) — much smaller, and I'll say so: the quickstart claimed Python 3.8 while `pyproject.toml` actually required 3.10, and its own docs quietly recommended a `cash_flow_statement()` alias that's deprecated for removal in v6.0. No math, just paying enough attention to notice the docs were lying to new users — merged.
 
 One of these is a rigor problem, the other is a reading-comprehension problem. Both count.
+
+[**vollib/cody-special**](https://github.com/vollib/cody-special/pull/2) — Restore optional numba JIT decoration lost when erf_cody/normaldistribution were split out (open).
 <!-- AUTO:patches:end -->
 
 <br/>
@@ -119,7 +121,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 5 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 1 more; language mix across own repos is Rust 39%, Python 35%, HTML 13%, JavaScript 8%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 5 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 2 more; language mix across own repos is Rust 38%, Python 34%, HTML 14%, JavaScript 8%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
