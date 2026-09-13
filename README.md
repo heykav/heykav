@@ -73,6 +73,15 @@ Named after the real second-order Greek. Prices options from first principles (B
 `Python` `PySide6` `NumPy`
 
 </td>
+<td width="33%" valign="top">
+
+**[microprice-rust](https://github.com/heykav/microprice-rust)**
+
+A research-grade, high-performance Rust implementation of Markov-chain limit-order-book micro-price estimation.
+
+`Rust` `HTML`
+
+</td>
 </tr>
 </table>
 <!-- AUTO:projects:end -->
@@ -110,7 +119,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 4 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 1 more; language mix across own repos is Python 63%, JavaScript 17%, C++ 10%, HTML 9%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 5 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 1 more; language mix across own repos is Rust 39%, Python 35%, HTML 13%, JavaScript 8%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
