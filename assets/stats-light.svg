@@ -33,9 +33,9 @@
     <g>
       <rect x="56" y="168" width="1088" height="10" rx="5" fill="#e2e3df"/>
       <rect x="56" y="168" width="440" height="10" fill="#00FF66"/>
-<rect x="496" y="168" width="395" height="10" fill="#6fd94f"/>
-<rect x="891" y="168" width="156" height="10" fill="#3d3f3b"/>
-<rect x="1047" y="168" width="97" height="10" fill="#54564f"/>
+<rect x="496" y="168" width="394" height="10" fill="#6fd94f"/>
+<rect x="890" y="168" width="156" height="10" fill="#3d3f3b"/>
+<rect x="1046" y="168" width="97" height="10" fill="#54564f"/>
     </g>
     <g class="mono" font-size="12">
       <circle cx="60" cy="200" r="4" fill="#00FF66"/>
