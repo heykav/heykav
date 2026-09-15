@@ -1,10 +1,10 @@
 # SEO / link health
 
-_Last checked: 2026-09-14 09:13 UTC, by `scripts/seo_health_check.py`. Regenerated daily; hand edits here will just be overwritten._
+_Last checked: 2026-09-15 08:56 UTC, by `scripts/seo_health_check.py`. Regenerated daily; hand edits here will just be overwritten._
 
 ## Live pages
 
-- **DOWN** (200) [personal site](https://krishnaanubhav.com) — still showing the Hostinger parked-domain placeholder
+- **OK** (200) [personal site](https://krishnaanubhav.com)
 - **OK** (200) [microprice-rust](https://heykav.github.io/microprice-rust/)
 - **OK** (200) [pe-financial-calculator](https://heykav.github.io/pe-financial-calculator/)
 - **OK** (200) [vanna](https://heykav.github.io/vanna/)
