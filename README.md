@@ -75,6 +75,15 @@ Named after the real second-order Greek. Prices options from first principles (B
 </td>
 <td width="33%" valign="top">
 
+**[quantdeck](https://github.com/heykav/quantdeck)**
+
+A simple, event-driven backtesting framework for algorithmic trading. Zero-config, real market data, no database server required.
+
+`Python`
+
+</td>
+<td width="33%" valign="top">
+
 **[microprice-rust](https://github.com/heykav/microprice-rust)**
 
 A research-grade, high-performance Rust implementation of Markov-chain limit-order-book micro-price estimation.
@@ -96,6 +105,16 @@ A research-grade, high-performance Rust implementation of Markov-chain limit-ord
 [**edgartools**](https://github.com/dgunning/edgartools/pull/1318) — much smaller, and I'll say so: the quickstart claimed Python 3.8 while `pyproject.toml` actually required 3.10, and its own docs quietly recommended a `cash_flow_statement()` alias that's deprecated for removal in v6.0. No math, just paying enough attention to notice the docs were lying to new users — merged.
 
 One of these is a rigor problem, the other is a reading-comprehension problem. Both count.
+
+[**dcajasn/Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/258) — Validate returns at Portfolio construction, not just via the setter (open).
+
+[**ever-co/ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10209) — Fix dead cdn.huntr.dev security badge/link in README (open).
+
+[**rburkholder/trade-frame**](https://github.com/rburkholder/trade-frame/pull/9) — Fix 37 broken image links in README, plus 2 stale file extensions (open).
+
+[**dcajasn/Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/257) — Fix Matplotlib 3.11 incompatibility: plot_date and cm.get_cmap removed (open).
+
+[**rburkholder/trade-frame**](https://github.com/rburkholder/trade-frame/pull/8) — Document where trade condition code meanings actually come from (open).
 
 [**AsthaMishra/matching-engine**](https://github.com/AsthaMishra/matching-engine/pull/2) — Give out-of-range-price rejections a distinct reason from genuinely invalid prices (open).
 
@@ -125,7 +144,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 5 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 4 more; language mix across own repos is Rust 38%, Python 34%, HTML 14%, JavaScript 8%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 9 more; language mix across own repos is Python 38%, Rust 36%, HTML 13%, JavaScript 8%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
