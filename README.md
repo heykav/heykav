@@ -108,7 +108,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 
 [**dcajasn/Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/258) — Validate returns at Portfolio construction, not just via the setter (open).
 
-[**ever-co/ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10209) — Fix dead cdn.huntr.dev security badge/link in README (open).
+[**ever-co/ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10209) — Fix dead cdn.huntr.dev security badge/link in README (merged).
 
 [**rburkholder/trade-frame**](https://github.com/rburkholder/trade-frame/pull/9) — Fix 37 broken image links in README, plus 2 stale file extensions (open).
 
