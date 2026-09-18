@@ -75,20 +75,20 @@ Named after the real second-order Greek. Prices options from first principles (B
 </td>
 <td width="33%" valign="top">
 
-**[quantdeck](https://github.com/heykav/quantdeck)**
-
-A simple, event-driven backtesting framework for algorithmic trading. Zero-config, real market data, no database server required.
-
-`Python`
-
-</td>
-<td width="33%" valign="top">
-
 **[microprice-rust](https://github.com/heykav/microprice-rust)**
 
 A research-grade, high-performance Rust implementation of Markov-chain limit-order-book micro-price estimation.
 
 `Rust` `HTML`
+
+</td>
+<td width="33%" valign="top">
+
+**[quantdeck](https://github.com/heykav/quantdeck)**
+
+A simple, event-driven backtesting framework for algorithmic trading. Zero-config, real market data, no database server required.
+
+`Python`
 
 </td>
 </tr>
@@ -106,7 +106,9 @@ A research-grade, high-performance Rust implementation of Markov-chain limit-ord
 
 One of these is a rigor problem, the other is a reading-comprehension problem. Both count.
 
-[**dcajasn/Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/258) — Validate returns at Portfolio construction, not just via the setter (open).
+[**ever-co/ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10225) — fix(utils): isClassInstance throws on a null-prototype object (merged).
+
+[**dcajasn/Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/258) — Validate returns at construction in Portfolio and HCPortfolio (open).
 
 [**ever-co/ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10209) — Fix dead cdn.huntr.dev security badge/link in README (merged).
 
@@ -144,7 +146,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 9 more; language mix across own repos is Python 38%, Rust 36%, HTML 13%, JavaScript 8%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 10 more; language mix across own repos is Python 38%, Rust 36%, HTML 13%, JavaScript 8%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
