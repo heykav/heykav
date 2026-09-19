@@ -77,18 +77,18 @@ Named after the real second-order Greek. Prices options from first principles (B
 
 **[microprice-rust](https://github.com/heykav/microprice-rust)**
 
-A research-grade, high-performance Rust implementation of Markov-chain limit-order-book micro-price estimation.
+The mid-price lies to you the instant the book is imbalanced; the micro-price is what you get when you stop pretending the best bid and best ask are equally likely to trade next. Implemented as the actual Markov chain over the queue-imbalance state space — not a smoothed heuristic — because an estimator you'll trade on should survive being asked why it said what it said.
 
-`Rust` `HTML`
+`Rust` `Market Microstructure`
 
 </td>
 <td width="33%" valign="top">
 
 **[quantdeck](https://github.com/heykav/quantdeck)**
 
-A simple, event-driven backtesting framework for algorithmic trading. Zero-config, real market data, no database server required.
+Grew out of a fix for LiuAlgoTrader (abandoned since 2023, still north of 900 stars) that wanted a Postgres server just to backtest a moving average. This needs a venv and nothing else. The backtest engine and the live-trading path share the exact same `Strategy` class on purpose, so swapping the data feed — not rewriting your logic — is what happens when you're ready to stop paper trading.
 
-`Python`
+`Python` `Backtesting`
 
 </td>
 </tr>
@@ -106,23 +106,27 @@ A simple, event-driven backtesting framework for algorithmic trading. Zero-confi
 
 One of these is a rigor problem, the other is a reading-comprehension problem. Both count.
 
-[**ever-co/ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10225) — fix(utils): isClassInstance throws on a null-prototype object (merged).
+[**ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10225) — a null-prototype object — the exact defensive pattern you'd reach for specifically to dodge prototype-pollution bugs — crashed the utility function written to guard against prototype pollution. `Object.create(null)` has no `.constructor` to read `.name` off of; the fix is one `getPrototypeOf` check. Merged.
 
-[**dcajasn/Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/258) — Validate returns at construction in Portfolio and HCPortfolio (open).
+[**ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10209) — their own security-disclosure badge pointed at a domain that no longer resolves (DNS `SERVFAIL`, not a 404 — the kind of dead link most link-checkers miss). The irony of a broken link on the "here's how to report a security issue" line felt worth fixing quickly. Merged.
 
-[**ever-co/ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10209) — Fix dead cdn.huntr.dev security badge/link in README (merged).
+[**Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/258) — the constructor built its own `returns` setter — type check and all — then routed around it entirely: `self._returns = returns`, no validation, ever. A single `NaN` anywhere in your input data doesn't fail at construction; it fails four stack frames deep inside `scipy.linalg.eigh`, with a message that has nothing to do with your actual data.
 
-[**rburkholder/trade-frame**](https://github.com/rburkholder/trade-frame/pull/9) — Fix 37 broken image links in README, plus 2 stale file extensions (open).
+[**Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/257) — `Axes.plot_date` and `matplotlib.cm.get_cmap` were both quietly removed in Matplotlib 3.11. `requirements.txt` still says `>=3.9.2`. Anyone on a current install can't plot a portfolio without hitting an `AttributeError` first.
 
-[**dcajasn/Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/257) — Fix Matplotlib 3.11 incompatibility: plot_date and cm.get_cmap removed (open).
+[**trade-frame**](https://github.com/rburkholder/trade-frame/pull/9) — 37 images in the README that were never images — `![text](path)` pointing at `.h` files and directories, rendering as broken-icon confetti through the project's own pitch. Two of the targets had also been renamed `.h` → `.hpp` years earlier and nobody had updated the doc since.
 
-[**rburkholder/trade-frame**](https://github.com/rburkholder/trade-frame/pull/8) — Document where trade condition code meanings actually come from (open).
+[**trade-frame**](https://github.com/rburkholder/trade-frame/pull/8) — asked where the meaning of an IQFeed trade-condition code comes from. Answer: nowhere in the repo, on purpose — IQFeed publishes the code table live over the same socket connection, so hardcoding it would just go stale. Documented the actual mechanism instead of inventing a table that would be wrong by next quarter.
 
-[**AsthaMishra/matching-engine**](https://github.com/AsthaMishra/matching-engine/pull/2) — Give out-of-range-price rejections a distinct reason from genuinely invalid prices (open).
+[**matching-engine**](https://github.com/AsthaMishra/matching-engine/pull/2) — an out-of-range price and a genuinely malformed one got rejected with the identical error reason — fine, until you're debugging real order flow at 2am and the log gives you no way to tell which one actually happened.
 
-[**vollib/py_lets_be_rational**](https://github.com/vollib/py_lets_be_rational/pull/10) — Add missing LICENSE file (blocks conda-forge packaging) (open).
+[**py_lets_be_rational**](https://github.com/vollib/py_lets_be_rational/pull/10) — no `LICENSE` file, which is a small thing right up until it silently blocks `conda-forge` packaging for everyone downstream.
 
-[**vollib/cody-special**](https://github.com/vollib/cody-special/pull/2) — Restore optional numba JIT decoration lost when erf_cody/normaldistribution were split out (open).
+[**cody-special**](https://github.com/vollib/cody-special/pull/2) — `erf_cody` and `normaldistribution` got split into their own files at some point, and the `@numba.njit` decoration that made them fast didn't make the move with them.
+
+[**jev-ultrafast**](https://github.com/browser-use/jev-ultrafast/pull/56) — the agent's own browser target opens on `about:blank`, which is already `readyState == 'complete'` before the real navigation even starts — so the very first poll after `Page.navigate` could read that stale state and hand the policy a page that never loaded. It terminates the run as `BLOCKED` in under a second, which looks exactly like the agent failing when the harness never actually observed anything real.
+
+[**awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/174) — checked all ~650 links in the list against the GitHub API and actual DNS resolution, not just an HTTP status code (which false-positives constantly on ordinary bot-blocking). Six repos were genuinely gone; no guessed replacements went in for the ones without a verified successor.
 <!-- AUTO:patches:end -->
 
 <br/>
@@ -146,7 +150,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 10 more; language mix across own repos is Python 38%, Rust 36%, HTML 13%, JavaScript 8%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 12 more; language mix across own repos is Python 38%, Rust 36%, HTML 13%, JavaScript 8%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
