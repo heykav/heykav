@@ -14,5 +14,13 @@
   "vanna": {
     "description": "Named after the real second-order Greek. Prices options from first principles (Black-Scholes, a binomial tree for early exercise) instead of bucketing historical fills, then decomposes every trade's P&L into delta/gamma/theta/vega/vanna/volga via a Taylor expansion — with the leftover reported honestly as residual, not hidden in whichever bucket makes the total look clean.",
     "tags": ["Python", "PySide6", "NumPy"]
+  },
+  "microprice-rust": {
+    "description": "The mid-price lies to you the instant the book is imbalanced; the micro-price is what you get when you stop pretending the best bid and best ask are equally likely to trade next. Implemented as the actual Markov chain over the queue-imbalance state space — not a smoothed heuristic — because an estimator you'll trade on should survive being asked why it said what it said.",
+    "tags": ["Rust", "Market Microstructure"]
+  },
+  "quantdeck": {
+    "description": "Grew out of a fix for LiuAlgoTrader (abandoned since 2023, still north of 900 stars) that wanted a Postgres server just to backtest a moving average. This needs a venv and nothing else. The backtest engine and the live-trading path share the exact same `Strategy` class on purpose, so swapping the data feed — not rewriting your logic — is what happens when you're ready to stop paper trading.",
+    "tags": ["Python", "Backtesting"]
   }
 }
