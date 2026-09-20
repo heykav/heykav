@@ -32,10 +32,10 @@
     <text x="56" y="156" font-size="12" class="mono" fill="#6b6d68" letter-spacing="1">LANGUAGE MIX (BY BYTES, OWN REPOS)</text>
     <g>
       <rect x="56" y="168" width="1088" height="10" rx="5" fill="#1a1b1a"/>
-      <rect x="56" y="168" width="432" height="10" fill="#00FF66"/>
-<rect x="488" y="168" width="416" height="10" fill="#6fd94f"/>
-<rect x="904" y="168" width="147" height="10" fill="#3d3f3b"/>
-<rect x="1051" y="168" width="92" height="10" fill="#54564f"/>
+      <rect x="56" y="168" width="440" height="10" fill="#00FF66"/>
+<rect x="496" y="168" width="411" height="10" fill="#6fd94f"/>
+<rect x="907" y="168" width="146" height="10" fill="#3d3f3b"/>
+<rect x="1053" y="168" width="91" height="10" fill="#54564f"/>
     </g>
     <g class="mono" font-size="12">
       <circle cx="60" cy="200" r="4" fill="#00FF66"/>
