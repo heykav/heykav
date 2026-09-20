@@ -1,6 +1,6 @@
 # SEO / link health
 
-_Last checked: 2026-09-19 08:15 UTC, by `scripts/seo_health_check.py`. Regenerated daily; hand edits here will just be overwritten._
+_Last checked: 2026-09-20 08:47 UTC, by `scripts/seo_health_check.py`. Regenerated daily; hand edits here will just be overwritten._
 
 ## Live pages
 
@@ -16,4 +16,4 @@ Every repo's `homepage` field matches its live Pages URL.
 
 ## Repos missing a description or topics
 
-- `quantdeck`: missing topics
+None — every real repo has both set.
