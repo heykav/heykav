@@ -6,6 +6,13 @@
   <img src="assets/banner.svg" width="100%" alt="KAVY — Krishna Anubhav. Engineer, SaaS founder and operator, MBA, now investment banking. Rigorous thinking. Human explanations." />
 </picture>
 
+<p>
+<a href="https://github.com/heykav/vanna/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/heykav/vanna/tests.yml?branch=main&style=flat-square&label=vanna%20tests&color=00A84A" alt="vanna tests status" /></a>
+<a href="https://github.com/heykav/quantdeck/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/heykav/quantdeck/ci.yml?branch=main&style=flat-square&label=quantdeck%20CI&color=00A84A" alt="quantdeck CI status" /></a>
+<a href="https://github.com/heykav/microprice-rust/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/heykav/microprice-rust/ci.yml?branch=main&style=flat-square&label=microprice-rust%20CI&color=00A84A" alt="microprice-rust CI status" /></a>
+</p>
+<sub>Live badges, not a screenshot — click one. If it's ever red, that's the truth too.</sub>
+
 </div>
 
 ### The short version
