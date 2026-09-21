@@ -11,7 +11,7 @@
 <a href="https://github.com/heykav/quantdeck/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/heykav/quantdeck/ci.yml?branch=main&style=flat-square&label=quantdeck%20CI&color=00A84A" alt="quantdeck CI status" /></a>
 <a href="https://github.com/heykav/microprice-rust/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/heykav/microprice-rust/ci.yml?branch=main&style=flat-square&label=microprice-rust%20CI&color=00A84A" alt="microprice-rust CI status" /></a>
 </p>
-<sub>Live badges, not a screenshot — click one. If it's ever red, that's the truth too.</sub>
+<sub>These update automatically from the real test runs — click one to see it. They'd turn red the day a test actually fails.</sub>
 
 </div>
 
