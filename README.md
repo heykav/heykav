@@ -127,6 +127,8 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 [**jev-ultrafast**](https://github.com/browser-use/jev-ultrafast/pull/56) — the agent's own browser target opens on `about:blank`, which is already `readyState == 'complete'` before the real navigation even starts — so the very first poll after `Page.navigate` could read that stale state and hand the policy a page that never loaded. It terminates the run as `BLOCKED` in under a second, which looks exactly like the agent failing when the harness never actually observed anything real.
 
 [**awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/174) — checked all ~650 links in the list against the GitHub API and actual DNS resolution, not just an HTTP status code (which false-positives constantly on ordinary bot-blocking). Six repos were genuinely gone; no guessed replacements went in for the ones without a verified successor.
+
+[**wangzhe3224/awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/175) — Add vanna to Pricing (open).
 <!-- AUTO:patches:end -->
 
 <br/>
@@ -150,7 +152,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 12 more; language mix across own repos is Python 38%, Rust 36%, HTML 13%, JavaScript 8%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 13 more; language mix across own repos is Rust 38%, Python 36%, HTML 12%, JavaScript 7%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
