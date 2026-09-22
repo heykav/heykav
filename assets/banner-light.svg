@@ -69,8 +69,8 @@
     <rect y="312" width="1200" height="28" fill="#eceeea"/>
     <rect y="312" width="1200" height="1" fill="#e2e3df"/>
     <g class="mono tickerTrack" font-size="12">
-      <text x="20" y="330" fill="#54564f">VANNA <tspan fill="#00A84A">120/120 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTDECK <tspan fill="#00A84A">21/21 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00A84A">124/124 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00A84A">3/3 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#B8860B">CLA pending</tspan></text>
-      <text x="1220" y="330" fill="#54564f">VANNA <tspan fill="#00A84A">120/120 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTDECK <tspan fill="#00A84A">21/21 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00A84A">124/124 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00A84A">3/3 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#B8860B">CLA pending</tspan></text>
+      <text x="20" y="330" fill="#54564f">VANNA <tspan fill="#00A84A">120/120 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTDECK <tspan fill="#00A84A">21/21 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00A84A">124/124 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00A84A">3/3 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#00A84A">merged ✓</tspan></text>
+      <text x="1220" y="330" fill="#54564f">VANNA <tspan fill="#00A84A">120/120 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTDECK <tspan fill="#00A84A">21/21 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00A84A">124/124 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00A84A">3/3 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#00A84A">merged ✓</tspan></text>
     </g>
   </g>
 </svg>
