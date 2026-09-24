@@ -105,6 +105,11 @@ Grew out of a fix for LiuAlgoTrader (abandoned since 2023, still north of 900 st
 
 ### Patches upstream
 
+Real bugs, found by installing each library fresh against current dependencies and checking the numbers by hand — not scanning issue trackers for what's already been reported. Every entry below either merged or is sitting open waiting on review; none were forced to have "something to show."
+
+<details>
+<summary><strong>Dozens of patches</strong> across quant/finance infrastructure — QuantLib, Microsoft's Qlib, zipline, Riskfolio-Lib, and more. Click to expand.</summary>
+
 <!-- AUTO:patches:start -->
 [**QuantLib**](https://github.com/lballabio/QuantLib/pull/2779) — the C++ library half of quant finance is quietly built on — had a `NaN` hiding in its Gauss-Laguerre quadrature: past order ~200, one of the weights underflows to exactly `0.0`, and `inf × 0` in IEEE 754 is `NaN`, no questions asked. The fix isn't "add an epsilon and pray," it's re-deriving the weight in log-space so the underflow never has anywhere to hide — tested against the real consumer (`AnalyticHestonEngine`) and independently re-derived in NumPy just to be sure I wasn't fooling myself.
 
@@ -176,6 +181,8 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 
 [**wangzhe3224/awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/175) — Add vanna to Pricing (open).
 <!-- AUTO:patches:end -->
+
+</details>
 
 <br/>
 
