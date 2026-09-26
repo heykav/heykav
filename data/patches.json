@@ -62,5 +62,9 @@
   "https://github.com/pst-group/pysystemtrade/pull/1663": {
     "label": "pysystemtrade",
     "body": "two collection-breaking bugs that had nothing to do with each other. One: a wildcard import three layers deep silently swapped `datetime` the class for `datetime` the module, so `datetime.strptime(...)` failed with an error that looks like a typo but is actually a namespace collision you'd never spot by reading the file that crashed. Two: an unescaped `\\n` inside a docstring got interpreted as a real newline at parse time, which is a fun way to find out Python 3.12's doctest parser has opinions about indentation you didn't know you were breaking."
+  },
+  "https://github.com/ranaroussi/quantstats/pull/548": {
+    "label": "ranaroussi/quantstats",
+    "body": "`cagr()` computed `abs(total + 1.0) ** (1/years) - 1` — with `compounded=False`, summed returns can go below −100%, and `abs()` quietly flips negative terminal wealth positive, turning a −240% loss into a reported **+40% CAGR**. Confirmed and fixed directly by the maintainer in v0.0.82: \"this release exists because of these reports.\" (fixed upstream in v0.0.82)."
   }
 }

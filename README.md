@@ -173,7 +173,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 
 [**pmorissette/bt**](https://github.com/pmorissette/bt/pull/576) — Fix chained-assignment pattern in positions/outlays/get_transactions (merged).
 
-[**ranaroussi/quantstats**](https://github.com/ranaroussi/quantstats/pull/548) — Fix cagr() turning sub -100% uncompounded losses into gains (open).
+[**ranaroussi/quantstats**](https://github.com/ranaroussi/quantstats/pull/548) — `cagr()` computed `abs(total + 1.0) ** (1/years) - 1` — with `compounded=False`, summed returns can go below −100%, and `abs()` quietly flips negative terminal wealth positive, turning a −240% loss into a reported **+40% CAGR**. Confirmed and fixed directly by the maintainer in v0.0.82: "this release exists because of these reports." (fixed upstream in v0.0.82).
 
 [**bashtage/arch**](https://github.com/bashtage/arch/pull/865) — TST: actually seed TestForecasting fixtures (merged).
 
