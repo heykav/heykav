@@ -1,0 +1,87 @@
+name: daily oss scout
+
+# Runs forever on GitHub's own schedule. Picks 3 external repos, looks for a
+# genuine bug in each, and if it finds one, forks the target and opens a real
+# PR against heykav's own fork branch (never against the upstream repo
+# directly) - so the very last step, turning that into an actual upstream
+# PR, is always a deliberate human action, not something this workflow does
+# on its own.
+
+on:
+  schedule:
+    - cron: "47 4 * * *" # ~10:17 IST daily
+  workflow_dispatch:
+    inputs:
+      repos:
+        description: "Optional: comma-separated owner/repo list to audit instead of auto-picking"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Claude Code
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are heykav's unattended daily open-source scout. Your ONLY
+            output today is a single markdown file at
+            findings/${{ github.run_id }}.md - you never push to, fork, or
+            open a PR against any third-party repo yourself. A human
+            reviews your findings file and decides what to actually ship.
+
+            Task: pick 3 repos not already listed in this repo's own
+            README.md patches section (2 large/popular active open-source
+            projects of any kind, 1 niche quant/finance Python repo -
+            pandas-based backtesting, trading, portfolio, or market-data
+            libraries). For each:
+            - Clone it fresh into a scratch dir, install/build it for real.
+            - Look for one genuine, verifiable, previously-unreported bug -
+              not a lint nit, not a style preference.
+            - If you find one: write a standalone repro proving it fails
+              before your fix and passes after. Write (but do not apply
+              anywhere outside your scratch clone) the actual code fix.
+            - If you find nothing genuine: say so plainly. Do not force a
+              fake finding to have "something to report" - an honest
+              no-finding is a fully valid outcome for a repo.
+
+            Write findings/${{ github.run_id }}.md with one section per
+            repo: repo name/url, clean-or-found, the bug description and
+            root cause if found, the full diff of the fix if found, the
+            repro output (before/after) if found, and a ready-to-paste PR
+            title + body if found. This file is the entire deliverable -
+            do not touch any other file in this repository, do not modify
+            git history, do not touch .github/workflows/.
+          claude_args: |
+            --allowedTools "Read,Write,Bash(git clone*),Bash(pip*),Bash(npm*),Bash(pytest*),Bash(python*)"
+
+      - name: Commit findings and open a review PR
+        run: |
+          if [ -z "$(git status --porcelain findings/)" ]; then
+            echo "No findings file produced - nothing to do."
+            exit 0
+          fi
+          branch="oss-scout/$(date +%Y-%m-%d)"
+          git checkout -b "$branch"
+          git config user.name "oss-scout-bot"
+          git config user.email "noreply@anthropic.com"
+          git add findings/
+          git commit -m "Daily OSS scout findings: $(date +%Y-%m-%d)
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
+          git push origin "$branch"
+          GH_TOKEN="${{ github.token }}" gh pr create \
+            --title "OSS scout findings: $(date +%Y-%m-%d)" \
+            --body "Automated daily scan of 3 external repos. Review findings/${{ github.run_id }}.md - each entry with a real bug includes a ready-to-paste PR title/body and diff. Nothing gets forked or opened upstream until you act on this.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)" \
+            --base main \
+            --head "$branch"
