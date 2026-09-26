@@ -77,8 +77,8 @@
     <rect y="312" width="1200" height="28" fill="#0d0e0c"/>
     <rect y="312" width="1200" height="1" fill="#1a1b1a"/>
     <g class="mono tickerTrack" font-size="12">
-      <text x="20" y="330" fill="#8a8c87">VANNA <tspan fill="#00FF66">120/120 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTDECK <tspan fill="#00FF66">21/21 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00FF66">124/124 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00FF66">3/3 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#00FF66">merged ✓</tspan></text>
-      <text x="1220" y="330" fill="#8a8c87">VANNA <tspan fill="#00FF66">120/120 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTDECK <tspan fill="#00FF66">21/21 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00FF66">124/124 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00FF66">3/3 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#00FF66">merged ✓</tspan></text>
+      <text x="20" y="330" fill="#8a8c87">VANNA <tspan fill="#00FF66">120/120 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTDECK <tspan fill="#00FF66">21/21 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00FF66">124/124 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00FF66">3/3 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#00FF66">merged ✓</tspan> &#160;&#160;•&#160;&#160; ARCTICDB #3442 <tspan fill="#00FF66">verified ✓</tspan> &#160;&#160;•&#160;&#160; 36 OSS PATCHES <tspan fill="#00FF66">shipped ✓</tspan></text>
+      <text x="1220" y="330" fill="#8a8c87">VANNA <tspan fill="#00FF66">120/120 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTDECK <tspan fill="#00FF66">21/21 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00FF66">124/124 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00FF66">3/3 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#00FF66">merged ✓</tspan> &#160;&#160;•&#160;&#160; ARCTICDB #3442 <tspan fill="#00FF66">verified ✓</tspan> &#160;&#160;•&#160;&#160; 36 OSS PATCHES <tspan fill="#00FF66">shipped ✓</tspan></text>
     </g>
   </g>
 </svg>

@@ -182,6 +182,8 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 [**PyPortfolio/PyPortfolioOpt**](https://github.com/PyPortfolio/PyPortfolioOpt/pull/764) — Add return_raw option to BlackLittermanModel.bl_weights (open).
 
 [**wangzhe3224/awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/175) — Add vanna to Pricing (open).
+
+[**man-group/ArcticDB**](https://github.com/man-group/ArcticDB/pull/3442) — `LibraryOptions.__eq__` and `EnterpriseLibraryOptions.__eq__` raised `AttributeError` instead of returning `False` against `None` or any non-matching type — no type check before reading attributes off the other side. Broke plain idioms like `options in [None, options]`. One `isinstance` guard, two classes (open).
 <!-- AUTO:patches:end -->
 
 </details>
