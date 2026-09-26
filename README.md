@@ -145,6 +145,8 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 
 [**pysystemtrade**](https://github.com/pst-group/pysystemtrade/pull/1663) — two collection-breaking bugs that had nothing to do with each other. One: a wildcard import three layers deep silently swapped `datetime` the class for `datetime` the module, so `datetime.strptime(...)` failed with an error that looks like a typo but is actually a namespace collision you'd never spot by reading the file that crashed. Two: an unescaped `\n` inside a docstring got interpreted as a real newline at parse time, which is a fun way to find out Python 3.12's doctest parser has opinions about indentation you didn't know you were breaking.
 
+[**man-group/ArcticDB**](https://github.com/man-group/ArcticDB/pull/3442) — Fix LibraryOptions/EnterpriseLibraryOptions.__eq__ crashing on non-matching types (open).
+
 [**alkaline-ml/pmdarima**](https://github.com/alkaline-ml/pmdarima/pull/623) — Fix: pmdarima.preprocessing.tests package never installed by meson build (open).
 
 [**ranaroussi/yfinance**](https://github.com/ranaroussi/yfinance/pull/2977) — Fix dividends/splits/capital_gains returning None instead of empty Series on price fetch failure (open).
@@ -182,8 +184,6 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 [**PyPortfolio/PyPortfolioOpt**](https://github.com/PyPortfolio/PyPortfolioOpt/pull/764) — Add return_raw option to BlackLittermanModel.bl_weights (open).
 
 [**wangzhe3224/awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/175) — Add vanna to Pricing (open).
-
-[**man-group/ArcticDB**](https://github.com/man-group/ArcticDB/pull/3442) — `LibraryOptions.__eq__` and `EnterpriseLibraryOptions.__eq__` raised `AttributeError` instead of returning `False` against `None` or any non-matching type — no type check before reading attributes off the other side. Broke plain idioms like `options in [None, options]`. One `isinstance` guard, two classes (open).
 <!-- AUTO:patches:end -->
 
 </details>
@@ -209,7 +209,7 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 34 more; language mix across own repos is Rust 38%, Python 36%, HTML 12%, JavaScript 7%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 35 more; language mix across own repos is Rust 38%, Python 36%, HTML 12%, JavaScript 7%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
