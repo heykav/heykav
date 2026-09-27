@@ -145,6 +145,8 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 
 [**pysystemtrade**](https://github.com/pst-group/pysystemtrade/pull/1663) — two collection-breaking bugs that had nothing to do with each other. One: a wildcard import three layers deep silently swapped `datetime` the class for `datetime` the module, so `datetime.strptime(...)` failed with an error that looks like a typo but is actually a namespace collision you'd never spot by reading the file that crashed. Two: an unescaped `\n` inside a docstring got interpreted as a real newline at parse time, which is a fun way to find out Python 3.12's doctest parser has opinions about indentation you didn't know you were breaking.
 
+[**ranaroussi/quantstats**](https://github.com/ranaroussi/quantstats/pull/548) — `cagr()` computed `abs(total + 1.0) ** (1/years) - 1` — with `compounded=False`, summed returns can go below −100%, and `abs()` quietly flips negative terminal wealth positive, turning a −240% loss into a reported **+40% CAGR**. Confirmed and fixed directly by the maintainer in v0.0.82: "this release exists because of these reports." (fixed upstream in v0.0.82).
+
 [**man-group/ArcticDB**](https://github.com/man-group/ArcticDB/pull/3442) — Fix LibraryOptions/EnterpriseLibraryOptions.__eq__ crashing on non-matching types (open).
 
 [**alkaline-ml/pmdarima**](https://github.com/alkaline-ml/pmdarima/pull/623) — Fix: pmdarima.preprocessing.tests package never installed by meson build (open).
@@ -172,8 +174,6 @@ One of these is a rigor problem, the other is a reading-comprehension problem. B
 [**bukosabino/ta**](https://github.com/bukosabino/ta/pull/371) — Fix TSI tests: check_less_precise removed from pandas (open).
 
 [**pmorissette/bt**](https://github.com/pmorissette/bt/pull/576) — Fix chained-assignment pattern in positions/outlays/get_transactions (merged).
-
-[**ranaroussi/quantstats**](https://github.com/ranaroussi/quantstats/pull/548) — `cagr()` computed `abs(total + 1.0) ** (1/years) - 1` — with `compounded=False`, summed returns can go below −100%, and `abs()` quietly flips negative terminal wealth positive, turning a −240% loss into a reported **+40% CAGR**. Confirmed and fixed directly by the maintainer in v0.0.82: "this release exists because of these reports." (fixed upstream in v0.0.82).
 
 [**bashtage/arch**](https://github.com/bashtage/arch/pull/865) — TST: actually seed TestForecasting fixtures (merged).
 
