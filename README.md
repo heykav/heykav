@@ -40,6 +40,36 @@ The question I keep returning to is whether a tool helps me understand a busines
 
 <br/>
 
+### How the flagship work works
+
+Three small diagrams of the mechanisms behind the projects above. They are drawn from each repo's code and docs as they stand on `main`, and anything schematic is labelled as illustrative.
+
+**Micro-price.** The top of the book is reduced to a queue-imbalance and spread bucket. Transitions that leave the mid-price unchanged form `Q`, the average mid change from each state is `G1`, and `G*` is solved from `G* = G1 + Q G*` by fixed-point iteration. The estimate is the mid plus `G*` for the current state.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/microprice.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/diagrams/microprice-light.svg" />
+  <img src="assets/diagrams/microprice.svg" width="100%" alt="Micro-price mechanism: book state bucketed by imbalance and spread, transitions counted into Q and G1, G* solved by fixed-point iteration, micro-price equals mid plus G* of the current state. Grid and offsets are illustrative." />
+</picture>
+
+**P&amp;L attribution.** A trade's P&amp;L is a full reprice at the end minus the start, then split into delta, gamma, theta, vega, vanna and volga using Greeks from the start of the period. What those six terms miss is drawn and reported as its own residual bar. Bar heights in the diagram are illustrative.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/vanna-attribution.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/diagrams/vanna-attribution-light.svg" />
+  <img src="assets/diagrams/vanna-attribution.svg" width="100%" alt="Schematic waterfall of vanna P&amp;L attribution: delta, gamma, theta, vega, vanna and volga terms, a separate hatched residual bar, and the total. Bar heights are illustrative." />
+</picture>
+
+**Tick-to-trade path.** A packet is modelled through block decode, MAC framing, an ITCH 5.0 parser, an order book, an order-flow imbalance pipeline and a PCIe DMA model. This is a cycle-modelled simulation, not hardware, and its timing is simulated: the demo's cycles come from a scripted stimulus timeline.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/fpga-tick-to-trade.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/diagrams/fpga-tick-to-trade-light.svg" />
+  <img src="assets/diagrams/fpga-tick-to-trade.svg" width="100%" alt="fpga-sim-core tick-to-trade path, a cycle-modelled simulation and not hardware: PCS block decode, MAC framer, ITCH parser, order book, OFI, DMA. Timing is simulated." />
+</picture>
+
+<br/>
+
 ### Selected work
 
 <!-- AUTO:projects:start -->

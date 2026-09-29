@@ -1,0 +1,116 @@
+<svg width="1200" height="542" viewBox="0 0 1200 542" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fp-t fp-d">
+<title id="fp-t">fpga-sim-core tick-to-trade path diagram</title>
+<desc id="fp-d">A software cycle model, not hardware. Six modelled stages in order: PCS block decode with CRC, MAC framer, ITCH 5.0 parser, five-level order book, order-flow imbalance pipeline, and a PCIe DMA model. A cycle counter drives the stages and a VCD trace is written. All timing is simulated; the demo timeline is scripted stimulus, not a measured latency.</desc>
+<defs>
+<marker id="fp-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#00A84A"/></marker>
+<marker id="fp-am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#54564f"/></marker>
+<pattern id="fp-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#fbf0da"/><rect width="3" height="8" fill="#9a5b00"/></pattern>
+<clipPath id="fp-clip"><rect width="1200" height="542" rx="14"/></clipPath>
+</defs>
+<g clip-path="url(#fp-clip)">
+<rect width="1200" height="542" fill="#F4F5F2"/>
+<rect width="1200" height="32" fill="#eceeea"/>
+<circle cx="24" cy="16" r="6" fill="#FF5F57"/><circle cx="44" cy="16" r="6" fill="#FEBC2E"/><circle cx="64" cy="16" r="6" fill="#28C840"/>
+<text x="600" y="20" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#54564f" text-anchor="middle">fpga-sim-core  |  tick-to-trade  |  simulated timing</text>
+<rect y="32" width="1200" height="1" fill="#c4c7c0"/>
+<text x="36" y="72" font-family='Georgia,"Times New Roman",serif' font-size="22" fill="#111211" font-weight="700">Tick-to-trade path, modelled cycle by cycle</text><text x="36" y="94" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#54564f">fpga-sim-core  |  include/modules, main.cpp</text>
+<rect x="760" y="50" width="404" height="34" rx="17" fill="#fbf0da" stroke="#9a5b00" stroke-width="1.4"/>
+<text x="962" y="72" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="11.5" fill="#9a5b00" font-weight="700" text-anchor="middle" letter-spacing="0.6">CYCLE-MODELLED SIMULATION, NOT HARDWARE</text>
+<rect x="30" y="122" width="170" height="170" rx="10" fill="#ffffff" stroke="#c4c7c0" stroke-width="1"/>
+<circle cx="52" cy="146" r="10" fill="#00A84A"/>
+<text x="52" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#ffffff" font-weight="700" text-anchor="middle">1</text>
+<text x="70" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#111211" font-weight="700" letter-spacing="1">PCS</text>
+<text x="46" y="178" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="13" fill="#111211" font-weight="700">block decode</text>
+<text x="46" y="198" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="11" fill="#006b2e">phy_pcs.hpp</text>
+<text x="46" y="224" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">Block lock and CRC32</text>
+<text x="46" y="241" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">check.</text>
+<text x="46" y="258" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">64b/66b-inspired, not</text>
+<text x="46" y="275" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">802.3 conformant.</text>
+<line x1="202" y1="187" x2="222" y2="187" stroke="#00A84A" stroke-width="1.6" marker-end="url(#fp-ar)"/>
+<rect x="224" y="122" width="170" height="170" rx="10" fill="#ffffff" stroke="#c4c7c0" stroke-width="1"/>
+<circle cx="246" cy="146" r="10" fill="#00A84A"/>
+<text x="246" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#ffffff" font-weight="700" text-anchor="middle">2</text>
+<text x="264" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#111211" font-weight="700" letter-spacing="1">MAC</text>
+<text x="240" y="178" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="13" fill="#111211" font-weight="700">framer</text>
+<text x="240" y="198" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="11" fill="#006b2e">mac_framer.hpp</text>
+<text x="240" y="224" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">AXI4-Stream 512-bit</text>
+<text x="240" y="241" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">beats with an inter-</text>
+<text x="240" y="258" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">packet-gap check.</text>
+<line x1="396" y1="187" x2="416" y2="187" stroke="#00A84A" stroke-width="1.6" marker-end="url(#fp-ar)"/>
+<rect x="418" y="122" width="170" height="170" rx="10" fill="#ffffff" stroke="#c4c7c0" stroke-width="1"/>
+<circle cx="440" cy="146" r="10" fill="#00A84A"/>
+<text x="440" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#ffffff" font-weight="700" text-anchor="middle">3</text>
+<text x="458" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#111211" font-weight="700" letter-spacing="1">ITCH</text>
+<text x="434" y="178" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="13" fill="#111211" font-weight="700">parser</text>
+<text x="434" y="198" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="11" fill="#006b2e">parser_itch50.hpp</text>
+<text x="434" y="224" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">Zero-copy big-endian</text>
+<text x="434" y="241" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">ITCH 5.0 for A, E and X</text>
+<text x="434" y="258" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">messages.</text>
+<line x1="590" y1="187" x2="610" y2="187" stroke="#00A84A" stroke-width="1.6" marker-end="url(#fp-ar)"/>
+<rect x="612" y="122" width="170" height="170" rx="10" fill="#ffffff" stroke="#c4c7c0" stroke-width="1"/>
+<circle cx="634" cy="146" r="10" fill="#00A84A"/>
+<text x="634" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#ffffff" font-weight="700" text-anchor="middle">4</text>
+<text x="652" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#111211" font-weight="700" letter-spacing="1">ORDER</text>
+<text x="628" y="178" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="13" fill="#111211" font-weight="700">book</text>
+<text x="628" y="198" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="11" fill="#006b2e">order_book.hpp</text>
+<text x="628" y="224" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">Five-level book over a</text>
+<text x="628" y="241" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">dual-port BRAM model.</text>
+<line x1="784" y1="187" x2="804" y2="187" stroke="#00A84A" stroke-width="1.6" marker-end="url(#fp-ar)"/>
+<rect x="806" y="122" width="170" height="170" rx="10" fill="#ffffff" stroke="#c4c7c0" stroke-width="1"/>
+<circle cx="828" cy="146" r="10" fill="#00A84A"/>
+<text x="828" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#ffffff" font-weight="700" text-anchor="middle">5</text>
+<text x="846" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#111211" font-weight="700" letter-spacing="1">OFI</text>
+<text x="822" y="178" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="13" fill="#111211" font-weight="700">order-flow imbalance</text>
+<text x="822" y="198" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="11" fill="#006b2e">ofi_dsp.hpp</text>
+<text x="822" y="224" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">Three-cycle signed</text>
+<text x="822" y="241" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">32-bit pipeline, plus a</text>
+<text x="822" y="258" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">micro-price LUT.</text>
+<line x1="978" y1="187" x2="998" y2="187" stroke="#00A84A" stroke-width="1.6" marker-end="url(#fp-ar)"/>
+<rect x="1000" y="122" width="170" height="170" rx="10" fill="#ffffff" stroke="#c4c7c0" stroke-width="1"/>
+<circle cx="1022" cy="146" r="10" fill="#00A84A"/>
+<text x="1022" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#ffffff" font-weight="700" text-anchor="middle">6</text>
+<text x="1040" y="150" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#111211" font-weight="700" letter-spacing="1">DMA</text>
+<text x="1016" y="178" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="13" fill="#111211" font-weight="700">host write</text>
+<text x="1016" y="198" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="11" fill="#006b2e">pcie_dma.hpp</text>
+<text x="1016" y="224" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">PCIe Gen4 x16 TLP and</text>
+<text x="1016" y="241" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">MSI-X model,</text>
+<text x="1016" y="258" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="11.5" fill="#3d3f3b">preallocated rings.</text>
+<rect x="30" y="320" width="1140" height="74" rx="10" fill="#ffffff" stroke="#c4c7c0" stroke-width="1"/>
+<text x="46" y="344" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#006b2e" font-weight="700">DiscreteEngine</text>
+<text x="46" y="364" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="12" fill="#3d3f3b">A cycle counter drives posedge and negedge callbacks held in a fixed 16-slot array.</text>
+<text x="46" y="382" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="12" fill="#3d3f3b">No wall-clock time in the hot path. Model clock 322.265625 MHz.</text>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<path d="M760 370 H774 V350 H788 V370 H802 V350 H816 V370 H830 V350 H844 V370 H858 V350 H872 V370 H886 V350 H900 V370 H914 V350 H928 V370 H942 V350 H956 V370 H970 V350 H984 V370 H998 V350 H1012 V370 H1026 V350 H1040 V370 H1054 V350 H1068 V370 H1082 V350 H1096 V370 H1110 V350 H1124 V370 H1138 V350 H1152 V370 " fill="none" stroke="#00A84A" stroke-width="1.5"/>
+<rect x="30" y="412" width="1140" height="44" rx="8" fill="#F4F5F2" stroke="#c4c7c0" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="46" y="439" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="12" fill="#3d3f3b">Output: minimal IEEE 1364 VCD trace, viewable in GTKWave.</text>
+<text x="1154" y="439" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#9a5b00" font-weight="700" text-anchor="end">timing here is simulated</text>
+<text x="36" y="486" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="12" fill="#54564f">The demo's tick and trade cycles come from a scripted stimulus timeline. They are not a measured latency.</text>
+</g>
+</svg>
