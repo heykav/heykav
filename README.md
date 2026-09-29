@@ -187,7 +187,7 @@ These are pull requests I have opened against other people's projects. Most are 
 
 [**pysystemtrade**](https://github.com/pst-group/pysystemtrade/pull/1663) — two collection-breaking bugs unrelated to each other. One: a wildcard import three layers deep replaced `datetime` the class with `datetime` the module, so `datetime.strptime(...)` failed with an error that looks like a typo but is a namespace collision, hard to spot from the file that crashed. Two: an unescaped `\n` inside a docstring was interpreted as a real newline at parse time, which Python 3.12's doctest parser treated as an indentation problem.
 
-[**ranaroussi/quantstats**](https://github.com/ranaroussi/quantstats/pull/548) — `cagr()` computed `abs(total + 1.0) ** (1/years) - 1`. With `compounded=False`, summed returns can go below −100%, and `abs()` flips negative terminal wealth positive, turning a −240% loss into a reported **+40% CAGR**. Confirmed and fixed directly by the maintainer in v0.0.82: "this release exists because of these reports." (fixed upstream in v0.0.82).
+[**ranaroussi/quantstats**](https://github.com/ranaroussi/quantstats/pull/548) — `cagr()` computed `abs(total + 1.0) ** (1/years) - 1`. With `compounded=False`, summed returns can go below −100%, and `abs()` flips negative terminal wealth positive, turning a −240% loss into a reported **+40% CAGR**. The PR was closed without merging; the maintainer fixed it directly in v0.0.82 and wrote that "this release exists because of these reports."
 
 [**cuemacro/findatapy**](https://github.com/cuemacro/findatapy/pull/59) — fix: calculate_log_returns raises TypeError instead of computing log returns (open).
 
@@ -255,7 +255,7 @@ These are pull requests I have opened against other people's projects. Most are 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 37 more; language mix across own repos is Rust 38%, Python 36%, HTML 12%, JavaScript 7%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 original repos, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 37 more; language mix across own repos is Rust 38%, Python 36%, HTML 12%, JavaScript 7%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 

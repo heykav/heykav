@@ -175,7 +175,7 @@ def render_stats_svg(palette, project_count, since_year, location_tag,
         lx += 20 + len(label) * 7 + 24
 
     alt_langs = ", ".join(f"{lang} {round(pct)}%" for lang, pct in top)
-    alt = (f"Krishna Anubhav GitHub signal: {project_count} projects shipped, "
+    alt = (f"Krishna Anubhav GitHub signal: {project_count} original repos, "
            f"on GitHub since {since_year}, based in {location_label}, "
            f"open-source {patch_label}; language mix across own repos is {alt_langs}")
 
@@ -198,7 +198,7 @@ def render_stats_svg(palette, project_count, since_year, location_tag,
       <text x="56" y="50" font-size="13" fill="{palette["label"]}" letter-spacing="1.5">SIGNAL</text>
 
       <text x="56" y="94" font-size="30" font-weight="700" fill="{palette["text"]}">{project_count}</text>
-      <text x="56" y="114" font-size="12" fill="{palette["muted"]}">projects shipped</text>
+      <text x="56" y="114" font-size="12" fill="{palette["muted"]}">original repos</text>
 
       <text x="230" y="94" font-size="30" font-weight="700" fill="{palette["text"]}">{since_year}</text>
       <text x="230" y="114" font-size="12" fill="{palette["muted"]}">on GitHub since</text>
