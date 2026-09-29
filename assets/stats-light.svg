@@ -1,4 +1,4 @@
-<svg width="1200" height="220" viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Krishna Anubhav GitHub signal: 6 projects shipped, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 37 more; language mix across own repos is Rust 38%, Python 36%, HTML 12%, JavaScript 7%">
+<svg width="1200" height="220" viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Krishna Anubhav GitHub signal: 6 original repos, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 37 more; language mix across own repos is Rust 38%, Python 36%, HTML 12%, JavaScript 7%">
   <defs>
     <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e3df" stroke-width="1"/>
@@ -17,7 +17,7 @@
       <text x="56" y="50" font-size="13" fill="#7a7c74" letter-spacing="1.5">SIGNAL</text>
 
       <text x="56" y="94" font-size="30" font-weight="700" fill="#111211">6</text>
-      <text x="56" y="114" font-size="12" fill="#54564f">projects shipped</text>
+      <text x="56" y="114" font-size="12" fill="#54564f">original repos</text>
 
       <text x="230" y="94" font-size="30" font-weight="700" fill="#111211">2022</text>
       <text x="230" y="114" font-size="12" fill="#54564f">on GitHub since</text>
