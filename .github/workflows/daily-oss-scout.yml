@@ -73,14 +73,15 @@ jobs:
           git config user.name "oss-scout-bot"
           git config user.email "noreply@anthropic.com"
           git add findings/
-          git commit -m "Daily OSS scout findings: $(date +%Y-%m-%d)
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
+          git commit \
+            -m "Daily OSS scout findings: $(date +%Y-%m-%d)" \
+            -m "Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
           git push origin "$branch"
+          body="$(printf '%s\n\n%s\n' \
+            'Automated daily scan of 3 external repos. Review findings/${{ github.run_id }}.md - each entry with a real bug includes a ready-to-paste PR title/body and diff. Nothing gets forked or opened upstream until you act on this.' \
+            '🤖 Generated with [Claude Code](https://claude.com/claude-code)')"
           GH_TOKEN="${{ github.token }}" gh pr create \
             --title "OSS scout findings: $(date +%Y-%m-%d)" \
-            --body "Automated daily scan of 3 external repos. Review findings/${{ github.run_id }}.md - each entry with a real bug includes a ready-to-paste PR title/body and diff. Nothing gets forked or opened upstream until you act on this.
-
-🤖 Generated with [Claude Code](https://claude.com/claude-code)" \
+            --body "$body" \
             --base main \
             --head "$branch"
