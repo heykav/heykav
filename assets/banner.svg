@@ -1,4 +1,4 @@
-<svg width="1200" height="340" viewBox="0 0 1200 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KAVY — Krishna Anubhav. Engineer, SaaS founder and operator, MBA, now investment banking. Rigorous thinking. Human explanations. Verified: vanna 120/120 tests, quantdeck 21/21, microprice-rust 124/124, fpga-sim-core 3/3 suites passing.">
+<svg width="1200" height="340" viewBox="0 0 1200 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KAVY — Krishna Anubhav. Engineer, SaaS founder and operator, MBA, now investment banking. Rigorous thinking. Human explanations. Test counts as of 2026-09-29: vanna 126, microprice-rust 156, fpga-sim-core 7 tests passing.">
   <defs>
     <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#00FF66"/>
@@ -71,14 +71,14 @@
       </g>
     </g>
 
-    <!-- Ticker: real test counts from this session's own verification passes,
+    <!-- Ticker: real test counts from verification runs on 2026-09-29,
          not marketing copy - the same "don't assert it, run it" rule the
          READMEs hold every formula to, applied to the banner itself. -->
     <rect y="312" width="1200" height="28" fill="#0d0e0c"/>
     <rect y="312" width="1200" height="1" fill="#1a1b1a"/>
     <g class="mono tickerTrack" font-size="12">
-      <text x="20" y="330" fill="#8a8c87">VANNA <tspan fill="#00FF66">120/120 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTDECK <tspan fill="#00FF66">21/21 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00FF66">124/124 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00FF66">3/3 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#00FF66">merged ✓</tspan> &#160;&#160;•&#160;&#160; ARCTICDB #3442 <tspan fill="#00FF66">verified ✓</tspan> &#160;&#160;•&#160;&#160; 36 OSS PATCHES <tspan fill="#00FF66">shipped ✓</tspan></text>
-      <text x="1220" y="330" fill="#8a8c87">VANNA <tspan fill="#00FF66">120/120 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTDECK <tspan fill="#00FF66">21/21 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00FF66">124/124 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00FF66">3/3 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#00FF66">merged ✓</tspan> &#160;&#160;•&#160;&#160; ARCTICDB #3442 <tspan fill="#00FF66">verified ✓</tspan> &#160;&#160;•&#160;&#160; 36 OSS PATCHES <tspan fill="#00FF66">shipped ✓</tspan></text>
+      <text x="20" y="330" fill="#8a8c87"> VANNA <tspan fill="#00FF66">126/126 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00FF66">156/156 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00FF66">7/7 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#00FF66">merged ✓</tspan> &#160;&#160;•&#160;&#160; TEST COUNTS AS OF 2026-09-29</text>
+      <text x="1220" y="330" fill="#8a8c87"> VANNA <tspan fill="#00FF66">126/126 ✓</tspan> &#160;&#160;•&#160;&#160; MICROPRICE-RUST <tspan fill="#00FF66">156/156 ✓</tspan> &#160;&#160;•&#160;&#160; FPGA-SIM-CORE <tspan fill="#00FF66">7/7 ✓</tspan> &#160;&#160;•&#160;&#160; QUANTLIB #2779 <tspan fill="#00FF66">merged ✓</tspan> &#160;&#160;•&#160;&#160; TEST COUNTS AS OF 2026-09-29</text>
     </g>
   </g>
 </svg>

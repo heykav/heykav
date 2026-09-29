@@ -1,26 +1,26 @@
 {
   "photoface": {
-    "description": "Face detection (YuNet) + embeddings (SFace), clustered with a greedy online pass and then a proper average-linkage recluster — and once you manually correct a face, it's *pinned*: the algorithm is no longer allowed to have opinions about that one.",
+    "description": "A desktop app that finds faces in a photo library, clusters them, and lets you correct the result. Detection uses YuNet and embeddings use SFace, clustered in a greedy online pass and then re-clustered with average linkage. When you fix a face by hand, that assignment is pinned and the algorithm stops revisiting it.",
     "tags": ["Python", "PySide6", "OpenCV"]
   },
   "pe-financial-calculator": {
-    "description": "LBO modeling, DCF analysis, deal-analysis tooling — the thing I actually underwrite with, not a portfolio-piece demo. If a sensitivity table lies to you, it's this one's fault, and I'd want to know.",
+    "description": "LBO, DCF and deal-analysis calculators for investment banking and private equity work. I built it to underwrite with, so a sensitivity table that misleads is a bug in this project, and I want to hear about it.",
     "tags": ["JavaScript", "HTML/CSS"]
   },
   "fpga-sim-core": {
-    "description": "Cycle-accurate FPGA datapath sim: deterministic callback scheduling, PCS encode/decode, a five-level order book, zero heap allocation on the hot path — because \"close enough\" isn't a real answer at the clock-cycle level.",
+    "description": "A C++20 simulator of an FPGA-style tick-to-trade path: a block codec with CRC, an ITCH 5.0 parser, a five-level order book, a PCIe DMA model and VCD waveform output. Its timing comes from a scripted stimulus rather than a measured pipeline, and the demo labels it that way. The paths covered by its allocation test perform no heap allocation.",
     "tags": ["C++", "CMake"]
   },
   "vanna": {
-    "description": "Named after the real second-order Greek. Prices options from first principles (Black-Scholes, a binomial tree for early exercise) instead of bucketing historical fills, then decomposes every trade's P&L into delta/gamma/theta/vega/vanna/volga via a Taylor expansion — with the leftover reported honestly as residual, not hidden in whichever bucket makes the total look clean.",
+    "description": "Options pricing and P&L attribution in Python. It prices with Black-Scholes and a binomial tree for early exercise, then splits each trade's P&L into delta, gamma, theta, vega, vanna and volga using a Taylor expansion. What the Greeks do not explain is reported as residual instead of being absorbed into a bucket. Backtests run on simulated price paths only.",
     "tags": ["Python", "PySide6", "NumPy"]
   },
   "microprice-rust": {
-    "description": "The mid-price lies to you the instant the book is imbalanced; the micro-price is what you get when you stop pretending the best bid and best ask are equally likely to trade next. Implemented as the actual Markov chain over the queue-imbalance state space — not a smoothed heuristic — because an estimator you'll trade on should survive being asked why it said what it said.",
+    "description": "A Rust implementation of the micro-price estimator from Stoikov (2018): a Markov chain over queue-imbalance and spread states that estimates the next expected mid-price. It is research code. On its own synthetic data it does not beat the naive mid-price, and the README shows the numbers. The evaluation protocol for real quote data is written and has not been run yet.",
     "tags": ["Rust", "Market Microstructure"]
   },
   "quantdeck": {
-    "description": "Grew out of a fix for LiuAlgoTrader (abandoned since 2023, still north of 900 stars) that wanted a Postgres server just to backtest a moving average. This needs a venv and nothing else. The backtest engine and the live-trading path share the exact same `Strategy` class on purpose, so swapping the data feed — not rewriting your logic — is what happens when you're ready to stop paper trading.",
+    "description": "Event-driven backtesting for Python that needs a virtual environment and nothing else. It began as a fix for LiuAlgoTrader, which required a Postgres server just to backtest a moving average. Backtests and live trading share the same `Strategy` class, so changing the data feed does not mean rewriting the logic.",
     "tags": ["Python", "Backtesting"]
   }
 }

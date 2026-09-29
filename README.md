@@ -12,31 +12,35 @@
 <a href="https://github.com/heykav/microprice-rust/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/heykav/microprice-rust/ci.yml?branch=main&style=flat-square&label=microprice-rust%20CI&color=00A84A" alt="microprice-rust CI status" /></a>
 </p>
 
+<p align="center">
+<a href="#about">About</a> ·
+<a href="#recent-work">Recent work</a> ·
+<a href="#selected-work">Selected work</a> ·
+<a href="#patches-upstream">Patches</a> ·
+<a href="#stack">Stack</a>
+</p>
+
 </div>
 
-### The short version
+### About
 
-Engineer → SaaS founder/operator → MBA → investment banking. Somewhere in
-there I picked up the habit of not trusting a number until I've rebuilt the
-model myself — which, if I'm honest, is really just an excuse to keep
-writing code for a living after finance told me to stop.
+I started as an engineer, ran a SaaS company, did an MBA, and now work in investment banking. The habit that stayed with me through all of it is not trusting a number until I have rebuilt the model that produced it.
 
-Based in India. On a given night I am equally likely to be arguing with an
-EBITDA bridge in a spreadsheet or with a segfault in a terminal, and
-neither argument is going noticeably better than the other.
+I am based in India. Most evenings go to either an EBITDA bridge or a segfault, and the two have more in common than they look. Each one punishes an assumption you did not know you were making.
 
-A DCF and a `git rebase` have more in common than people think: both are
-just you insisting, with great confidence, that the past can be tidied up
-into a story that leads cleanly to the number you already believe.
-
-**The question I keep asking:** does the tool actually help me *understand*
-the business, or does it just make the output look confident? Most finance
-software optimizes for the second one. I'd rather build the first — even
-if that means the "financial model" is a Python script with opinions.
+The question I keep returning to is whether a tool helps me understand a business or only makes its output look confident. Most finance software is built for the second. I would rather build for the first, even when the "financial model" turns out to be a Python script with opinions.
 
 <br/>
 
-### What I've actually shipped
+### Recent work
+
+- **microprice-rust**: research code for the micro-price estimator. It does not beat the naive mid-price on its own synthetic data, and the README says so. The real-data evaluation protocol is written before any result exists, and the run is still to come.
+- **vanna**: fixed `covered_call`, which was returning only the short call and so behaved like a different strategy. It now holds the stock leg, with attribution and payoff charts to match.
+- **fpga-sim-core**: the demo timeline is now labelled as scripted, the waveform output is valid VCD, and the allocation claim is backed by a test.
+
+<br/>
+
+### Selected work
 
 <!-- AUTO:projects:start -->
 <table width="100%">
@@ -45,7 +49,7 @@ if that means the "financial model" is a Python script with opinions.
 
 **[photoface](https://github.com/heykav/photoface)**
 
-Face detection (YuNet) + embeddings (SFace), clustered with a greedy online pass and then a proper average-linkage recluster — and once you manually correct a face, it's *pinned*: the algorithm is no longer allowed to have opinions about that one.
+A desktop app that finds faces in a photo library, clusters them, and lets you correct the result. Detection uses YuNet and embeddings use SFace, clustered in a greedy online pass and then re-clustered with average linkage. When you fix a face by hand, that assignment is pinned and the algorithm stops revisiting it.
 
 `Python` `PySide6` `OpenCV`
 
@@ -54,7 +58,7 @@ Face detection (YuNet) + embeddings (SFace), clustered with a greedy online pass
 
 **[pe-financial-calculator](https://github.com/heykav/pe-financial-calculator)**
 
-LBO modeling, DCF analysis, deal-analysis tooling — the thing I actually underwrite with, not a portfolio-piece demo. If a sensitivity table lies to you, it's this one's fault, and I'd want to know.
+LBO, DCF and deal-analysis calculators for investment banking and private equity work. I built it to underwrite with, so a sensitivity table that misleads is a bug in this project, and I want to hear about it.
 
 `JavaScript` `HTML/CSS`
 
@@ -63,7 +67,7 @@ LBO modeling, DCF analysis, deal-analysis tooling — the thing I actually under
 
 **[fpga-sim-core](https://github.com/heykav/fpga-sim-core)**
 
-Cycle-accurate FPGA datapath sim: deterministic callback scheduling, PCS encode/decode, a five-level order book, zero heap allocation on the hot path — because "close enough" isn't a real answer at the clock-cycle level.
+A C++20 simulator of an FPGA-style tick-to-trade path: a block codec with CRC, an ITCH 5.0 parser, a five-level order book, a PCIe DMA model and VCD waveform output. Its timing comes from a scripted stimulus rather than a measured pipeline, and the demo labels it that way. The paths covered by its allocation test perform no heap allocation.
 
 `C++` `CMake`
 
@@ -74,7 +78,7 @@ Cycle-accurate FPGA datapath sim: deterministic callback scheduling, PCS encode/
 
 **[vanna](https://github.com/heykav/vanna)**
 
-Named after the real second-order Greek. Prices options from first principles (Black-Scholes, a binomial tree for early exercise) instead of bucketing historical fills, then decomposes every trade's P&L into delta/gamma/theta/vega/vanna/volga via a Taylor expansion — with the leftover reported honestly as residual, not hidden in whichever bucket makes the total look clean.
+Options pricing and P&L attribution in Python. It prices with Black-Scholes and a binomial tree for early exercise, then splits each trade's P&L into delta, gamma, theta, vega, vanna and volga using a Taylor expansion. What the Greeks do not explain is reported as residual instead of being absorbed into a bucket. Backtests run on simulated price paths only.
 
 `Python` `PySide6` `NumPy`
 
@@ -83,7 +87,7 @@ Named after the real second-order Greek. Prices options from first principles (B
 
 **[microprice-rust](https://github.com/heykav/microprice-rust)**
 
-The mid-price lies to you the instant the book is imbalanced; the micro-price is what you get when you stop pretending the best bid and best ask are equally likely to trade next. Implemented as the actual Markov chain over the queue-imbalance state space — not a smoothed heuristic — because an estimator you'll trade on should survive being asked why it said what it said.
+A Rust implementation of the micro-price estimator from Stoikov (2018): a Markov chain over queue-imbalance and spread states that estimates the next expected mid-price. It is research code. On its own synthetic data it does not beat the naive mid-price, and the README shows the numbers. The evaluation protocol for real quote data is written and has not been run yet.
 
 `Rust` `Market Microstructure`
 
@@ -92,7 +96,7 @@ The mid-price lies to you the instant the book is imbalanced; the micro-price is
 
 **[quantdeck](https://github.com/heykav/quantdeck)**
 
-Grew out of a fix for LiuAlgoTrader (abandoned since 2023, still north of 900 stars) that wanted a Postgres server just to backtest a moving average. This needs a venv and nothing else. The backtest engine and the live-trading path share the exact same `Strategy` class on purpose, so swapping the data feed — not rewriting your logic — is what happens when you're ready to stop paper trading.
+Event-driven backtesting for Python that needs a virtual environment and nothing else. It began as a fix for LiuAlgoTrader, which required a Postgres server just to backtest a moving average. Backtests and live trading share the same `Strategy` class, so changing the data feed does not mean rewriting the logic.
 
 `Python` `Backtesting`
 
@@ -105,47 +109,45 @@ Grew out of a fix for LiuAlgoTrader (abandoned since 2023, still north of 900 st
 
 ### Patches upstream
 
-Real bugs, found by installing each library fresh against current dependencies and checking the numbers by hand — not scanning issue trackers for what's already been reported. Every entry below either merged or is sitting open waiting on review; none were forced to have "something to show."
+These are bugs I found by installing each library fresh against current dependencies and checking the numbers by hand, rather than by reading issue trackers. Each one has either been merged or is waiting on review.
 
 <details>
-<summary><strong>Dozens of patches</strong> across quant/finance infrastructure — QuantLib, Microsoft's Qlib, zipline, Riskfolio-Lib, and more. Click to expand.</summary>
+<summary><strong>Patches to quant and finance libraries</strong>, including QuantLib, Qlib, zipline and Riskfolio-Lib. Expand for the list.</summary>
 
 <!-- AUTO:patches:start -->
-[**QuantLib**](https://github.com/lballabio/QuantLib/pull/2779) — the C++ library half of quant finance is quietly built on — had a `NaN` hiding in its Gauss-Laguerre quadrature: past order ~200, one of the weights underflows to exactly `0.0`, and `inf × 0` in IEEE 754 is `NaN`, no questions asked. The fix isn't "add an epsilon and pray," it's re-deriving the weight in log-space so the underflow never has anywhere to hide — tested against the real consumer (`AnalyticHestonEngine`) and independently re-derived in NumPy just to be sure I wasn't fooling myself.
+[**QuantLib**](https://github.com/lballabio/QuantLib/pull/2779) — the C++ quantitative finance library had a `NaN` in its Gauss-Laguerre quadrature. Past order ~200, one of the weights underflows to exactly `0.0`, and `inf × 0` is `NaN` in IEEE 754. The fix re-derives the weight in log-space so the underflow no longer occurs. It is tested against the real consumer (`AnalyticHestonEngine`) and was independently re-derived in NumPy as a check.
 
-[**edgartools**](https://github.com/dgunning/edgartools/pull/1318) — much smaller, and I'll say so: the quickstart claimed Python 3.8 while `pyproject.toml` actually required 3.10, and its own docs quietly recommended a `cash_flow_statement()` alias that's deprecated for removal in v6.0. No math, just paying enough attention to notice the docs were lying to new users — merged.
+[**edgartools**](https://github.com/dgunning/edgartools/pull/1318) — a much smaller fix. The quickstart stated Python 3.8 while `pyproject.toml` required 3.10, and the docs recommended a `cash_flow_statement()` alias that is deprecated for removal in v6.0. No math, only documentation that gave new users incorrect information. Merged.
 
-One of these is a rigor problem, the other is a reading-comprehension problem. Both count.
+[**ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10225) — a null-prototype object, a pattern used to avoid prototype-pollution bugs, crashed the utility function written to guard against prototype pollution. `Object.create(null)` has no `.constructor` to read `.name` from. The fix is one `getPrototypeOf` check. Merged.
 
-[**ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10225) — a null-prototype object — the exact defensive pattern you'd reach for specifically to dodge prototype-pollution bugs — crashed the utility function written to guard against prototype pollution. `Object.create(null)` has no `.constructor` to read `.name` off of; the fix is one `getPrototypeOf` check. Merged.
+[**ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10209) — the project's security-disclosure badge pointed at a domain that no longer resolves (DNS `SERVFAIL`, not a 404, which most link-checkers miss). The broken link was on the line explaining how to report a security issue, so it seemed worth fixing quickly. Merged.
 
-[**ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10209) — their own security-disclosure badge pointed at a domain that no longer resolves (DNS `SERVFAIL`, not a 404 — the kind of dead link most link-checkers miss). The irony of a broken link on the "here's how to report a security issue" line felt worth fixing quickly. Merged.
+[**Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/258) — the constructor defined its own `returns` setter, including a type check, then bypassed it with `self._returns = returns`, so no validation ran. A single `NaN` in the input data does not fail at construction. It fails four stack frames deep inside `scipy.linalg.eigh`, with a message that has nothing to do with the actual data.
 
-[**Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/258) — the constructor built its own `returns` setter — type check and all — then routed around it entirely: `self._returns = returns`, no validation, ever. A single `NaN` anywhere in your input data doesn't fail at construction; it fails four stack frames deep inside `scipy.linalg.eigh`, with a message that has nothing to do with your actual data.
+[**Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/257) — `Axes.plot_date` and `matplotlib.cm.get_cmap` were both removed in Matplotlib 3.11, but `requirements.txt` still says `>=3.9.2`. Anyone on a current install hits an `AttributeError` when plotting a portfolio.
 
-[**Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/257) — `Axes.plot_date` and `matplotlib.cm.get_cmap` were both quietly removed in Matplotlib 3.11. `requirements.txt` still says `>=3.9.2`. Anyone on a current install can't plot a portfolio without hitting an `AttributeError` first.
+[**trade-frame**](https://github.com/rburkholder/trade-frame/pull/9) — 37 images in the README that were never images: `![text](path)` pointing at `.h` files and directories, which render as broken icons. Two of the targets had also been renamed `.h` → `.hpp` years earlier and the doc was never updated.
 
-[**trade-frame**](https://github.com/rburkholder/trade-frame/pull/9) — 37 images in the README that were never images — `![text](path)` pointing at `.h` files and directories, rendering as broken-icon confetti through the project's own pitch. Two of the targets had also been renamed `.h` → `.hpp` years earlier and nobody had updated the doc since.
+[**trade-frame**](https://github.com/rburkholder/trade-frame/pull/8) — asked where the meaning of an IQFeed trade-condition code comes from. Answer: nowhere in the repo, on purpose. IQFeed publishes the code table live over the same socket connection, so a hardcoded copy would go stale. Documented that mechanism instead of adding a table.
 
-[**trade-frame**](https://github.com/rburkholder/trade-frame/pull/8) — asked where the meaning of an IQFeed trade-condition code comes from. Answer: nowhere in the repo, on purpose — IQFeed publishes the code table live over the same socket connection, so hardcoding it would just go stale. Documented the actual mechanism instead of inventing a table that would be wrong by next quarter.
+[**matching-engine**](https://github.com/AsthaMishra/matching-engine/pull/2) — an out-of-range price and a malformed one were rejected with the identical error reason, so when debugging real order flow the log gave no way to tell which one had happened.
 
-[**matching-engine**](https://github.com/AsthaMishra/matching-engine/pull/2) — an out-of-range price and a genuinely malformed one got rejected with the identical error reason — fine, until you're debugging real order flow at 2am and the log gives you no way to tell which one actually happened.
+[**py_lets_be_rational**](https://github.com/vollib/py_lets_be_rational/pull/10) — no `LICENSE` file, which blocks `conda-forge` packaging for everyone downstream.
 
-[**py_lets_be_rational**](https://github.com/vollib/py_lets_be_rational/pull/10) — no `LICENSE` file, which is a small thing right up until it silently blocks `conda-forge` packaging for everyone downstream.
+[**cody-special**](https://github.com/vollib/cody-special/pull/2) — `erf_cody` and `normaldistribution` were split into their own files, and the `@numba.njit` decoration that made them fast was not carried over.
 
-[**cody-special**](https://github.com/vollib/cody-special/pull/2) — `erf_cody` and `normaldistribution` got split into their own files at some point, and the `@numba.njit` decoration that made them fast didn't make the move with them.
+[**jev-ultrafast**](https://github.com/browser-use/jev-ultrafast/pull/56) — the agent's browser target opens on `about:blank`, which is already `readyState == 'complete'` before the real navigation starts. The first poll after `Page.navigate` could read that stale state and give the policy a page that never loaded. The run then terminates as `BLOCKED` in under a second, which looks like the agent failing when the harness never observed anything real.
 
-[**jev-ultrafast**](https://github.com/browser-use/jev-ultrafast/pull/56) — the agent's own browser target opens on `about:blank`, which is already `readyState == 'complete'` before the real navigation even starts — so the very first poll after `Page.navigate` could read that stale state and hand the policy a page that never loaded. It terminates the run as `BLOCKED` in under a second, which looks exactly like the agent failing when the harness never actually observed anything real.
+[**awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/174) — checked all ~650 links in the list against the GitHub API and actual DNS resolution, not just an HTTP status code (which often gives false positives when sites block bots). Six repos were genuinely gone. No replacements were guessed for the ones without a verified successor.
 
-[**awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/174) — checked all ~650 links in the list against the GitHub API and actual DNS resolution, not just an HTTP status code (which false-positives constantly on ordinary bot-blocking). Six repos were genuinely gone; no guessed replacements went in for the ones without a verified successor.
+[**microsoft/qlib**](https://github.com/microsoft/qlib/pull/2357) — Microsoft's quant research platform (48k+ stars) threw a `DeprecationWarning` on `import qlib`, because a module-level constant was built with `pd.Timedelta("1day")` instead of the explicit-unit form. Same value, no warning, one-line fix.
 
-[**microsoft/qlib**](https://github.com/microsoft/qlib/pull/2357) — Microsoft's own quant research platform — 48k+ stars — threw a `DeprecationWarning` on the literal first line anyone runs, `import qlib`, because a module-level constant was built with `pd.Timedelta("1day")` instead of the explicit-unit form. Small, but it's the kind of thing that erodes trust before a user has even loaded their data: if the import itself looks unmaintained, why would you believe the backtest is? Same value, no warning, one-line fix.
+[**domokane/FinancePy**](https://github.com/domokane/FinancePy/pull/276) — `np.any(volatility) < 0.0`. `np.any()` on a non-empty array is already a bool before it meets the `< 0.0`, so the negative-volatility guard on FX option greeks could never fire. The sibling `delta()` method got this right (`np.any(v < 0.0)`); this one did not. Found by asking why two methods on the same class disagreed about how to validate the same input.
 
-[**domokane/FinancePy**](https://github.com/domokane/FinancePy/pull/276) — `np.any(volatility) < 0.0` — the classic trap. `np.any()` on a non-empty array is already a bool before it ever meets the `< 0.0`, so the negative-volatility guard on FX option greeks could never fire, silently. The sibling `delta()` method next to it got this right (`np.any(v < 0.0)`); this one didn't. Found it by asking why two methods on the same class disagreed about how to validate the same input.
+[**pysystemtrade**](https://github.com/pst-group/pysystemtrade/pull/1663) — two collection-breaking bugs unrelated to each other. One: a wildcard import three layers deep replaced `datetime` the class with `datetime` the module, so `datetime.strptime(...)` failed with an error that looks like a typo but is a namespace collision, hard to spot from the file that crashed. Two: an unescaped `\n` inside a docstring was interpreted as a real newline at parse time, which Python 3.12's doctest parser treated as an indentation problem.
 
-[**pysystemtrade**](https://github.com/pst-group/pysystemtrade/pull/1663) — two collection-breaking bugs that had nothing to do with each other. One: a wildcard import three layers deep silently swapped `datetime` the class for `datetime` the module, so `datetime.strptime(...)` failed with an error that looks like a typo but is actually a namespace collision you'd never spot by reading the file that crashed. Two: an unescaped `\n` inside a docstring got interpreted as a real newline at parse time, which is a fun way to find out Python 3.12's doctest parser has opinions about indentation you didn't know you were breaking.
-
-[**ranaroussi/quantstats**](https://github.com/ranaroussi/quantstats/pull/548) — `cagr()` computed `abs(total + 1.0) ** (1/years) - 1` — with `compounded=False`, summed returns can go below −100%, and `abs()` quietly flips negative terminal wealth positive, turning a −240% loss into a reported **+40% CAGR**. Confirmed and fixed directly by the maintainer in v0.0.82: "this release exists because of these reports." (fixed upstream in v0.0.82).
+[**ranaroussi/quantstats**](https://github.com/ranaroussi/quantstats/pull/548) — `cagr()` computed `abs(total + 1.0) ** (1/years) - 1`. With `compounded=False`, summed returns can go below −100%, and `abs()` flips negative terminal wealth positive, turning a −240% loss into a reported **+40% CAGR**. Confirmed and fixed directly by the maintainer in v0.0.82: "this release exists because of these reports." (fixed upstream in v0.0.82).
 
 [**cuemacro/findatapy**](https://github.com/cuemacro/findatapy/pull/59) — fix: calculate_log_returns raises TypeError instead of computing log returns (open).
 
