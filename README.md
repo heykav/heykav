@@ -3,7 +3,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/banner.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg" />
-  <img src="assets/banner.svg" width="100%" alt="KAVY — Krishna Anubhav. Engineer, SaaS founder and operator, MBA, now investment banking. Rigorous thinking. Human explanations." />
+  <img src="assets/banner.svg" width="100%" alt="KAVY, Krishna Anubhav. Engineer, SaaS founder and operator, MBA, now investment banking. Rigorous thinking. Human explanations." />
 </picture>
 
 <p>
@@ -14,6 +14,7 @@
 
 <p align="center">
 <a href="#about">About</a> ·
+<a href="#how-i-work">How I work</a> ·
 <a href="#recent-work">Recent work</a> ·
 <a href="#selected-work">Selected work</a> ·
 <a href="#patches-upstream">Patches</a> ·
@@ -32,11 +33,20 @@ The question I keep returning to is whether a tool helps me understand a busines
 
 <br/>
 
+### How I work
+
+Much of the code in these repositories is written with Claude Code, Anthropic's coding agent. Commits carry `Co-Authored-By` trailers where it contributed. Changes are tested before they are merged, and claims in the READMEs are checked against the code, so a claim that does not hold gets corrected rather than kept.
+
+<br/>
+
 ### Recent work
 
-- **microprice-rust**: research code for the micro-price estimator. It does not beat the naive mid-price on its own synthetic data, and the README says so. The real-data evaluation protocol is written before any result exists, and the run is still to come.
-- **vanna**: fixed `covered_call`, which was returning only the short call and so behaved like a different strategy. It now holds the stock leg, with attribution and payoff charts to match.
-- **fpga-sim-core**: the demo timeline is now labelled as scripted, the waveform output is valid VCD, and the allocation claim is backed by a test.
+- **fpga-sim-core**: tick-to-trade latency now comes from a simulated-cycle pipeline over a synthetic ITCH stream, with a real order-flow imbalance calculation, valid VCD output, an allocation test and sanitizer CI.
+- **vanna**: benchmarks against QuantLib and py_vollib exposed and fixed implied-vol precision and binomial Greek errors, dividend yield now runs through the backtest, and `covered_call` now holds its stock leg.
+- **quantdeck**: ten engine correctness fixes with regression tests, a false live-trading claim corrected, and an offline example that runs without a network.
+- **pe-financial-calculator**: the calculation core was rewritten and unit-tested, nine correctness bugs were fixed, and the base case now reads 4.0x MOIC and 32.2% IRR.
+- **microprice-rust**: added a symmetrization option, a diagnostic showing the martingale property does not hold by construction, and Parquet and CSV ingestion; it still does not beat the naive mid-price on synthetic data, and the real-data run is still pending.
+- **photoface**: data-safety fixes (versioned migrations, atomic per-photo analysis, stricter EXIF parsing) and more stable clustering.
 
 <br/>
 
@@ -60,7 +70,7 @@ Three small diagrams of the mechanisms behind the projects above. They are drawn
   <img src="assets/diagrams/vanna-attribution.svg" width="100%" alt="Schematic waterfall of vanna P&amp;L attribution: delta, gamma, theta, vega, vanna and volga terms, a separate hatched residual bar, and the total. Bar heights are illustrative." />
 </picture>
 
-**Tick-to-trade path.** A packet is modelled through block decode, MAC framing, an ITCH 5.0 parser, an order book, an order-flow imbalance pipeline and a PCIe DMA model. This is a cycle-modelled simulation, not hardware, and its timing is simulated: the demo's cycles come from a scripted stimulus timeline.
+**Tick-to-trade path.** A packet is modelled through block decode, MAC framing, an ITCH 5.0 parser, an order book, an order-flow imbalance pipeline and a PCIe DMA model. This is a cycle-modelled simulation, not hardware. Latency is counted in simulated cycles over a synthetic ITCH stream, using documented stage-latency parameters. The PCS stage is 64b/66b-style framing, not IEEE 802.3 conformant, and the parser handles ITCH add, execute and cancel messages only.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/fpga-tick-to-trade.svg" />
@@ -88,7 +98,7 @@ A desktop app that finds faces in a photo library, clusters them, and lets you c
 
 **[pe-financial-calculator](https://github.com/heykav/pe-financial-calculator)**
 
-LBO, DCF and deal-analysis calculators for investment banking and private equity work. I built it to underwrite with, so a sensitivity table that misleads is a bug in this project, and I want to hear about it.
+A browser-based LBO and DCF calculator for a first-pass sense-check of a deal. It is illustrative: no taxes, fees or three-statement model. The calculation core is unit-tested against hand-derived values, and a sensitivity table that misleads is a bug I want to hear about.
 
 `JavaScript` `HTML/CSS`
 
@@ -97,7 +107,7 @@ LBO, DCF and deal-analysis calculators for investment banking and private equity
 
 **[fpga-sim-core](https://github.com/heykav/fpga-sim-core)**
 
-A C++20 simulator of an FPGA-style tick-to-trade path: a block codec with CRC, an ITCH 5.0 parser, a five-level order book, a PCIe DMA model and VCD waveform output. Its timing comes from a scripted stimulus rather than a measured pipeline, and the demo labels it that way. The paths covered by its allocation test perform no heap allocation.
+A C++20 cycle model of an FPGA-style tick-to-trade path: PCS-style block framing with CRC (not IEEE 64b/66b), a MAC framer, an ITCH 5.0 parser for add, execute and cancel messages only, a five-level order book, order-flow imbalance, a PCIe DMA model and VCD waveform output. Tick-to-trade latency is measured in simulated cycles over a synthetic ITCH stream, using documented stage-latency parameters, so it is not a hardware or FPGA measurement. The paths covered by its allocation test perform no heap allocation.
 
 `C++` `CMake`
 
@@ -108,7 +118,7 @@ A C++20 simulator of an FPGA-style tick-to-trade path: a block codec with CRC, a
 
 **[vanna](https://github.com/heykav/vanna)**
 
-Options pricing and P&L attribution in Python. It prices with Black-Scholes and a binomial tree for early exercise, then splits each trade's P&L into delta, gamma, theta, vega, vanna and volga using a Taylor expansion. What the Greeks do not explain is reported as residual instead of being absorbed into a bucket. Backtests run on simulated price paths only.
+Options pricing and P&L attribution in Python. It prices with Black-Scholes and a binomial tree for early exercise, then splits each trade's P&L into delta, gamma, theta, vega, vanna and volga using a Taylor expansion. What the Greeks do not explain is reported as residual instead of being absorbed into a bucket. Outputs are benchmarked against QuantLib and py_vollib, and the binomial tree is slower than QuantLib's. Backtests run on simulated price paths only.
 
 `Python` `PySide6` `NumPy`
 
@@ -117,7 +127,7 @@ Options pricing and P&L attribution in Python. It prices with Black-Scholes and 
 
 **[microprice-rust](https://github.com/heykav/microprice-rust)**
 
-A Rust implementation of the micro-price estimator from Stoikov (2018): a Markov chain over queue-imbalance and spread states that estimates the next expected mid-price. It is research code. On its own synthetic data it does not beat the naive mid-price, and the README shows the numbers. The evaluation protocol for real quote data is written and has not been run yet.
+A Rust implementation of a micro-price estimator in the tradition of Stoikov (2018): a Markov chain over queue-imbalance and spread states that gives the mid-price plus an expected-move adjustment. It is research code, run on synthetic data only. On that data it does not beat the naive mid-price, and the README shows the numbers. The martingale property does not hold by construction here, and a diagnostic reports the drift. The Pages demo model is trained on synthetic data. The evaluation protocol for real quote data is written and has not been run yet.
 
 `Rust` `Market Microstructure`
 
@@ -126,7 +136,7 @@ A Rust implementation of the micro-price estimator from Stoikov (2018): a Markov
 
 **[quantdeck](https://github.com/heykav/quantdeck)**
 
-Event-driven backtesting for Python that needs a virtual environment and nothing else. It began as a fix for LiuAlgoTrader, which required a Postgres server just to backtest a moving average. Backtests and live trading share the same `Strategy` class, so changing the data feed does not mean rewriting the logic.
+Event-driven backtesting for Python, for one symbol at a time. It runs offline on CSV files and needs no database server. It is backtest only: `Strategy` talks to a small engine interface, so a live engine could reuse it, but no live engine exists yet.
 
 `Python` `Backtesting`
 
@@ -139,7 +149,7 @@ Event-driven backtesting for Python that needs a virtual environment and nothing
 
 ### Patches upstream
 
-These are bugs I found by installing each library fresh against current dependencies and checking the numbers by hand, rather than by reading issue trackers. Each one has either been merged or is waiting on review.
+These are pull requests I have opened against other people's projects. Most are bug, documentation or packaging fixes; a few are enhancements or list additions. As of 2026-09-29 there are 38: 13 merged, 23 open and 2 closed without merging. Open pull requests are waiting on review and are not shipped work.
 
 <details>
 <summary><strong>Patches to quant and finance libraries</strong>, including QuantLib, Qlib, zipline and Riskfolio-Lib. Expand for the list.</summary>
@@ -147,11 +157,11 @@ These are bugs I found by installing each library fresh against current dependen
 <!-- AUTO:patches:start -->
 [**QuantLib**](https://github.com/lballabio/QuantLib/pull/2779) — the C++ quantitative finance library had a `NaN` in its Gauss-Laguerre quadrature. Past order ~200, one of the weights underflows to exactly `0.0`, and `inf × 0` is `NaN` in IEEE 754. The fix re-derives the weight in log-space so the underflow no longer occurs. It is tested against the real consumer (`AnalyticHestonEngine`) and was independently re-derived in NumPy as a check.
 
-[**edgartools**](https://github.com/dgunning/edgartools/pull/1318) — a much smaller fix. The quickstart stated Python 3.8 while `pyproject.toml` required 3.10, and the docs recommended a `cash_flow_statement()` alias that is deprecated for removal in v6.0. No math, only documentation that gave new users incorrect information. Merged.
+[**edgartools**](https://github.com/dgunning/edgartools/pull/1318) — a much smaller fix. The quickstart stated Python 3.8 while `pyproject.toml` required 3.10, and it listed `cash_flow_statement()` twice, which hid that `cashflow_statement()` is the deprecated alias (removal planned for v6.0) and `cash_flow_statement()` is the recommended name. No math, only documentation that gave new users incorrect information. Merged.
 
 [**ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10225) — a null-prototype object, a pattern used to avoid prototype-pollution bugs, crashed the utility function written to guard against prototype pollution. `Object.create(null)` has no `.constructor` to read `.name` from. The fix is one `getPrototypeOf` check. Merged.
 
-[**ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10209) — the project's security-disclosure badge pointed at a domain that no longer resolves (DNS `SERVFAIL`, not a 404, which most link-checkers miss). The broken link was on the line explaining how to report a security issue, so it seemed worth fixing quickly. Merged.
+[**ever-gauzy**](https://github.com/ever-co/ever-gauzy/pull/10209) — the project's security-disclosure badge pointed at a domain that no longer resolves (DNS `NXDOMAIN`, not a 404, which most link-checkers miss). The broken link was on the line explaining how to report a security issue, so it seemed worth fixing quickly. Merged.
 
 [**Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/258) — the constructor defined its own `returns` setter, including a type check, then bypassed it with `self._returns = returns`, so no validation ran. A single `NaN` in the input data does not fail at construction. It fails four stack frames deep inside `scipy.linalg.eigh`, with a message that has nothing to do with the actual data.
 
@@ -169,7 +179,7 @@ These are bugs I found by installing each library fresh against current dependen
 
 [**jev-ultrafast**](https://github.com/browser-use/jev-ultrafast/pull/56) — the agent's browser target opens on `about:blank`, which is already `readyState == 'complete'` before the real navigation starts. The first poll after `Page.navigate` could read that stale state and give the policy a page that never loaded. The run then terminates as `BLOCKED` in under a second, which looks like the agent failing when the harness never observed anything real.
 
-[**awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/174) — checked all ~650 links in the list against the GitHub API and actual DNS resolution, not just an HTTP status code (which often gives false positives when sites block bots). Six repos were genuinely gone. No replacements were guessed for the ones without a verified successor.
+[**awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/174) — checked all ~650 links in the list against the GitHub API and actual DNS resolution, not just an HTTP status code (which often gives false positives when sites block bots). Seven repos were genuinely gone. No replacements were guessed for the ones without a verified successor.
 
 [**microsoft/qlib**](https://github.com/microsoft/qlib/pull/2357) — Microsoft's quant research platform (48k+ stars) threw a `DeprecationWarning` on `import qlib`, because a module-level constant was built with `pd.Timedelta("1day")` instead of the explicit-unit form. Same value, no warning, one-line fix.
 
@@ -219,7 +229,7 @@ These are bugs I found by installing each library fresh against current dependen
 
 [**PyPortfolio/PyPortfolioOpt**](https://github.com/PyPortfolio/PyPortfolioOpt/pull/764) — Add return_raw option to BlackLittermanModel.bl_weights (open).
 
-[**wangzhe3224/awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/175) — Add vanna to Pricing (open).
+[**wangzhe3224/awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/175) — Add vanna to Pricing (merged).
 <!-- AUTO:patches:end -->
 
 </details>

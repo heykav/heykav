@@ -1,6 +1,6 @@
 <svg width="1200" height="542" viewBox="0 0 1200 542" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fp-t fp-d">
 <title id="fp-t">fpga-sim-core tick-to-trade path diagram</title>
-<desc id="fp-d">A software cycle model, not hardware. Six modelled stages in order: PCS block decode with CRC, MAC framer, ITCH 5.0 parser, five-level order book, order-flow imbalance pipeline, and a PCIe DMA model. A cycle counter drives the stages and a VCD trace is written. All timing is simulated; the demo timeline is scripted stimulus, not a measured latency.</desc>
+<desc id="fp-d">A software cycle model, not hardware. Six modelled stages in order: PCS block decode with CRC, MAC framer, ITCH 5.0 parser, five-level order book, order-flow imbalance pipeline, and a PCIe DMA model. A cycle counter drives the stages and a VCD trace is written. All timing is simulated: latency is counted in simulated cycles over a synthetic ITCH 5.0 stream from documented stage-latency parameters, not a hardware measurement.</desc>
 <defs>
 <marker id="fp-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#00A84A"/></marker>
 <marker id="fp-am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#54564f"/></marker>
@@ -111,6 +111,6 @@
 <rect x="30" y="412" width="1140" height="44" rx="8" fill="#F4F5F2" stroke="#c4c7c0" stroke-width="1" stroke-dasharray="5 4"/>
 <text x="46" y="439" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="12" fill="#3d3f3b">Output: minimal IEEE 1364 VCD trace, viewable in GTKWave.</text>
 <text x="1154" y="439" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#9a5b00" font-weight="700" text-anchor="end">timing here is simulated</text>
-<text x="36" y="486" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="12" fill="#54564f">The demo's tick and trade cycles come from a scripted stimulus timeline. They are not a measured latency.</text>
+<text x="36" y="486" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="12" fill="#54564f">Latency is counted in simulated cycles over a synthetic ITCH stream, using documented stage parameters. Not a hardware measurement.</text>
 </g>
 </svg>

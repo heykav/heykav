@@ -4,23 +4,23 @@
     "tags": ["Python", "PySide6", "OpenCV"]
   },
   "pe-financial-calculator": {
-    "description": "LBO, DCF and deal-analysis calculators for investment banking and private equity work. I built it to underwrite with, so a sensitivity table that misleads is a bug in this project, and I want to hear about it.",
+    "description": "A browser-based LBO and DCF calculator for a first-pass sense-check of a deal. It is illustrative: no taxes, fees or three-statement model. The calculation core is unit-tested against hand-derived values, and a sensitivity table that misleads is a bug I want to hear about.",
     "tags": ["JavaScript", "HTML/CSS"]
   },
   "fpga-sim-core": {
-    "description": "A C++20 simulator of an FPGA-style tick-to-trade path: a block codec with CRC, an ITCH 5.0 parser, a five-level order book, a PCIe DMA model and VCD waveform output. Its timing comes from a scripted stimulus rather than a measured pipeline, and the demo labels it that way. The paths covered by its allocation test perform no heap allocation.",
+    "description": "A C++20 cycle model of an FPGA-style tick-to-trade path: PCS-style block framing with CRC (not IEEE 64b/66b), a MAC framer, an ITCH 5.0 parser for add, execute and cancel messages only, a five-level order book, order-flow imbalance, a PCIe DMA model and VCD waveform output. Tick-to-trade latency is measured in simulated cycles over a synthetic ITCH stream, using documented stage-latency parameters, so it is not a hardware or FPGA measurement. The paths covered by its allocation test perform no heap allocation.",
     "tags": ["C++", "CMake"]
   },
   "vanna": {
-    "description": "Options pricing and P&L attribution in Python. It prices with Black-Scholes and a binomial tree for early exercise, then splits each trade's P&L into delta, gamma, theta, vega, vanna and volga using a Taylor expansion. What the Greeks do not explain is reported as residual instead of being absorbed into a bucket. Backtests run on simulated price paths only.",
+    "description": "Options pricing and P&L attribution in Python. It prices with Black-Scholes and a binomial tree for early exercise, then splits each trade's P&L into delta, gamma, theta, vega, vanna and volga using a Taylor expansion. What the Greeks do not explain is reported as residual instead of being absorbed into a bucket. Outputs are benchmarked against QuantLib and py_vollib, and the binomial tree is slower than QuantLib's. Backtests run on simulated price paths only.",
     "tags": ["Python", "PySide6", "NumPy"]
   },
   "microprice-rust": {
-    "description": "A Rust implementation of the micro-price estimator from Stoikov (2018): a Markov chain over queue-imbalance and spread states that estimates the next expected mid-price. It is research code. On its own synthetic data it does not beat the naive mid-price, and the README shows the numbers. The evaluation protocol for real quote data is written and has not been run yet.",
+    "description": "A Rust implementation of a micro-price estimator in the tradition of Stoikov (2018): a Markov chain over queue-imbalance and spread states that gives the mid-price plus an expected-move adjustment. It is research code, run on synthetic data only. On that data it does not beat the naive mid-price, and the README shows the numbers. The martingale property does not hold by construction here, and a diagnostic reports the drift. The Pages demo model is trained on synthetic data. The evaluation protocol for real quote data is written and has not been run yet.",
     "tags": ["Rust", "Market Microstructure"]
   },
   "quantdeck": {
-    "description": "Event-driven backtesting for Python that needs a virtual environment and nothing else. It began as a fix for LiuAlgoTrader, which required a Postgres server just to backtest a moving average. Backtests and live trading share the same `Strategy` class, so changing the data feed does not mean rewriting the logic.",
+    "description": "Event-driven backtesting for Python, for one symbol at a time. It runs offline on CSV files and needs no database server. It is backtest only: `Strategy` talks to a small engine interface, so a live engine could reuse it, but no live engine exists yet.",
     "tags": ["Python", "Backtesting"]
   }
 }

@@ -5,7 +5,7 @@
   },
   "https://github.com/dgunning/edgartools/pull/1318": {
     "label": "edgartools",
-    "body": "a much smaller fix. The quickstart stated Python 3.8 while `pyproject.toml` required 3.10, and the docs recommended a `cash_flow_statement()` alias that is deprecated for removal in v6.0. No math, only documentation that gave new users incorrect information. Merged."
+    "body": "a much smaller fix. The quickstart stated Python 3.8 while `pyproject.toml` required 3.10, and it listed `cash_flow_statement()` twice, which hid that `cashflow_statement()` is the deprecated alias (removal planned for v6.0) and `cash_flow_statement()` is the recommended name. No math, only documentation that gave new users incorrect information. Merged."
   },
   "https://github.com/ever-co/ever-gauzy/pull/10225": {
     "label": "ever-gauzy",
@@ -13,7 +13,7 @@
   },
   "https://github.com/ever-co/ever-gauzy/pull/10209": {
     "label": "ever-gauzy",
-    "body": "the project's security-disclosure badge pointed at a domain that no longer resolves (DNS `SERVFAIL`, not a 404, which most link-checkers miss). The broken link was on the line explaining how to report a security issue, so it seemed worth fixing quickly. Merged."
+    "body": "the project's security-disclosure badge pointed at a domain that no longer resolves (DNS `NXDOMAIN`, not a 404, which most link-checkers miss). The broken link was on the line explaining how to report a security issue, so it seemed worth fixing quickly. Merged."
   },
   "https://github.com/dcajasn/Riskfolio-Lib/pull/258": {
     "label": "Riskfolio-Lib",
@@ -49,7 +49,7 @@
   },
   "https://github.com/wangzhe3224/awesome-systematic-trading/pull/174": {
     "label": "awesome-systematic-trading",
-    "body": "checked all ~650 links in the list against the GitHub API and actual DNS resolution, not just an HTTP status code (which often gives false positives when sites block bots). Six repos were genuinely gone. No replacements were guessed for the ones without a verified successor."
+    "body": "checked all ~650 links in the list against the GitHub API and actual DNS resolution, not just an HTTP status code (which often gives false positives when sites block bots). Seven repos were genuinely gone. No replacements were guessed for the ones without a verified successor."
   },
   "https://github.com/microsoft/qlib/pull/2357": {
     "label": "microsoft/qlib",
