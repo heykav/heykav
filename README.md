@@ -255,7 +255,7 @@ These are pull requests I have opened against other people's projects. Most are 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 original repos, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 37 more; language mix across own repos is Rust 38%, Python 36%, HTML 12%, JavaScript 7%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav GitHub signal: 6 original repos, on GitHub since 2022, based in India, open-source patches: QuantLib &amp; 37 more; language mix across own repos is Python 41%, Rust 36%, C++ 9%, JavaScript 7%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
