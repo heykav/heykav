@@ -5,15 +5,15 @@
   },
   "https://github.com/dgunning/edgartools/pull/1318": {
     "label": "edgartools",
-    "body": "a much smaller fix. The quickstart stated Python 3.8 while `pyproject.toml` required 3.10, and it listed `cash_flow_statement()` twice, which hid that `cashflow_statement()` is the deprecated alias (removal planned for v6.0) and `cash_flow_statement()` is the recommended name. No math, only documentation that gave new users incorrect information. Merged."
+    "body": "a much smaller fix. The quickstart stated Python 3.8 while `pyproject.toml` required 3.10, and it listed `cash_flow_statement()` twice, which hid that `cashflow_statement()` is the deprecated alias (removal planned for v6.0) and `cash_flow_statement()` is the recommended name. No math, only documentation that gave new users incorrect information."
   },
   "https://github.com/ever-co/ever-gauzy/pull/10225": {
     "label": "ever-gauzy",
-    "body": "a null-prototype object, a pattern used to avoid prototype-pollution bugs, crashed the utility function written to guard against prototype pollution. `Object.create(null)` has no `.constructor` to read `.name` from. The fix is one `getPrototypeOf` check. Merged."
+    "body": "a null-prototype object, a pattern used to avoid prototype-pollution bugs, crashed the utility function written to guard against prototype pollution. `Object.create(null)` has no `.constructor` to read `.name` from. The fix is one `getPrototypeOf` check."
   },
   "https://github.com/ever-co/ever-gauzy/pull/10209": {
     "label": "ever-gauzy",
-    "body": "the project's security-disclosure badge pointed at a domain that no longer resolves (DNS `NXDOMAIN`, not a 404, which most link-checkers miss). The broken link was on the line explaining how to report a security issue, so it seemed worth fixing quickly. Merged."
+    "body": "the project's security-disclosure badge pointed at a domain that no longer resolves (DNS `NXDOMAIN`, not a 404, which most link-checkers miss). The broken link was on the line explaining how to report a security issue, so it seemed worth fixing quickly."
   },
   "https://github.com/dcajasn/Riskfolio-Lib/pull/258": {
     "label": "Riskfolio-Lib",
@@ -53,7 +53,7 @@
   },
   "https://github.com/microsoft/qlib/pull/2357": {
     "label": "microsoft/qlib",
-    "body": "Microsoft's quant research platform (48k+ stars) threw a `DeprecationWarning` on `import qlib`, because a module-level constant was built with `pd.Timedelta(\"1day\")` instead of the explicit-unit form. Same value, no warning, one-line fix."
+    "body": "Microsoft's quant research platform threw a `DeprecationWarning` on `import qlib`, because a module-level constant was built with `pd.Timedelta(\"1day\")` instead of the explicit-unit form. Same value, no warning, one-line fix."
   },
   "https://github.com/domokane/FinancePy/pull/276": {
     "label": "domokane/FinancePy",
@@ -65,6 +65,6 @@
   },
   "https://github.com/ranaroussi/quantstats/pull/548": {
     "label": "ranaroussi/quantstats",
-    "body": "`cagr()` computed `abs(total + 1.0) ** (1/years) - 1`. With `compounded=False`, summed returns can go below −100%, and `abs()` flips negative terminal wealth positive, turning a −240% loss into a reported **+40% CAGR**. The PR was closed without merging; the maintainer fixed it directly in v0.0.82 and wrote that \"this release exists because of these reports.\""
+    "body": "`cagr()` computed `abs(total + 1.0) ** (1/years) - 1`. With `compounded=False`, summed returns can go below −100%, and `abs()` flips negative terminal wealth positive, turning a −240% loss into a reported **+40% CAGR**. The maintainer shipped the fix directly in v0.0.82 rather than merging the PR, and wrote that \"this release exists because of these reports.\""
   }
 }
