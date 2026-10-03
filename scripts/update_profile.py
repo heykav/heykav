@@ -10,8 +10,7 @@ hand-written prose lives in data/projects.json and data/patches.json,
 keyed by repo name / PR url. This script never invents narrative voice for
 an entry that already has an override - it only fills in a plain, honest,
 factual placeholder (the repo's own GitHub description, or a PR title) for
-something genuinely new that has no override yet. A human (or a future
-Claude session) upgrades a placeholder by adding it to the JSON file, not
+something genuinely new that has no override yet. A human upgrades a placeholder by adding it to the JSON file, not
 by hand-editing the generated README block, since the next run would just
 regenerate over a hand-edit inside the markers.
 
