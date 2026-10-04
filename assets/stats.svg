@@ -1,4 +1,4 @@
-<svg width="1200" height="236" viewBox="0 0 1200 236" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Krishna Anubhav on GitHub: 6 original public repos; 41 pull requests opened on other projects, 14 merged, 22 open and 5 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%">
+<svg width="1200" height="236" viewBox="0 0 1200 236" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Krishna Anubhav on GitHub: 6 original public repos; 41 pull requests opened on other projects, 15 merged, 21 open and 5 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%">
   <defs>
     <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1b1a" stroke-width="1"/>
@@ -13,8 +13,8 @@
     <text x="56" y="126" font-size="14" fill="#9a9c96">original public repos</text>
     <text x="316" y="102" font-size="34" font-weight="700" fill="#F4F5F2">41</text>
     <text x="316" y="126" font-size="14" fill="#9a9c96">pull requests to other projects</text>
-    <text x="646" y="102" font-size="34" font-weight="700" fill="#B6FF2E">14</text>
-    <text x="646" y="126" font-size="14" fill="#9a9c96">merged, 22 open, 5 closed</text>
+    <text x="646" y="102" font-size="34" font-weight="700" fill="#B6FF2E">15</text>
+    <text x="646" y="126" font-size="14" fill="#9a9c96">merged, 21 open, 5 closed</text>
     <text x="936" y="102" font-size="34" font-weight="700" fill="#F4F5F2">2022</text>
     <text x="936" y="126" font-size="14" fill="#9a9c96">on GitHub since</text>
     <text x="56" y="164" font-size="13" fill="#8a8c87" letter-spacing="1">LANGUAGE MIX BY BYTES, OWN REPOS</text>
