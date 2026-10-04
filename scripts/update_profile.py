@@ -114,7 +114,8 @@ def fetch_projects():
         require_keys("projects", name, ov, ["description", "tags"])
         if name in by_name:
             projects.append({"name": name, "url": by_name[name]["html_url"],
-                             "description": ov["description"], "tags": ov["tags"]})
+                             "description": ov["description"], "tags": ov["tags"],
+                             **{key: ov[key] for key in ("entrypoint", "evidence", "limitation") if key in ov}})
             seen.add(name)
 
     for r in repos:
@@ -189,6 +190,24 @@ def render_projects_table(projects):
     for i in range(0, len(cards), 3):
         rows.append("<tr>\n" + "\n".join(cards[i:i + 3]) + "\n</tr>")
     return '<table width="100%">\n' + "\n".join(rows) + "\n</table>"
+
+
+def render_start_here(projects):
+    """Only curated entries already admitted by fetch_projects may appear."""
+    def cell(value):
+        return str(value).replace("|", "&#124;").replace("\n", " ")
+
+    rows = ["| Project | Try it | Guide and checks | Scope |",
+            "| --- | --- | --- | --- |"]
+    for project in projects:
+        if not all(project.get(key) for key in ("entrypoint", "evidence", "limitation")):
+            continue
+        rows.append("| " + " | ".join([
+            f"[{cell(project['name'])}]({project['url']})",
+            cell(project["entrypoint"]), cell(project["evidence"]),
+            cell(project["limitation"]),
+        ]) + " |")
+    return "\n".join(rows)
 
 
 def render_patches_block(patches):
@@ -344,6 +363,7 @@ def main():
 
     readme_path = ROOT / "README.md"
     text = readme_path.read_text(encoding="utf-8")
+    text = replace_marker_block(text, "start-here", render_start_here(projects))
     text = replace_marker_block(text, "projects", render_projects_table(projects))
     text = replace_marker_block(text, "patchsummary", patch_summary(text, counts))
     text = replace_marker_block(text, "patches", render_patches_block(patches))

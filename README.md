@@ -14,6 +14,7 @@
 
 <p align="center">
 <a href="#about">About</a> ·
+<a href="#start-here">Start here</a> ·
 <a href="#selected-work">Selected work</a> ·
 <a href="#patches-upstream">Patches upstream</a> ·
 <a href="#how-i-work">How I work</a> ·
@@ -31,6 +32,21 @@ Most evenings go to either an EBITDA bridge or a segfault, and the two have more
 The question I keep asking of a tool, my own included, is whether it helps me understand a business or only makes its output look confident. The projects below are my attempts at the first kind. Each README says what the code does not do, and where a result is negative, it says so.
 
 <br/>
+
+### Start here
+
+Choose a project below to try it, inspect its checks and understand its limits.
+
+<!-- AUTO:start-here:start -->
+| Project | Try it | Guide and checks | Scope |
+| --- | --- | --- | --- |
+| [vanna](https://github.com/heykav/vanna) | Run the backtest simulation or use the GUI to price options and view P&L attribution | [Guide](https://github.com/heykav/vanna#readme) · [Checks](https://github.com/heykav/vanna/actions) | Backtests run on simulated price paths only |
+| [pe-financial-calculator](https://github.com/heykav/pe-financial-calculator) | Calculate LBO and DCF returns in your browser with customizable inputs | [Guide](https://github.com/heykav/pe-financial-calculator#readme) · [Checks](https://github.com/heykav/pe-financial-calculator/actions) | Illustrative: returns are gross, with no taxes, fees or three-statement model |
+| [microprice-rust](https://github.com/heykav/microprice-rust) | Run the micro-price estimator on synthetic data or generate Python bindings | [Guide](https://github.com/heykav/microprice-rust#readme) · [Checks](https://github.com/heykav/microprice-rust/actions) | Research code run on synthetic data only; does not beat naive mid-price on test data |
+| [quantdeck](https://github.com/heykav/quantdeck) | Run event-driven backtests on CSV files with market orders only | [Guide](https://github.com/heykav/quantdeck#readme) · [Checks](https://github.com/heykav/quantdeck/actions) | Backtest only: no live or paper-trading engine exists |
+| [fpga-sim-core](https://github.com/heykav/fpga-sim-core) | Simulate tick-to-trade latency over synthetic ITCH stream and output VCD waveforms | [Guide](https://github.com/heykav/fpga-sim-core#readme) · [Checks](https://github.com/heykav/fpga-sim-core/actions) | Latency measured in simulated cycles over synthetic ITCH stream; not a hardware measurement |
+| [photoface](https://github.com/heykav/photoface) | Find and cluster faces in your local photo library, then manually correct results | [Guide](https://github.com/heykav/photoface#readme) · [Checks](https://github.com/heykav/photoface/actions) | Local-first desktop app; detection uses YuNet and embeddings use SFace |
+<!-- AUTO:start-here:end -->
 
 ### Selected work
 

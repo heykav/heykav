@@ -1,26 +1,64 @@
 {
   "vanna": {
     "description": "Options pricing and P&L attribution in Python. It prices with Black-Scholes and a binomial tree for early exercise, then splits each trade's P&L into delta, gamma, theta, vega, vanna and volga with a second-order Taylor expansion, plus a dividend term when a yield is set. What those terms do not explain is reported as a residual instead of being absorbed into a bucket. Closed-form prices and Greeks agree with QuantLib and py_vollib to about 1e-12; the binomial tree is about 7x slower than QuantLib's. Backtests run on simulated price paths only.",
-    "tags": ["Python", "PySide6", "NumPy"]
+    "tags": [
+      "Python",
+      "PySide6",
+      "NumPy"
+    ],
+    "evidence": "[Guide](https://github.com/heykav/vanna#readme) \u00b7 [Checks](https://github.com/heykav/vanna/actions)",
+    "limitation": "Backtests run on simulated price paths only",
+    "entrypoint": "Run the backtest simulation or use the GUI to price options and view P&L attribution"
   },
   "pe-financial-calculator": {
     "description": "Rivet, a browser-based LBO and DCF calculator for a first-pass look at a deal. It is illustrative: returns are gross, with no taxes, fees or three-statement model. The calculation core is a pure module tested against hand-computed values, and every formula is written out in the repo.",
-    "tags": ["JavaScript", "HTML/CSS"]
+    "tags": [
+      "JavaScript",
+      "HTML/CSS"
+    ],
+    "evidence": "[Guide](https://github.com/heykav/pe-financial-calculator#readme) \u00b7 [Checks](https://github.com/heykav/pe-financial-calculator/actions)",
+    "limitation": "Illustrative: returns are gross, with no taxes, fees or three-statement model",
+    "entrypoint": "Calculate LBO and DCF returns in your browser with customizable inputs"
   },
   "microprice-rust": {
     "description": "A Rust implementation of a micro-price estimator in the tradition of Stoikov (2018): a Markov chain over queue-imbalance and spread states that gives the mid-price plus an expected-move adjustment. It is research code, run on synthetic data only. On that data it does not beat the naive mid-price, and the README shows the numbers. The martingale property does not hold by construction here, and a diagnostic reports the drift. The evaluation protocol for real quote data is written and has not been run yet.",
-    "tags": ["Rust", "Market Microstructure"]
+    "tags": [
+      "Rust",
+      "Market Microstructure"
+    ],
+    "evidence": "[Guide](https://github.com/heykav/microprice-rust#readme) \u00b7 [Checks](https://github.com/heykav/microprice-rust/actions)",
+    "limitation": "Research code run on synthetic data only; does not beat naive mid-price on test data",
+    "entrypoint": "Run the micro-price estimator on synthetic data or generate Python bindings"
   },
   "quantdeck": {
     "description": "Event-driven backtesting in Python, one symbol at a time, market orders only. Orders fill at the next bar's open plus slippage, so a strategy cannot trade on a price it has not seen. It runs offline on CSV files and needs no database server. It is backtest only: no live or paper-trading engine exists.",
-    "tags": ["Python", "Backtesting"]
+    "tags": [
+      "Python",
+      "Backtesting"
+    ],
+    "evidence": "[Guide](https://github.com/heykav/quantdeck#readme) \u00b7 [Checks](https://github.com/heykav/quantdeck/actions)",
+    "limitation": "Backtest only: no live or paper-trading engine exists",
+    "entrypoint": "Run event-driven backtests on CSV files with market orders only"
   },
   "fpga-sim-core": {
     "description": "A C++20 cycle model of an FPGA-style tick-to-trade path: PCS-style block framing with CRC (not IEEE 64b/66b), a MAC framer, an ITCH 5.0 parser for add, execute and cancel messages only, a five-level order book, order-flow imbalance, a PCIe DMA model and VCD waveform output. Latency is counted in simulated cycles over a synthetic ITCH stream, using documented stage-latency parameters, so it is not a hardware or FPGA measurement. The paths covered by its allocation test perform no heap allocation.",
-    "tags": ["C++", "CMake"]
+    "tags": [
+      "C++",
+      "CMake"
+    ],
+    "evidence": "[Guide](https://github.com/heykav/fpga-sim-core#readme) \u00b7 [Checks](https://github.com/heykav/fpga-sim-core/actions)",
+    "limitation": "Latency measured in simulated cycles over synthetic ITCH stream; not a hardware measurement",
+    "entrypoint": "Simulate tick-to-trade latency over synthetic ITCH stream and output VCD waveforms"
   },
   "photoface": {
     "description": "A local-first desktop app that finds faces in a photo library, clusters them, and lets you correct the result. Detection uses YuNet and embeddings use SFace, clustered in a greedy online pass and then re-clustered with average linkage. A face you fix by hand is pinned, and reclustering never moves it again.",
-    "tags": ["Python", "PySide6", "OpenCV"]
+    "tags": [
+      "Python",
+      "PySide6",
+      "OpenCV"
+    ],
+    "evidence": "[Guide](https://github.com/heykav/photoface#readme) \u00b7 [Checks](https://github.com/heykav/photoface/actions)",
+    "limitation": "Local-first desktop app; detection uses YuNet and embeddings use SFace",
+    "entrypoint": "Find and cluster faces in your local photo library, then manually correct results"
   }
 }
