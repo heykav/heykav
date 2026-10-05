@@ -275,8 +275,9 @@ def render_stats_svg(palette, project_count, since_year, counts, lang_mix):
     ]
     stat_lines = []
     for x, value, color, label in blocks:
-        stat_lines.append(f'<text x="{x}" y="102" font-size="34" font-weight="700" fill="{color}">{esc(value)}</text>')
-        stat_lines.append(f'<text x="{x}" y="126" font-size="14" fill="{palette["muted"]}">{esc(label)}</text>')
+        delay = f"{0.1 + 0.12 * len(stat_lines) / 2:.2f}s"
+        stat_lines.append(f'<text class="a up" style="animation-delay:{delay}" x="{x}" y="102" font-size="34" font-weight="700" fill="{color}">{esc(value)}</text>')
+        stat_lines.append(f'<text class="a up" style="animation-delay:{delay}" x="{x}" y="126" font-size="14" fill="{palette["muted"]}">{esc(label)}</text>')
 
     top = lang_mix[:4]
     bar_total = sum(pct for _, pct in top) or 1
@@ -285,7 +286,7 @@ def render_stats_svg(palette, project_count, since_year, counts, lang_mix):
     for i, ((lang, pct), color) in enumerate(zip(top, palette["bars"])):
         w = round(1088 * (pct / bar_total))
         gap = 2 if i < len(top) - 1 else 0  # a background-coloured seam between segments
-        bars.append(f'<rect x="{bar_x}" y="178" width="{max(w - gap, 1)}" height="10" fill="{color}"/>')
+        bars.append(f'<rect class="a bar" style="animation-delay:{0.5 + 0.18 * i:.2f}s" x="{bar_x}" y="178" width="{max(w - gap, 1)}" height="10" fill="{color}"/>')
         bar_x += w
 
     legend = []
@@ -303,6 +304,14 @@ def render_stats_svg(palette, project_count, since_year, counts, lang_mix):
     </pattern>
     <clipPath id="clip2"><rect width="1200" height="236" rx="14"/></clipPath>
   </defs>
+  <style>
+    .a{{animation-fill-mode:both;animation-timing-function:cubic-bezier(.2,.7,.2,1)}}
+    .up{{animation-name:up;animation-duration:.7s}}
+    @keyframes up{{from{{opacity:0;transform:translateY(8px)}}to{{opacity:1;transform:none}}}}
+    .bar{{transform-box:fill-box;transform-origin:0 50%;animation-name:grow;animation-duration:.9s}}
+    @keyframes grow{{from{{transform:scaleX(0)}}to{{transform:scaleX(1)}}}}
+    @media (prefers-reduced-motion:reduce){{.a{{animation:none!important}}}}
+  </style>
   <g clip-path="url(#clip2)" font-family='{MONO}'>
     <rect width="1200" height="236" fill="{palette["bg"]}"/>
     <rect width="1200" height="236" fill="url(#grid2)"/>
