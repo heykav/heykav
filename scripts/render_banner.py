@@ -46,6 +46,8 @@ CANDLE_X0, CANDLE_STEP, CANDLE_BASE = 786, 22, 272
 
 
 CYCLE = 16.0  # seconds; the whole intro replays on this loop
+INTRO0 = 1.8  # the finished banner shows first, fades, then the intro replays from here
+RESET_AT = 1.65  # while the group is invisible, every element jumps to its start state
 KEYS = {}     # keyframe name -> css, filled by anim()
 
 
@@ -56,9 +58,9 @@ def _pct(t):
 def anim(kind, start, dur):
     """Register keyframes for one element and return its style attribute.
 
-    Hidden/zero state until `start`, eased to the final state by `start+dur`,
-    held until the cycle ends. All elements share CYCLE, so they restart together
-    while the group is faded out.
+    Frame 0 is the finished banner (so a viewer that only draws the first frame,
+    or ignores animation, sees it complete). The group then fades out, each element
+    jumps to its start state, and the intro plays to the same finished state.
     """
     states = {
         "up": ("opacity:0;transform:translateY(12px)", "opacity:1;transform:none"),
@@ -72,8 +74,10 @@ def anim(kind, start, dur):
     }
     frm, to = states[kind]
     name = f"k{len(KEYS)}"
+    start += INTRO0
     KEYS[name] = (
-        f"@keyframes {name}{{0%,{_pct(start)}%{{{frm}}}{_pct(start + dur)}%,100%{{{to}}}}}"
+        f"@keyframes {name}{{0%,{_pct(RESET_AT)}%{{{to}}}"
+        f"{_pct(RESET_AT + 0.05)}%,{_pct(start)}%{{{frm}}}{_pct(start + dur)}%,100%{{{to}}}}}"
     )
     ease = f"steps({TYPE_STEPS},end)" if kind in ("type", "walk") else (
         "ease-in-out" if kind == "draw" else "cubic-bezier(.2,.7,.2,1)")
@@ -119,7 +123,7 @@ def render(p, light):
 </defs>
 <style>
 {keys}
-@keyframes cyc{{0%,91%{{opacity:1}}96%,99.8%{{opacity:0}}100%{{opacity:1}}}}
+@keyframes cyc{{0%,{_pct(1.2)}%{{opacity:1}}{_pct(1.6)}%,{_pct(INTRO0 - 0.02)}%{{opacity:0}}{_pct(INTRO0)}%,100%{{opacity:1}}}}
 .cycle{{animation:cyc {CYCLE}s linear infinite}}
 .rule,.pop,.candle,.breath{{transform-box:fill-box}}
 .rule{{transform-origin:0 50%}}
