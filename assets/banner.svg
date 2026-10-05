@@ -1,13 +1,14 @@
-<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bn-t bn-d">
+<svg width="1200" height="328" viewBox="0 0 1200 328" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bn-t bn-d">
 <title id="bn-t">Krishna Anubhav: finance, engineering and quantitative systems</title>
 <desc id="bn-d">Animated profile banner for Krishna Anubhav (Kavy). Engineer, then SaaS founder and operator, then MBA, now investment banking. I spent years building businesses; now I am learning how investors value them. The rising line and bars on the right are decorative and carry no data.</desc>
 <defs>
 <linearGradient id="bn-signal" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#00FF66"/><stop offset="100%" stop-color="#B6FF2E"/></linearGradient>
 <linearGradient id="bn-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00FF66" stop-opacity="0.12"/><stop offset="100%" stop-color="#00FF66" stop-opacity="0"/></linearGradient>
 <pattern id="bn-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1b1a" stroke-width="1"/></pattern>
-<clipPath id="bn-clip"><rect width="1200" height="300" rx="14"/></clipPath>
-<clipPath id="bn-type"><rect class="a" style="animation:k27 16.0s steps(77,end) infinite" x="56" y="226" width="699" height="26"/></clipPath>
+<clipPath id="bn-clip"><rect width="1200" height="328" rx="14"/></clipPath>
+<clipPath id="bn-type"><rect class="a" style="animation:k27 16.0s steps(77,end) infinite" x="56" y="226" width="734" height="26"/></clipPath>
 <path id="bn-route" d="M 800 246 C 850 242, 890 230, 930 218 S 1000 190, 1050 164 S 1110 114, 1160 84"/>
+<clipPath id="bn-strip"><rect y="300" width="1200" height="28"/></clipPath>
 </defs>
 <style>
 @keyframes k0{0%,10.312%{opacity:1;transform:scaleY(1)}10.625%,14.062%{opacity:0;transform:scaleY(0)}18.438%,100%{opacity:1;transform:scaleY(1)}}
@@ -37,8 +38,8 @@
 @keyframes k24{0%,10.312%{opacity:1;transform:scale(1)}10.625%,20.312%{opacity:0;transform:scale(0)}23.125%,100%{opacity:1;transform:scale(1)}}
 @keyframes k25{0%,10.312%{opacity:1;transform:scale(1)}10.625%,23.438%{opacity:0;transform:scale(0)}26.25%,100%{opacity:1;transform:scale(1)}}
 @keyframes k26{0%,10.312%{opacity:1;transform:scale(1)}10.625%,26.25%{opacity:0;transform:scale(0)}29.063%,100%{opacity:1;transform:scale(1)}}
-@keyframes k27{0%,10.312%{width:699px}10.625%,19.688%{width:0}39.062%,100%{width:699px}}
-@keyframes k28{0%,10.312%{transform:translateX(693px)}10.625%,19.688%{transform:translateX(0)}39.062%,100%{transform:translateX(693px)}}
+@keyframes k27{0%,10.312%{width:734px}10.625%,19.688%{width:0}39.062%,100%{width:734px}}
+@keyframes k28{0%,10.312%{transform:translateX(728px)}10.625%,19.688%{transform:translateX(0)}39.062%,100%{transform:translateX(728px)}}
 @keyframes k29{0%,10.312%{opacity:1}10.625%,27.5%{opacity:0}30.625%,100%{opacity:1}}
 @keyframes cyc{0%,7.5%{opacity:1}10%,11.125%{opacity:0}11.25%,100%{opacity:1}}
 .cycle{animation:cyc 16.0s linear infinite}
@@ -53,10 +54,12 @@
 @keyframes ring{0%{opacity:.75;transform:scale(1)}100%{opacity:0;transform:scale(4.2)}}
 .drift{animation:drift 10s linear infinite}
 @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-40px)}}
-@media (prefers-reduced-motion:reduce){.a,.cycle,.blink,.ring,.drift,.breath{animation:none!important}.ring{opacity:0}.dot{display:none}}
+.tk{animation:tick 30s linear infinite}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-2133px)}}
+@media (prefers-reduced-motion:reduce){.a,.cycle,.blink,.ring,.drift,.breath,.tk{animation:none!important}.ring{opacity:0}.dot{display:none}}
 </style>
 <g clip-path="url(#bn-clip)">
-<rect width="1200" height="300" fill="#090A09"/>
+<rect width="1200" height="328" fill="#090A09"/>
 <rect width="1200" height="32" fill="#111211"/>
 <circle cx="24" cy="16" r="6" fill="#FF5F57"/><circle cx="44" cy="16" r="6" fill="#FEBC2E"/><circle cx="64" cy="16" r="6" fill="#28C840"/>
 <text x="600" y="21" text-anchor="middle" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#9a9c96" letter-spacing="0.5">kavy@github</text>
@@ -94,8 +97,11 @@
 <text class="a" style="animation:k19 16.0s cubic-bezier(.2,.7,.2,1) infinite" x="56" y="144" font-family='Georgia,"Times New Roman",serif' font-size="50" font-weight="700" fill="#F4F5F2">Krishna Anubhav</text>
 <text class="a" style="animation:k20 16.0s cubic-bezier(.2,.7,.2,1) infinite" x="56" y="184" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="19" fill="#c7c9c4">Engineer <tspan fill="#B6FF2E">→</tspan> SaaS founder/operator <tspan fill="#B6FF2E">→</tspan> MBA <tspan fill="#B6FF2E">→</tspan> Investment banking</text>
 <rect class="a rule" style="animation:k21 16.0s cubic-bezier(.2,.7,.2,1) infinite" x="56" y="206" width="48" height="2" fill="url(#bn-signal)"/>
-<g clip-path="url(#bn-type)"><text x="56" y="244" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="15" fill="#9a9c96">I spent years building businesses. Now I&#39;m learning how investors value them.</text></g>
-<g class="a" style="animation:k28 16.0s steps(77,end) infinite;transform:translateX(693px)"><rect class="blink" x="58" y="231" width="8" height="17" fill="#B6FF2E"/></g>
+<g clip-path="url(#bn-type)"><text x="56" y="244" textLength="728" lengthAdjust="spacing" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="15" fill="#9a9c96">I spent years building businesses. Now I&#39;m learning how investors value them.</text></g>
+<g class="a" style="animation:k28 16.0s steps(77,end) infinite;transform:translateX(728px)"><rect class="blink" x="58" y="231" width="8" height="17" fill="#B6FF2E"/></g>
 </g>
+<rect y="300" width="1200" height="28" fill="#0d0e0c"/>
+<rect y="300" width="1200" height="1" fill="#2a2c29"/>
+<g clip-path="url(#bn-strip)"><g class="tk" style="animation-duration:38.8s"><text x="24" y="319" textLength="2053" lengthAdjust="spacing" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" letter-spacing="0.4" fill="#9a9c96"><tspan fill="#00FF66">15</tspan> PULL REQUESTS MERGED INTO OTHER PROJECTS<tspan fill="#3d3f3b">  •  </tspan><tspan fill="#00FF66">41</tspan> OPENED IN TOTAL<tspan fill="#3d3f3b">  •  </tspan><tspan fill="#00FF66">6</tspan> ORIGINAL PUBLIC REPOS<tspan fill="#3d3f3b">  •  </tspan><tspan fill="#00FF66">MERGED INTO </tspan>QUANTLIB, EDGARTOOLS, EVER-GAUZY, RISKFOLIO-LIB, TRADE-FRAME, FINANCEPY, FINANCETOOLKIT, STOCKSTATS<tspan fill="#3d3f3b">  •  </tspan><tspan fill="#00FF66">LANGUAGES </tspan>PYTHON 41% · RUST 36% · C++ 9% · JAVASCRIPT 7%<tspan fill="#3d3f3b">  •  </tspan></text><text x="2157" y="319" textLength="2053" lengthAdjust="spacing" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" letter-spacing="0.4" fill="#9a9c96"><tspan fill="#00FF66">15</tspan> PULL REQUESTS MERGED INTO OTHER PROJECTS<tspan fill="#3d3f3b">  •  </tspan><tspan fill="#00FF66">41</tspan> OPENED IN TOTAL<tspan fill="#3d3f3b">  •  </tspan><tspan fill="#00FF66">6</tspan> ORIGINAL PUBLIC REPOS<tspan fill="#3d3f3b">  •  </tspan><tspan fill="#00FF66">MERGED INTO </tspan>QUANTLIB, EDGARTOOLS, EVER-GAUZY, RISKFOLIO-LIB, TRADE-FRAME, FINANCEPY, FINANCETOOLKIT, STOCKSTATS<tspan fill="#3d3f3b">  •  </tspan><tspan fill="#00FF66">LANGUAGES </tspan>PYTHON 41% · RUST 36% · C++ 9% · JAVASCRIPT 7%<tspan fill="#3d3f3b">  •  </tspan></text></g></g>
 </g>
 </svg>

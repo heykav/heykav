@@ -31,6 +31,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import render_banner  # noqa: E402
 USER = "heykav"
 OWN_REPO = "heykav"  # this profile repo itself is never a "shipped project"
 PR_SEARCH_LIMIT = 1000  # gh search caps at 1000; hitting it means results were cut off
@@ -366,12 +368,31 @@ def main():
     )
     text = replace_marker_block(text, "statsalt", picture_block)
 
+    merged_repos = []
+    for patch in patches:
+        if patch["state"] == "merged":
+            repo = patch["url"].split("/")[4]
+            if repo not in merged_repos:
+                merged_repos.append(repo)
+    langs = " \u00b7 ".join(f"{lang} {round(pct)}%" for lang, pct in lang_mix[:4])
+    ticker = [
+        (str(counts["merged"]), " PULL REQUESTS MERGED INTO OTHER PROJECTS"),
+        (str(sum(counts.values())), " OPENED IN TOTAL"),
+        (str(len(projects)), " ORIGINAL PUBLIC REPOS"),
+        ("MERGED INTO ", ", ".join(merged_repos[:8]).upper()),
+        ("LANGUAGES ", langs.upper()),
+    ]
+
     changed = [name for name, path, content in [
         ("README.md", readme_path, text),
         ("assets/stats.svg", ROOT / "assets" / "stats.svg",
          render_stats_svg(DARK, len(projects), since_year, counts, lang_mix)),
         ("assets/stats-light.svg", ROOT / "assets" / "stats-light.svg",
          render_stats_svg(LIGHT, len(projects), since_year, counts, lang_mix)),
+        ("assets/banner.svg", ROOT / "assets" / "banner.svg",
+         render_banner.render(render_banner.DARK, False, ticker)),
+        ("assets/banner-light.svg", ROOT / "assets" / "banner-light.svg",
+         render_banner.render(render_banner.LIGHT, True, ticker)),
     ] if write_if_changed(path, content)]
 
     print(f"projects: {len(projects)}, patches: {len(patches)} "
