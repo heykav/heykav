@@ -1,28 +1,77 @@
 <svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bn-t bn-d">
 <title id="bn-t">Krishna Anubhav: finance, engineering and quantitative systems</title>
-<desc id="bn-d">Profile banner for Krishna Anubhav (Kavy). Engineer, then SaaS founder and operator, then MBA, now investment banking. I spent years building businesses; now I am learning how investors value them. The rising line on the right is decorative and carries no data.</desc>
+<desc id="bn-d">Animated profile banner for Krishna Anubhav (Kavy). Engineer, then SaaS founder and operator, then MBA, now investment banking. I spent years building businesses; now I am learning how investors value them. The rising line and bars on the right are decorative and carry no data.</desc>
 <defs>
 <linearGradient id="bn-signal" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#00FF66"/><stop offset="100%" stop-color="#B6FF2E"/></linearGradient>
 <linearGradient id="bn-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00FF66" stop-opacity="0.12"/><stop offset="100%" stop-color="#00FF66" stop-opacity="0"/></linearGradient>
 <pattern id="bn-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1b1a" stroke-width="1"/></pattern>
 <clipPath id="bn-clip"><rect width="1200" height="300" rx="14"/></clipPath>
+<clipPath id="bn-type"><rect class="a typing" x="56" y="226" width="699" height="26"/></clipPath>
 </defs>
+<style>
+.a{animation-fill-mode:both;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+.up{animation-name:up;animation-duration:.8s}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.rule{transform-box:fill-box;transform-origin:0 50%;animation-name:grow;animation-duration:.6s;animation-delay:.85s}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.line{animation-name:draw;animation-duration:1.9s;animation-delay:.6s;animation-timing-function:ease-in-out}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.pop{transform-box:fill-box;transform-origin:center;animation-name:pop;animation-duration:.45s}
+@keyframes pop{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+.candle{transform-box:fill-box;transform-origin:50% 100%;animation-name:rise;animation-duration:.7s}
+@keyframes rise{from{opacity:0;transform:scaleY(0)}to{opacity:1;transform:scaleY(1)}}
+.area{animation-name:fadein;animation-duration:1.4s;animation-delay:1.2s}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.typing{animation-name:type;animation-duration:3.1s;animation-delay:1.35s;animation-timing-function:steps(77,end)}
+@keyframes type{from{width:0}to{width:699px}}
+.walk{animation-name:walk;animation-duration:3.1s;animation-delay:1.35s;animation-timing-function:steps(77,end)}
+@keyframes walk{from{transform:translateX(0)}to{transform:translateX(693px)}}
+.blink{animation:blink 1.1s steps(1) infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.ring{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 2.8s ease-out 2.7s infinite}
+@keyframes ring{0%{opacity:.75;transform:scale(1)}100%{opacity:0;transform:scale(4.2)}}
+.drift{animation:drift 14s linear infinite}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-40px)}}
+@media (prefers-reduced-motion:reduce){.a,.blink,.ring,.drift{animation:none!important}.ring{opacity:0}}
+</style>
 <g clip-path="url(#bn-clip)">
 <rect width="1200" height="300" fill="#090A09"/>
 <rect width="1200" height="32" fill="#111211"/>
 <circle cx="24" cy="16" r="6" fill="#FF5F57"/><circle cx="44" cy="16" r="6" fill="#FEBC2E"/><circle cx="64" cy="16" r="6" fill="#28C840"/>
 <text x="600" y="21" text-anchor="middle" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#9a9c96" letter-spacing="0.5">kavy@github</text>
 <rect y="32" width="1200" height="1" fill="#2a2c29"/>
-<rect y="33" width="1200" height="267" fill="url(#bn-grid)"/>
-<rect x="760" y="33" width="440" height="267" fill="url(#bn-fade)"/>
-<path d="M 800 246 C 850 242, 890 230, 930 218 S 1000 190, 1050 164 S 1110 114, 1160 84" fill="none" stroke="url(#bn-signal)" stroke-width="2.4" stroke-linecap="round"/>
-<circle cx="930" cy="218" r="4" fill="#090A09" stroke="#00FF66" stroke-width="1.8"/>
-<circle cx="1050" cy="164" r="4" fill="#090A09" stroke="#00FF66" stroke-width="1.8"/>
-<circle cx="1160" cy="84" r="4.5" fill="#B6FF2E"/>
-<text x="56" y="84" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#00FF66" letter-spacing="2.4">FINANCE × ENGINEERING × QUANTITATIVE SYSTEMS</text>
-<text x="56" y="144" font-family='Georgia,"Times New Roman",serif' font-size="50" font-weight="700" fill="#F4F5F2">Krishna Anubhav</text>
-<text x="56" y="184" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="19" fill="#c7c9c4">Engineer <tspan fill="#B6FF2E">→</tspan> SaaS founder/operator <tspan fill="#B6FF2E">→</tspan> MBA <tspan fill="#B6FF2E">→</tspan> Investment banking</text>
-<rect x="56" y="206" width="48" height="2" fill="url(#bn-signal)"/>
-<text x="56" y="244" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="15" fill="#9a9c96">I spent years building businesses. Now I'm learning how investors value them.</text>
+<rect class="drift" y="33" width="1240" height="267" fill="url(#bn-grid)"/>
+<rect class="a area" x="760" y="33" width="440" height="267" fill="url(#bn-fade)"/>
+<g fill="#00FF66" fill-opacity="0.13">
+<rect class="a candle" style="animation-delay:0.45s" x="786" y="244" width="10" height="28" rx="2"/>
+<rect class="a candle" style="animation-delay:0.50s" x="808" y="226" width="10" height="46" rx="2"/>
+<rect class="a candle" style="animation-delay:0.55s" x="830" y="238" width="10" height="34" rx="2"/>
+<rect class="a candle" style="animation-delay:0.60s" x="852" y="210" width="10" height="62" rx="2"/>
+<rect class="a candle" style="animation-delay:0.65s" x="874" y="220" width="10" height="52" rx="2"/>
+<rect class="a candle" style="animation-delay:0.70s" x="896" y="194" width="10" height="78" rx="2"/>
+<rect class="a candle" style="animation-delay:0.75s" x="918" y="212" width="10" height="60" rx="2"/>
+<rect class="a candle" style="animation-delay:0.80s" x="940" y="180" width="10" height="92" rx="2"/>
+<rect class="a candle" style="animation-delay:0.85s" x="962" y="198" width="10" height="74" rx="2"/>
+<rect class="a candle" style="animation-delay:0.90s" x="984" y="202" width="10" height="70" rx="2"/>
+<rect class="a candle" style="animation-delay:0.95s" x="1006" y="168" width="10" height="104" rx="2"/>
+<rect class="a candle" style="animation-delay:1.00s" x="1028" y="184" width="10" height="88" rx="2"/>
+<rect class="a candle" style="animation-delay:1.05s" x="1050" y="154" width="10" height="118" rx="2"/>
+<rect class="a candle" style="animation-delay:1.10s" x="1072" y="176" width="10" height="96" rx="2"/>
+<rect class="a candle" style="animation-delay:1.15s" x="1094" y="140" width="10" height="132" rx="2"/>
+<rect class="a candle" style="animation-delay:1.20s" x="1116" y="162" width="10" height="110" rx="2"/>
+<rect class="a candle" style="animation-delay:1.25s" x="1138" y="148" width="10" height="124" rx="2"/>
+<rect class="a candle" style="animation-delay:1.30s" x="1160" y="126" width="10" height="146" rx="2"/>
+</g>
+<path class="a line" pathLength="1" stroke-dasharray="1" d="M 800 246 C 850 242, 890 230, 930 218 S 1000 190, 1050 164 S 1110 114, 1160 84" fill="none" stroke="url(#bn-signal)" stroke-width="2.4" stroke-linecap="round"/>
+<circle class="a pop" style="animation-delay:1.45s" cx="930" cy="218" r="4" fill="#090A09" stroke="#00FF66" stroke-width="1.8"/>
+<circle class="a pop" style="animation-delay:1.95s" cx="1050" cy="164" r="4" fill="#090A09" stroke="#00FF66" stroke-width="1.8"/>
+<circle class="a pop" style="animation-delay:2.4s" cx="1160" cy="84" r="4.5" fill="#B6FF2E"/>
+<circle class="ring" cx="1160" cy="84" r="4.5" fill="none" stroke="#B6FF2E" stroke-width="1.6"/>
+<text class="a up" style="animation-delay:.1s" x="56" y="84" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#00FF66" letter-spacing="2.4">FINANCE × ENGINEERING × QUANTITATIVE SYSTEMS</text>
+<text class="a up" style="animation-delay:.28s" x="56" y="144" font-family='Georgia,"Times New Roman",serif' font-size="50" font-weight="700" fill="#F4F5F2">Krishna Anubhav</text>
+<text class="a up" style="animation-delay:.55s" x="56" y="184" font-family='system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif' font-size="19" fill="#c7c9c4">Engineer <tspan fill="#B6FF2E">→</tspan> SaaS founder/operator <tspan fill="#B6FF2E">→</tspan> MBA <tspan fill="#B6FF2E">→</tspan> Investment banking</text>
+<rect class="a rule" x="56" y="206" width="48" height="2" fill="url(#bn-signal)"/>
+<g clip-path="url(#bn-type)"><text x="56" y="244" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="15" fill="#9a9c96">I spent years building businesses. Now I&#39;m learning how investors value them.</text></g>
+<g class="a walk" style="transform:translateX(693px)"><rect class="blink" x="58" y="231" width="8" height="17" fill="#B6FF2E"/></g>
 </g>
 </svg>
