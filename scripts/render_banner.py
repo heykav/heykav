@@ -45,15 +45,70 @@ CANDLES = [28, 46, 34, 62, 52, 78, 60, 92, 74, 70, 104, 88, 118, 96, 132, 110, 1
 CANDLE_X0, CANDLE_STEP, CANDLE_BASE = 786, 22, 272
 
 
+CYCLE = 16.0  # seconds; the whole intro replays on this loop
+INTRO0 = 1.8  # the finished banner shows first, fades, then the intro replays from here
+RESET_AT = 1.65  # while the group is invisible, every element jumps to its start state
+KEYS = {}     # keyframe name -> css, filled by anim()
+
+
+def _pct(t):
+    return f"{t / CYCLE * 100:.3f}".rstrip("0").rstrip(".")
+
+
+def anim(kind, start, dur):
+    """Register keyframes for one element and return its style attribute.
+
+    Frame 0 is the finished banner (so a viewer that only draws the first frame,
+    or ignores animation, sees it complete). The group then fades out, each element
+    jumps to its start state, and the intro plays to the same finished state.
+    """
+    states = {
+        "up": ("opacity:0;transform:translateY(12px)", "opacity:1;transform:none"),
+        "grow": ("transform:scaleX(0)", "transform:scaleX(1)"),
+        "draw": ("stroke-dashoffset:1", "stroke-dashoffset:0"),
+        "pop": ("opacity:0;transform:scale(0)", "opacity:1;transform:scale(1)"),
+        "rise": ("opacity:0;transform:scaleY(0)", "opacity:1;transform:scaleY(1)"),
+        "fade": ("opacity:0", "opacity:1"),
+        "type": ("width:0", f"width:{TYPE_W}px"),
+        "walk": ("transform:translateX(0)", f"transform:translateX({TYPE_W - 6}px)"),
+    }
+    frm, to = states[kind]
+    name = f"k{len(KEYS)}"
+    start += INTRO0
+    KEYS[name] = (
+        f"@keyframes {name}{{0%,{_pct(RESET_AT)}%{{{to}}}"
+        f"{_pct(RESET_AT + 0.05)}%,{_pct(start)}%{{{frm}}}{_pct(start + dur)}%,100%{{{to}}}}}"
+    )
+    ease = f"steps({TYPE_STEPS},end)" if kind in ("type", "walk") else (
+        "ease-in-out" if kind == "draw" else "cubic-bezier(.2,.7,.2,1)")
+    return f"animation:{name} {CYCLE}s {ease} infinite"
+
+
 def render(p, light):
+    KEYS.clear()
     candles = []
     for i, h in enumerate(CANDLES):
         x = CANDLE_X0 + i * CANDLE_STEP
+        intro = anim("rise", 0.45 + i * 0.05, 0.7)
+        breath = f"animation:breath {3.2 + (i % 5) * 0.35:.2f}s ease-in-out {i * 0.21:.2f}s infinite alternate"
         candles.append(
-            f'<rect class="a candle" style="animation-delay:{0.45 + i * 0.05:.2f}s" '
-            f'x="{x}" y="{CANDLE_BASE - h}" width="10" height="{h}" rx="2"/>'
+            f'<g class="a breath" style="{breath}"><rect class="a candle" style="{intro}" '
+            f'x="{CANDLE_X0 + i * CANDLE_STEP}" y="{CANDLE_BASE - h}" width="10" height="{h}" rx="2"/></g>'
         )
     candles = "\n".join(candles)
+
+    a_eyebrow = anim("up", 0.10, 0.7)
+    a_name = anim("up", 0.28, 0.8)
+    a_role = anim("up", 0.55, 0.8)
+    a_rule = anim("grow", 0.85, 0.6)
+    a_line = anim("draw", 0.60, 1.9)
+    a_area = anim("fade", 1.20, 1.4)
+    a_n1, a_n2, a_n3 = anim("pop", 1.45, 0.45), anim("pop", 1.95, 0.45), anim("pop", 2.40, 0.45)
+    a_type = anim("type", 1.35, 3.1)
+    a_walk = anim("walk", 1.35, 3.1)
+    a_dot = anim("fade", 2.6, 0.5)
+    keys = "\n".join(KEYS.values())
+    path = "M 800 246 C 850 242, 890 230, 930 218 S 1000 190, 1050 164 S 1110 114, 1160 84"
 
     return f'''<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bn-t bn-d">
 <title id="bn-t">Krishna Anubhav: finance, engineering and quantitative systems</title>
@@ -63,33 +118,25 @@ def render(p, light):
 <linearGradient id="bn-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="{p["sig_a"]}" stop-opacity="{p["fade_op"]}"/><stop offset="100%" stop-color="{p["sig_a"]}" stop-opacity="0"/></linearGradient>
 <pattern id="bn-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="{p["grid"]}" stroke-width="1"/></pattern>
 <clipPath id="bn-clip"><rect width="1200" height="300" rx="14"/></clipPath>
-<clipPath id="bn-type"><rect class="a typing" x="56" y="226" width="{TYPE_W}" height="26"/></clipPath>
+<clipPath id="bn-type"><rect class="a" style="{a_type}" x="56" y="226" width="{TYPE_W}" height="26"/></clipPath>
+<path id="bn-route" d="{path}"/>
 </defs>
 <style>
-.a{{animation-fill-mode:both;animation-timing-function:cubic-bezier(.2,.7,.2,1)}}
-.up{{animation-name:up;animation-duration:.8s}}
-@keyframes up{{from{{opacity:0;transform:translateY(12px)}}to{{opacity:1;transform:none}}}}
-.rule{{transform-box:fill-box;transform-origin:0 50%;animation-name:grow;animation-duration:.6s;animation-delay:.85s}}
-@keyframes grow{{from{{transform:scaleX(0)}}to{{transform:scaleX(1)}}}}
-.line{{animation-name:draw;animation-duration:1.9s;animation-delay:.6s;animation-timing-function:ease-in-out}}
-@keyframes draw{{from{{stroke-dashoffset:1}}to{{stroke-dashoffset:0}}}}
-.pop{{transform-box:fill-box;transform-origin:center;animation-name:pop;animation-duration:.45s}}
-@keyframes pop{{from{{opacity:0;transform:scale(0)}}to{{opacity:1;transform:scale(1)}}}}
-.candle{{transform-box:fill-box;transform-origin:50% 100%;animation-name:rise;animation-duration:.7s}}
-@keyframes rise{{from{{opacity:0;transform:scaleY(0)}}to{{opacity:1;transform:scaleY(1)}}}}
-.area{{animation-name:fadein;animation-duration:1.4s;animation-delay:1.2s}}
-@keyframes fadein{{from{{opacity:0}}to{{opacity:1}}}}
-.typing{{animation-name:type;animation-duration:3.1s;animation-delay:1.35s;animation-timing-function:steps({TYPE_STEPS},end)}}
-@keyframes type{{from{{width:0}}to{{width:{TYPE_W}px}}}}
-.walk{{animation-name:walk;animation-duration:3.1s;animation-delay:1.35s;animation-timing-function:steps({TYPE_STEPS},end)}}
-@keyframes walk{{from{{transform:translateX(0)}}to{{transform:translateX({TYPE_W - 6}px)}}}}
+{keys}
+@keyframes cyc{{0%,{_pct(1.2)}%{{opacity:1}}{_pct(1.6)}%,{_pct(INTRO0 - 0.02)}%{{opacity:0}}{_pct(INTRO0)}%,100%{{opacity:1}}}}
+.cycle{{animation:cyc {CYCLE}s linear infinite}}
+.rule,.pop,.candle,.breath{{transform-box:fill-box}}
+.rule{{transform-origin:0 50%}}
+.pop{{transform-origin:center}}
+.candle,.breath{{transform-origin:50% 100%}}
+@keyframes breath{{from{{transform:scaleY(1)}}to{{transform:scaleY(.82)}}}}
 .blink{{animation:blink 1.1s steps(1) infinite}}
 @keyframes blink{{0%,49%{{opacity:1}}50%,100%{{opacity:0}}}}
 .ring{{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 2.8s ease-out 2.7s infinite}}
 @keyframes ring{{0%{{opacity:.75;transform:scale(1)}}100%{{opacity:0;transform:scale(4.2)}}}}
-.drift{{animation:drift 14s linear infinite}}
+.drift{{animation:drift 10s linear infinite}}
 @keyframes drift{{from{{transform:translateX(0)}}to{{transform:translateX(-40px)}}}}
-@media (prefers-reduced-motion:reduce){{.a,.blink,.ring,.drift{{animation:none!important}}.ring{{opacity:0}}}}
+@media (prefers-reduced-motion:reduce){{.a,.cycle,.blink,.ring,.drift,.breath{{animation:none!important}}.ring{{opacity:0}}.dot{{display:none}}}}
 </style>
 <g clip-path="url(#bn-clip)">
 <rect width="1200" height="300" fill="{p["bg"]}"/>
@@ -98,21 +145,24 @@ def render(p, light):
 <text x="600" y="21" text-anchor="middle" font-family='{MONO}' font-size="13" fill="{p["bar_text"]}" letter-spacing="0.5">kavy@github</text>
 <rect y="32" width="1200" height="1" fill="{p["bar_line"]}"/>
 <rect class="drift" y="33" width="1240" height="267" fill="url(#bn-grid)"/>
-<rect class="a area" x="760" y="33" width="440" height="267" fill="url(#bn-fade)"/>
+<g class="cycle">
+<rect class="a" style="{a_area}" x="760" y="33" width="440" height="267" fill="url(#bn-fade)"/>
 <g fill="{p["candle"]}" fill-opacity="{p["candle_op"]}">
 {candles}
 </g>
-<path class="a line" pathLength="1" stroke-dasharray="1" d="M 800 246 C 850 242, 890 230, 930 218 S 1000 190, 1050 164 S 1110 114, 1160 84" fill="none" stroke="url(#bn-signal)" stroke-width="2.4" stroke-linecap="round"/>
-<circle class="a pop" style="animation-delay:1.45s" cx="930" cy="218" r="4" fill="{p["node_fill"]}" stroke="{p["node_stroke"]}" stroke-width="1.8"/>
-<circle class="a pop" style="animation-delay:1.95s" cx="1050" cy="164" r="4" fill="{p["node_fill"]}" stroke="{p["node_stroke"]}" stroke-width="1.8"/>
-<circle class="a pop" style="animation-delay:2.4s" cx="1160" cy="84" r="4.5" fill="{p["end_node"]}"/>
+<path class="a" style="{a_line}" pathLength="1" stroke-dasharray="1" d="{path}" fill="none" stroke="url(#bn-signal)" stroke-width="2.4" stroke-linecap="round"/>
+<circle class="a pop" style="{a_n1}" cx="930" cy="218" r="4" fill="{p["node_fill"]}" stroke="{p["node_stroke"]}" stroke-width="1.8"/>
+<circle class="a pop" style="{a_n2}" cx="1050" cy="164" r="4" fill="{p["node_fill"]}" stroke="{p["node_stroke"]}" stroke-width="1.8"/>
+<circle class="a pop" style="{a_n3}" cx="1160" cy="84" r="4.5" fill="{p["end_node"]}"/>
 <circle class="ring" cx="1160" cy="84" r="4.5" fill="none" stroke="{p["end_node"]}" stroke-width="1.6"/>
-<text class="a up" style="animation-delay:.1s" x="56" y="84" font-family='{MONO}' font-size="13" fill="{p["eyebrow"]}" letter-spacing="2.4">FINANCE × ENGINEERING × QUANTITATIVE SYSTEMS</text>
-<text class="a up" style="animation-delay:.28s" x="56" y="144" font-family='{SERIF}' font-size="50" font-weight="700" fill="{p["name"]}">Krishna Anubhav</text>
-<text class="a up" style="animation-delay:.55s" x="56" y="184" font-family='{SANS}' font-size="19" fill="{p["role"]}">Engineer <tspan fill="{p["arrow"]}">→</tspan> SaaS founder/operator <tspan fill="{p["arrow"]}">→</tspan> MBA <tspan fill="{p["arrow"]}">→</tspan> Investment banking</text>
-<rect class="a rule" x="56" y="206" width="48" height="2" fill="url(#bn-signal)"/>
+<g class="a dot" style="{a_dot}"><circle r="9" fill="{p["end_node"]}" fill-opacity="0.18"/><circle r="3.6" fill="{p["end_node"]}"/><animateMotion dur="4.5s" begin="0s" repeatCount="indefinite" rotate="0"><mpath href="#bn-route"/></animateMotion></g>
+<text class="a" style="{a_eyebrow}" x="56" y="84" font-family='{MONO}' font-size="13" fill="{p["eyebrow"]}" letter-spacing="2.4">FINANCE × ENGINEERING × QUANTITATIVE SYSTEMS</text>
+<text class="a" style="{a_name}" x="56" y="144" font-family='{SERIF}' font-size="50" font-weight="700" fill="{p["name"]}">Krishna Anubhav</text>
+<text class="a" style="{a_role}" x="56" y="184" font-family='{SANS}' font-size="19" fill="{p["role"]}">Engineer <tspan fill="{p["arrow"]}">→</tspan> SaaS founder/operator <tspan fill="{p["arrow"]}">→</tspan> MBA <tspan fill="{p["arrow"]}">→</tspan> Investment banking</text>
+<rect class="a rule" style="{a_rule}" x="56" y="206" width="48" height="2" fill="url(#bn-signal)"/>
 <g clip-path="url(#bn-type)"><text x="56" y="244" font-family='{MONO}' font-size="{TAG_SIZE}" fill="{p["tagline"]}">{TAGLINE.replace("'", "&#39;")}</text></g>
-<g class="a walk" style="transform:translateX({TYPE_W - 6}px)"><rect class="blink" x="58" y="231" width="8" height="17" fill="{p["cursor"]}"/></g>
+<g class="a" style="{a_walk};transform:translateX({TYPE_W - 6}px)"><rect class="blink" x="58" y="231" width="8" height="17" fill="{p["cursor"]}"/></g>
+</g>
 </g>
 </svg>
 '''
