@@ -15,6 +15,8 @@ Run:  python3 scripts/update_profile.py   (it calls render() with live GitHub nu
 """
 from pathlib import Path
 
+from ticker_glyphs import ADVANCE, GLYPHS
+
 ROOT = Path(__file__).resolve().parent.parent
 
 MONO = 'ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace'
@@ -96,43 +98,47 @@ STRIP_Y, STRIP_H = 300, 28
 
 
 def ticker_markup(p, items):
-    """Build two copies of the ticker, every glyph placed at an explicit x.
+    """Draw the ticker as vector glyphs, two copies for a seamless loop.
 
-    Per-character x positions give an exact width in any font and browser. (textLength on text made
-    of several coloured spans makes Safari spread the letters apart and overlap them.)
-    items: list of (highlight, rest). Repeated until one copy is wider than the banner.
+    Outlines (not font text) keep it identical in every browser. Repeats items until one copy is
+    wider than the banner. Returns (shift, markup, glyph_defs, plain_text).
     """
-    step = TICK_SIZE * TICK_W
     sep = " \u00a0\u2022\u00a0 "
 
     def n_chars(seq):
         return sum(len(a) + len(b) + len(sep) for a, b in seq)
     seq = list(items)
-    while n_chars(seq) * step < 1300:
+    while n_chars(seq) * ADVANCE < 1300:
         seq += items
-    width = round(n_chars(seq) * step)
+    width = round(n_chars(seq) * ADVANCE)
     shift = width + TICK_GAP
-
-    def esc(t):
-        return t.replace("&", "&amp;").replace("<", "&lt;")
+    base = STRIP_Y + 19
+    used = set()
 
     def copy(x0):
         out, i = [], 0
         for a, b in seq:
             for chunk, fill in ((a, p["tick_hi"]), (b, p["tick_text"]), (sep, p["tick_sep"])):
-                xs = " ".join(f"{x0 + (i + k) * step:.1f}" for k in range(len(chunk)))
-                out.append(f'<tspan x="{xs}" fill="{fill}">{esc(chunk)}</tspan>')
-                i += len(chunk)
-        return (f'<text xml:space="preserve" y="{STRIP_Y + 19}" font-family=\'{MONO}\' font-size="{TICK_SIZE}" '
-                f'fill="{p["tick_text"]}">{"".join(out)}</text>')
+                run = []
+                for ch in chunk:
+                    if ch in GLYPHS:
+                        used.add(ch)
+                        run.append(f'<use href="#tg{ord(ch)}" x="{x0 + i * ADVANCE:.2f}"/>')
+                    i += 1
+                if run:
+                    out.append(f'<g fill="{fill}">{"".join(run)}</g>')
+        return f'<g transform="translate(0 {base})">{"".join(out)}</g>'
 
-    return shift, (f'<g class="tk" style="animation-duration:{shift / TICK_SPEED:.1f}s">'
-                   f'{copy(24)}{copy(24 + shift)}</g>')
+    markup = (f'<g class="tk" aria-hidden="true" style="animation-duration:{shift / TICK_SPEED:.1f}s">'
+              f'{copy(24)}{copy(24 + shift)}</g>')
+    defs = "".join(f'<path id="tg{ord(ch)}" d="{GLYPHS[ch]}"/>' for ch in sorted(used))
+    text = "  \u2022  ".join(f"{a}{b}".strip() for a, b in items)
+    return shift, markup, defs, text
 
 
 def render(p, light, ticker_items):
     KEYS.clear()
-    shift, ticker = ticker_markup(p, ticker_items)
+    shift, ticker, glyph_defs, ticker_text = ticker_markup(p, ticker_items)
     candles = []
     for i, h in enumerate(CANDLES):
         x = CANDLE_X0 + i * CANDLE_STEP
@@ -159,7 +165,7 @@ def render(p, light, ticker_items):
 
     return f'''<svg width="1200" height="328" viewBox="0 0 1200 328" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bn-t bn-d">
 <title id="bn-t">Krishna Anubhav: finance, engineering and quantitative systems</title>
-<desc id="bn-d">Animated profile banner for Krishna Anubhav (Kavy). Engineer, then SaaS founder and operator, then MBA, now investment banking. I spent years building businesses; now I am learning how investors value them. The rising line and bars on the right are decorative and carry no data.</desc>
+<desc id="bn-d">Animated profile banner for Krishna Anubhav (Kavy). Engineer, then SaaS founder and operator, then MBA, now investment banking. I spent years building businesses; now I am learning how investors value them. The rising line and bars on the right are decorative and carry no data. The ticker along the bottom reads: {ticker_text}</desc>
 <defs>
 <linearGradient id="bn-signal" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="{p["sig_a"]}"/><stop offset="100%" stop-color="{p["sig_b"]}"/></linearGradient>
 <linearGradient id="bn-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="{p["sig_a"]}" stop-opacity="{p["fade_op"]}"/><stop offset="100%" stop-color="{p["sig_a"]}" stop-opacity="0"/></linearGradient>
@@ -167,6 +173,7 @@ def render(p, light, ticker_items):
 <clipPath id="bn-clip"><rect width="1200" height="328" rx="14"/></clipPath>
 <clipPath id="bn-type"><rect class="a" style="{a_type}" x="56" y="226" width="{TYPE_W}" height="26"/></clipPath>
 <path id="bn-route" d="{path}"/>
+{glyph_defs}
 <clipPath id="bn-strip"><rect y="{STRIP_Y}" width="1200" height="{STRIP_H}"/></clipPath>
 </defs>
 <style>
