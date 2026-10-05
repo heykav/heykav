@@ -96,31 +96,38 @@ STRIP_Y, STRIP_H = 300, 28
 
 
 def ticker_markup(p, items):
-    """Build two copies of the ticker text, pinned to an exact width so the loop is seamless.
+    """Build two copies of the ticker, every glyph placed at an explicit x.
 
+    Per-character x positions give an exact width in any font and browser. (textLength on text made
+    of several coloured spans makes Safari spread the letters apart and overlap them.)
     items: list of (highlight, rest). Repeated until one copy is wider than the banner.
     """
-    def chars(seq):
-        return sum(len(a) + len(b) for a, b in seq) + 5 * len(seq)
+    step = TICK_SIZE * TICK_W
+    sep = " \u00a0\u2022\u00a0 "
+
+    def n_chars(seq):
+        return sum(len(a) + len(b) + len(sep) for a, b in seq)
     seq = list(items)
-    while chars(seq) * TICK_SIZE * TICK_W < 1300:
+    while n_chars(seq) * step < 1300:
         seq += items
-    width = round(chars(seq) * TICK_SIZE * TICK_W)
+    width = round(n_chars(seq) * step)
+    shift = width + TICK_GAP
 
     def esc(t):
         return t.replace("&", "&amp;").replace("<", "&lt;")
 
-    body = "".join(
-        f'<tspan fill="{p["tick_hi"]}">{esc(a)}</tspan>{esc(b)}<tspan fill="{p["tick_sep"]}"> \u00a0\u2022\u00a0 </tspan>'
-        for a, b in seq
-    )
-    shift = width + TICK_GAP
-    copies = "".join(
-        f'<text x="{24 + k * shift}" y="{STRIP_Y + 19}" textLength="{width}" lengthAdjust="spacing" '
-        f'font-family=\'{MONO}\' font-size="{TICK_SIZE}" letter-spacing="0.4" fill="{p["tick_text"]}">{body}</text>'
-        for k in (0, 1)
-    )
-    return shift, f'<g class="tk" style="animation-duration:{shift / TICK_SPEED:.1f}s">{copies}</g>'
+    def copy(x0):
+        out, i = [], 0
+        for a, b in seq:
+            for chunk, fill in ((a, p["tick_hi"]), (b, p["tick_text"]), (sep, p["tick_sep"])):
+                xs = " ".join(f"{x0 + (i + k) * step:.1f}" for k in range(len(chunk)))
+                out.append(f'<tspan x="{xs}" fill="{fill}">{esc(chunk)}</tspan>')
+                i += len(chunk)
+        return (f'<text xml:space="preserve" y="{STRIP_Y + 19}" font-family=\'{MONO}\' font-size="{TICK_SIZE}" '
+                f'fill="{p["tick_text"]}">{"".join(out)}</text>')
+
+    return shift, (f'<g class="tk" style="animation-duration:{shift / TICK_SPEED:.1f}s">'
+                   f'{copy(24)}{copy(24 + shift)}</g>')
 
 
 def render(p, light, ticker_items):
