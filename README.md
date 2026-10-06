@@ -141,7 +141,7 @@ Drawn from each repo's code and docs as they stand on `main`. Anything schematic
 These are pull requests I have opened on other people's projects. Most are bug, documentation or packaging fixes; a few are enhancements or list additions, two of which add my own vanna to a curated list.
 
 <!-- AUTO:patchsummary:start -->
-As of 2026-10-04 there are 41: 15 merged, 21 open and 5 closed without merging.
+As of 2026-10-06 there are 41: 16 merged, 20 open and 5 closed without merging.
 <!-- AUTO:patchsummary:end -->
 
 Open pull requests are waiting on review and are not shipped work. Counts and statuses are read from GitHub by `scripts/update_profile.py`, not written by hand.
@@ -150,7 +150,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 <summary><strong>The full list, grouped by status</strong>, including QuantLib, Qlib, zipline and Riskfolio-Lib.</summary>
 
 <!-- AUTO:patches:start -->
-#### Merged (15)
+#### Merged (16)
 
 [**QuantLib**](https://github.com/lballabio/QuantLib/pull/2779) — the C++ quantitative finance library had a `NaN` in its Gauss-Laguerre quadrature. Past order ~200, one of the weights underflows to exactly `0.0`, and `inf × 0` is `NaN` in IEEE 754. The fix re-derives the weight in log-space so the underflow no longer occurs. It is tested against the real consumer (`AnalyticHestonEngine`) and was independently re-derived in NumPy as a check.
 
@@ -172,6 +172,8 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 
 [**jealous/stockstats**](https://github.com/jealous/stockstats/pull/206) — Fix VWMA producing NaN when rolling volume sum is zero.
 
+[**man-group/ArcticDB**](https://github.com/man-group/ArcticDB/pull/3442) — Fix LibraryOptions/EnterpriseLibraryOptions.__eq__ crashing on non-matching types.
+
 [**dcajasn/Riskfolio-Lib**](https://github.com/dcajasn/Riskfolio-Lib/pull/260) — Fix wrong asset column in All Assets relative constraints.
 
 [**pmorissette/bt**](https://github.com/pmorissette/bt/pull/576) — Fix chained-assignment pattern in positions/outlays/get_transactions.
@@ -182,7 +184,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 
 [**wangzhe3224/awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/175) — Add vanna to Pricing.
 
-#### Open, awaiting review (21)
+#### Open, awaiting review (20)
 
 [**matching-engine**](https://github.com/AsthaMishra/matching-engine/pull/2) — an out-of-range price and a malformed one were rejected with the identical error reason, so when debugging real order flow the log gave no way to tell which one had happened.
 
@@ -199,8 +201,6 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 [**starship/starship**](https://github.com/starship/starship/pull/7770) — fix(utils): fix humanize_int rounding across unit boundaries.
 
 [**cuemacro/findatapy**](https://github.com/cuemacro/findatapy/pull/59) — fix: calculate_log_returns raises TypeError instead of computing log returns.
-
-[**man-group/ArcticDB**](https://github.com/man-group/ArcticDB/pull/3442) — Fix LibraryOptions/EnterpriseLibraryOptions.__eq__ crashing on non-matching types.
 
 [**alkaline-ml/pmdarima**](https://github.com/alkaline-ml/pmdarima/pull/623) — Fix: pmdarima.preprocessing.tests package never installed by meson build.
 
@@ -245,7 +245,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 41 pull requests opened on other projects, 15 merged, 21 open and 5 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 41 pull requests opened on other projects, 16 merged, 20 open and 5 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
