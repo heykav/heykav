@@ -141,7 +141,7 @@ Drawn from each repo's code and docs as they stand on `main`. Anything schematic
 These are pull requests I have opened on other people's projects. Most are bug, documentation or packaging fixes; a few are enhancements or list additions, two of which add my own vanna to a curated list.
 
 <!-- AUTO:patchsummary:start -->
-As of 2026-10-06 there are 41: 16 merged, 20 open and 5 closed without merging.
+As of 2026-10-07 there are 44: 16 merged, 23 open and 5 closed without merging.
 <!-- AUTO:patchsummary:end -->
 
 Open pull requests are waiting on review and are not shipped work. Counts and statuses are read from GitHub by `scripts/update_profile.py`, not written by hand.
@@ -184,7 +184,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 
 [**wangzhe3224/awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/175) — Add vanna to Pricing.
 
-#### Open, awaiting review (20)
+#### Open, awaiting review (23)
 
 [**matching-engine**](https://github.com/AsthaMishra/matching-engine/pull/2) — an out-of-range price and a malformed one were rejected with the identical error reason, so when debugging real order flow the log gave no way to tell which one had happened.
 
@@ -197,6 +197,12 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 [**awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/174) — checked all ~650 links in the list against the GitHub API and actual DNS resolution, not just an HTTP status code (which often gives false positives when sites block bots). Seven repos were genuinely gone. No replacements were guessed for the ones without a verified successor.
 
 [**microsoft/qlib**](https://github.com/microsoft/qlib/pull/2357) — Microsoft's quant research platform threw a `DeprecationWarning` on `import qlib`, because a module-level constant was built with `pd.Timedelta("1day")` instead of the explicit-unit form. Same value, no warning, one-line fix.
+
+[**skfolio/skfolio**](https://github.com/skfolio/skfolio/pull/404) — fix(portfolio): slice sample_weight per window in rolling_measure.
+
+[**markedjs/marked**](https://github.com/markedjs/marked/pull/4127) — fix: keep a line starting with # but no space in the list item.
+
+[**dateutil/dateutil**](https://github.com/dateutil/dateutil/pull/1598) — Fix rrule slicing with negative start or stop.
 
 [**starship/starship**](https://github.com/starship/starship/pull/7770) — fix(utils): fix humanize_int rounding across unit boundaries.
 
@@ -245,7 +251,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 41 pull requests opened on other projects, 16 merged, 20 open and 5 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 44 pull requests opened on other projects, 16 merged, 23 open and 5 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
