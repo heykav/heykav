@@ -1,6 +1,6 @@
 # SEO / link health
 
-_Last checked: 2026-10-08 10:53 UTC, by `scripts/seo_health_check.py`. Regenerated daily; hand edits here will just be overwritten._
+_Last checked: 2026-10-09 10:52 UTC, by `scripts/seo_health_check.py`. Regenerated daily; hand edits here will just be overwritten._
 
 ## Live pages
 
