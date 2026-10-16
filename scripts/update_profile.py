@@ -43,12 +43,12 @@ TODAY_OVERRIDE = None  # tests may set an ISO date here
 DARK = {
     "bg": "#090A09", "grid": "#1a1b1a", "label": "#8a8c87", "muted": "#9a9c96",
     "text": "#F4F5F2", "accent": "#B6FF2E", "track": "#1a1b1a",
-    "bars": ["#00FF66", "#B6FF2E", "#8a8c87", "#5d605a"],
+    "bars": ["#00FF66", "#B6FF2E", "#8a8c87", "#5d605a"], "side": -0.45, "lid": 0.35,
 }
 LIGHT = {
     "bg": "#F4F5F2", "grid": "#e2e3df", "label": "#5d605a", "muted": "#54564f",
     "text": "#111211", "accent": "#3f6f00", "track": "#e2e3df",
-    "bars": ["#006b2e", "#5f9a00", "#3d3f3b", "#8a8c87"],
+    "bars": ["#006b2e", "#5f9a00", "#3d3f3b", "#8a8c87"], "side": -0.35, "lid": 0.45,
 }
 
 STATE_ORDER = ["merged", "open", "closed"]
@@ -277,57 +277,76 @@ def render_stats_svg(palette, project_count, since_year, counts, lang_mix):
     ]
     stat_lines = []
     for x, value, color, label in blocks:
-        delay = f"{0.1 + 0.12 * len(stat_lines) / 2:.2f}s"
-        stat_lines.append(f'<text class="a up" style="animation-delay:{delay}" x="{x}" y="102" font-size="34" font-weight="700" fill="{color}">{esc(value)}</text>')
-        stat_lines.append(f'<text class="a up" style="animation-delay:{delay}" x="{x}" y="126" font-size="14" fill="{palette["muted"]}">{esc(label)}</text>')
+        stat_lines.append(f'<text x="{x}" y="102" font-size="34" font-weight="700" fill="{color}">{esc(value)}</text>')
+        stat_lines.append(f'<text x="{x}" y="126" font-size="14" fill="{palette["muted"]}">{esc(label)}</text>')
 
     top = lang_mix[:4]
-    bar_total = sum(pct for _, pct in top) or 1
-    bar_x = 56
-    bars = []
+    peak = max((pct for _, pct in top), default=1) or 1
+    base_y, max_h, col_w = 300, 112, 120
+    dx, dy = 34, 20  # isometric depth offset
+    cols, tops = [], []
     for i, ((lang, pct), color) in enumerate(zip(top, palette["bars"])):
-        w = round(1088 * (pct / bar_total))
-        gap = 2 if i < len(top) - 1 else 0  # a background-coloured seam between segments
-        bars.append(f'<rect class="a bar" style="animation-delay:{0.5 + 0.18 * i:.2f}s" x="{bar_x}" y="178" width="{max(w - gap, 1)}" height="10" fill="{color}"/>')
-        bar_x += w
+        x = 96 + i * 268
+        h = max(round(max_h * pct / peak), 6)
+        y = base_y - h
+        side = _shade(color, palette["side"])
+        lid = _shade(color, palette["lid"])
+        delay = f"{0.15 * i:.2f}s"
+        cols.append(
+            f'<g class="col" style="animation-delay:{delay}">'
+            f'<rect x="{x}" y="{y}" width="{col_w}" height="{h}" fill="{color}"/>'
+            f'<polygon points="{x + col_w},{base_y} {x + col_w + dx},{base_y - dy} '
+            f'{x + col_w + dx},{y - dy} {x + col_w},{y}" fill="{side}"/>'
+            f'<polygon points="{x},{y} {x + col_w},{y} {x + col_w + dx},{y - dy} {x + dx},{y - dy}" fill="{lid}"/>'
+            f'</g>'
+        )
+        tops.append(
+            f'<text class="pct" style="animation-delay:{delay}" x="{x + col_w / 2 + dx / 2}" '
+            f'y="{y - dy - 10}" text-anchor="middle" font-size="16" font-weight="700" '
+            f'fill="{palette["text"]}">{round(pct)}%</text>'
+        )
+        tops.append(
+            f'<text x="{x + col_w / 2}" y="{base_y + 24}" text-anchor="middle" font-size="14" '
+            f'fill="{palette["muted"]}">{esc(lang)}</text>'
+        )
 
-    legend = []
-    lx = 60
-    for (lang, pct), color in zip(top, palette["bars"]):
-        label = f"{lang} {round(pct)}%"
-        legend.append(f'<circle cx="{lx}" cy="209" r="5" fill="{color}"/>')
-        legend.append(f'<text x="{lx + 12}" y="214" fill="{palette["muted"]}">{esc(label)}</text>')
-        lx += 12 + round(len(label) * 14 * CHAR_W) + 28
-
-    return f'''<svg width="1200" height="236" viewBox="0 0 1200 236" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(alt)}">
+    height = 340
+    floor = (f'<polygon points="56,{base_y} 1110,{base_y} {1110 + dx},{base_y - dy} {56 + dx},{base_y - dy}" '
+             f'fill="{palette["track"]}"/>')
+    return f'''<svg width="1200" height="{height}" viewBox="0 0 1200 {height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(alt)}">
   <defs>
     <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M 40 0 L 0 0 0 40" fill="none" stroke="{palette["grid"]}" stroke-width="1"/>
     </pattern>
-    <clipPath id="clip2"><rect width="1200" height="236" rx="14"/></clipPath>
+    <clipPath id="clip2"><rect width="1200" height="{height}" rx="14"/></clipPath>
   </defs>
   <style>
-    .a{{animation-fill-mode:both;animation-timing-function:cubic-bezier(.2,.7,.2,1)}}
-    .up{{animation-name:up;animation-duration:.7s}}
-    @keyframes up{{from{{opacity:0;transform:translateY(8px)}}to{{opacity:1;transform:none}}}}
-    .bar{{transform-box:fill-box;transform-origin:0 50%;animation-name:grow;animation-duration:.9s}}
-    @keyframes grow{{from{{transform:scaleX(0)}}to{{transform:scaleX(1)}}}}
-    @media (prefers-reduced-motion:reduce){{.a{{animation:none!important}}}}
+    .col{{transform-box:fill-box;transform-origin:50% 100%;animation:rise 12s cubic-bezier(.2,.7,.2,1) infinite}}
+    @keyframes rise{{0%,62%{{transform:scaleY(1)}}66%{{transform:scaleY(0)}}84%,100%{{transform:scaleY(1)}}}}
+    .pct{{animation:pct 12s linear infinite}}
+    @keyframes pct{{0%,62%{{opacity:1}}64%,82%{{opacity:0}}86%,100%{{opacity:1}}}}
+    @media (prefers-reduced-motion:reduce){{.col,.pct{{animation:none!important}}}}
   </style>
   <g clip-path="url(#clip2)" font-family='{MONO}'>
-    <rect width="1200" height="236" fill="{palette["bg"]}"/>
-    <rect width="1200" height="236" fill="url(#grid2)"/>
+    <rect width="1200" height="{height}" fill="{palette["bg"]}"/>
+    <rect width="1200" height="{height}" fill="url(#grid2)"/>
     <text x="56" y="50" font-size="13" fill="{palette["label"]}" letter-spacing="1.5">GITHUB DATA, REGENERATED BY scripts/update_profile.py</text>
     {NL4.join(stat_lines)}
     <text x="56" y="164" font-size="13" fill="{palette["label"]}" letter-spacing="1">LANGUAGE MIX BY BYTES, OWN REPOS</text>
-    <rect x="56" y="178" width="1088" height="10" rx="5" fill="{palette["track"]}"/>
-    {NL4.join(bars)}
-    <g font-size="14">
-      {NL6.join(legend)}
-    </g>
+    {floor}
+    {NL4.join(cols)}
+    {NL4.join(tops)}
   </g>
 </svg>
 '''
+
+
+def _shade(hex_color, amount):
+    """Mix a colour toward black (amount < 0) or white (amount > 0)."""
+    c = [int(hex_color[n:n + 2], 16) for n in (1, 3, 5)]
+    target = 255 if amount > 0 else 0
+    a = abs(amount)
+    return "#%02x%02x%02x" % tuple(round(v + (target - v) * a) for v in c)
 
 
 def write_if_changed(path, content):
