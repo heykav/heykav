@@ -282,7 +282,7 @@ def render_stats_svg(palette, project_count, since_year, counts, lang_mix):
 
     top = lang_mix[:4]
     peak = max((pct for _, pct in top), default=1) or 1
-    base_y, max_h, col_w = 300, 112, 120
+    base_y, max_h, col_w = 336, 112, 120
     dx, dy = 34, 20  # isometric depth offset
     cols, tops = [], []
     for i, ((lang, pct), color) in enumerate(zip(top, palette["bars"])):
@@ -310,7 +310,7 @@ def render_stats_svg(palette, project_count, since_year, counts, lang_mix):
             f'fill="{palette["muted"]}">{esc(lang)}</text>'
         )
 
-    height = 340
+    height = 380
     floor = (f'<polygon points="56,{base_y} 1110,{base_y} {1110 + dx},{base_y - dy} {56 + dx},{base_y - dy}" '
              f'fill="{palette["track"]}"/>')
     return f'''<svg width="1200" height="{height}" viewBox="0 0 1200 {height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{esc(alt)}">
