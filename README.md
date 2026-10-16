@@ -32,6 +32,14 @@ The question I keep asking of a tool, my own included, is whether it helps me un
 
 <br/>
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/surface.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/surface-light.svg" />
+  <img src="assets/surface.svg" width="100%" alt="An animated 3D implied-volatility surface swaying in perspective: volatility across moneyness and maturity, with a smile that flattens as maturity grows. Illustrative, generated from a simple parametric smile, not market data." />
+</picture>
+
+<br/>
+
 ### Selected work
 
 <!-- AUTO:projects:start -->
