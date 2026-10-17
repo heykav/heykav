@@ -6,12 +6,6 @@
   <img src="assets/banner.svg" width="100%" alt="Krishna Anubhav. Finance, engineering and quantitative systems. Engineer, then SaaS founder and operator, then MBA, now investment banking. I spent years building businesses; now I am learning how investors value them." />
 </picture>
 
-<p>
-<a href="https://github.com/heykav/vanna/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/heykav/vanna/tests.yml?branch=main&style=flat-square&label=vanna%20tests&color=00A84A" alt="vanna tests status" /></a>
-<a href="https://github.com/heykav/quantdeck/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/heykav/quantdeck/ci.yml?branch=main&style=flat-square&label=quantdeck%20CI&color=00A84A" alt="quantdeck CI status" /></a>
-<a href="https://github.com/heykav/microprice-rust/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/heykav/microprice-rust/ci.yml?branch=main&style=flat-square&label=microprice-rust%20CI&color=00A84A" alt="microprice-rust CI status" /></a>
-</p>
-
 <p align="center">
 <a href="#about">About</a> ·
 <a href="#selected-work">Selected work</a> ·
@@ -43,76 +37,30 @@ The question I keep asking of a tool, my own included, is whether it helps me un
 ### Selected work
 
 <!-- AUTO:projects:start -->
-<table width="100%">
-<tr>
-<td width="33%" valign="top">
-
-**[vanna](https://github.com/heykav/vanna)**
-
-Options pricing and P&L attribution in Python. It prices with Black-Scholes and a binomial tree for early exercise, then splits each trade's P&L into delta, gamma, theta, vega, vanna and volga with a second-order Taylor expansion, plus a dividend term when a yield is set. What those terms do not explain is reported as a residual instead of being absorbed into a bucket. Closed-form prices and Greeks agree with QuantLib and py_vollib to about 1e-12; the binomial tree is about 7x slower than QuantLib's. Backtests run on simulated price paths only.
-
+**[vanna](https://github.com/heykav/vanna)**  
+Options pricing and P&L attribution: Black-Scholes and a binomial tree, with each trade's P&L split into Greeks and an honest residual. Backtests run on simulated prices only.  
 `Python` `PySide6` `NumPy`
 
-</td>
-<td width="33%" valign="top">
-
-**[pe-financial-calculator](https://github.com/heykav/pe-financial-calculator)**
-
-Rivet, a browser-based LBO and DCF calculator for a first-pass look at a deal. It is illustrative: returns are gross, with no taxes, fees or three-statement model. The calculation core is a pure module tested against hand-computed values, and every formula is written out in the repo.
-
+**[pe-financial-calculator](https://github.com/heykav/pe-financial-calculator)**  
+Rivet, a browser-based LBO and DCF calculator for a first-pass look at a deal. Illustrative: gross returns, no taxes, fees or three-statement model.  
 `JavaScript` `HTML/CSS`
 
-</td>
-<td width="33%" valign="top">
-
-**[microprice-rust](https://github.com/heykav/microprice-rust)**
-
-A Rust implementation of a micro-price estimator in the tradition of Stoikov (2018): a Markov chain over queue-imbalance and spread states that gives the mid-price plus an expected-move adjustment. It is research code, run on synthetic data only. On that data it does not beat the naive mid-price, and the README shows the numbers. The martingale property does not hold by construction here, and a diagnostic reports the drift. The evaluation protocol for real quote data is written and has not been run yet.
-
+**[microprice-rust](https://github.com/heykav/microprice-rust)**  
+A Rust micro-price estimator (a Markov chain over queue imbalance). Research code on synthetic data only: it does not beat the naive mid-price, and the README shows the numbers.  
 `Rust` `Market Microstructure`
 
-</td>
-</tr>
-<tr>
-<td width="33%" valign="top">
-
-**[quantdeck](https://github.com/heykav/quantdeck)**
-
-Event-driven backtesting in Python, one symbol at a time, market orders only. Orders fill at the next bar's open plus slippage, so a strategy cannot trade on a price it has not seen. It runs offline on CSV files and needs no database server. It is backtest only: no live or paper-trading engine exists.
-
+**[quantdeck](https://github.com/heykav/quantdeck)**  
+Event-driven backtesting in Python, market orders only, filled at the next bar's open plus slippage. Runs offline on CSV files. Backtest only: no live or paper trading.  
 `Python` `Backtesting`
 
-</td>
-<td width="33%" valign="top">
-
-**[fpga-sim-core](https://github.com/heykav/fpga-sim-core)**
-
-A C++20 cycle model of an FPGA-style tick-to-trade path: PCS-style block framing with CRC (not IEEE 64b/66b), a MAC framer, an ITCH 5.0 parser for add, execute and cancel messages only, a five-level order book, order-flow imbalance, a PCIe DMA model and VCD waveform output. Latency is counted in simulated cycles over a synthetic ITCH stream, using documented stage-latency parameters, so it is not a hardware or FPGA measurement. The paths covered by its allocation test perform no heap allocation.
-
+**[fpga-sim-core](https://github.com/heykav/fpga-sim-core)**  
+A C++20 cycle model of an FPGA-style tick-to-trade path. Latency is counted in simulated cycles on synthetic data, so it is not a hardware or FPGA measurement.  
 `C++` `CMake`
 
-</td>
-<td width="33%" valign="top">
-
-**[photoface](https://github.com/heykav/photoface)**
-
-A local-first desktop app that finds faces in a photo library, clusters them, and lets you correct the result. Detection uses YuNet and embeddings use SFace, clustered in a greedy online pass and then re-clustered with average linkage. A face you fix by hand is pinned, and reclustering never moves it again.
-
+**[photoface](https://github.com/heykav/photoface)**  
+A local desktop app that finds, clusters and lets you correct faces in a photo library. A face you fix by hand is pinned and never moved again.  
 `Python` `PySide6` `OpenCV`
-
-</td>
-</tr>
-</table>
 <!-- AUTO:projects:end -->
-
-#### Recent changes
-
-- **vanna**: benchmarks against QuantLib and py_vollib exposed an implied-vol precision bug and inaccurate binomial Greeks, both now fixed; a continuous dividend yield now runs through the backtest; `covered_call` now holds its stock leg.
-- **pe-financial-calculator**: the calculation core was rewritten as a pure, tested module and nine correctness bugs were fixed, which moved the base case from 5.0x / 38.2% to 4.0x gross MOIC and 32.2% gross IRR.
-- **microprice-rust**: an optional symmetrization, a diagnostic showing the martingale property does not hold by construction, an `evaluate-parquet` command and `predict_batch` in the Python bindings. It still does not beat the naive mid-price on synthetic data, and the real-data run is still pending.
-- **quantdeck**: nine engine, broker and metrics correctness fixes with regression tests, an offline example that needs no network, and live-trading claims removed because no live engine exists.
-- **fpga-sim-core**: latency now comes from a simulated-cycle pipeline over a synthetic ITCH stream, with an order-flow imbalance calculated from real book changes, valid VCD output, a wider allocation test and sanitizer CI.
-- **photoface**: data-safety fixes (versioned migrations, atomic per-photo analysis, stricter EXIF parsing) and deterministic reclustering.
 
 #### How three of them work
 
@@ -149,7 +97,7 @@ Drawn from each repo's code and docs as they stand on `main`. Anything schematic
 These are pull requests I have opened on other people's projects. Most are bug, documentation or packaging fixes; a few are enhancements or list additions, two of which add my own vanna to a curated list.
 
 <!-- AUTO:patchsummary:start -->
-As of 2026-10-17 there are 46: 20 merged, 20 open and 6 closed without merging.
+As of 2026-10-17 there are 48: 20 merged, 22 open and 6 closed without merging.
 <!-- AUTO:patchsummary:end -->
 
 Open pull requests are waiting on review and are not shipped work. Counts and statuses are read from GitHub by `scripts/update_profile.py`, not written by hand.
@@ -200,7 +148,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 
 [**wangzhe3224/awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/175) — Add vanna to Pricing.
 
-#### Open, awaiting review (20)
+#### Open, awaiting review (22)
 
 [**matching-engine**](https://github.com/AsthaMishra/matching-engine/pull/2) — an out-of-range price and a malformed one were rejected with the identical error reason, so when debugging real order flow the log gave no way to tell which one had happened.
 
@@ -213,6 +161,10 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 [**awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/174) — checked all ~650 links in the list against the GitHub API and actual DNS resolution, not just an HTTP status code (which often gives false positives when sites block bots). Seven repos were genuinely gone. No replacements were guessed for the ones without a verified successor.
 
 [**microsoft/qlib**](https://github.com/microsoft/qlib/pull/2357) — Microsoft's quant research platform threw a `DeprecationWarning` on `import qlib`, because a module-level constant was built with `pd.Timedelta("1day")` instead of the explicit-unit form. Same value, no warning, one-line fix.
+
+[**mde/ejs**](https://github.com/mde/ejs/pull/821) — Fix ejs --version printing "undefined".
+
+[**pydata/pandas-datareader**](https://github.com/pydata/pandas-datareader/pull/1034) — Fix EconDB reader crash on pandas 3.
 
 [**pytoolz/toolz**](https://github.com/pytoolz/toolz/pull/649) — Don't fail compose signature when last function has no signature.
 
@@ -263,7 +215,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 46 pull requests opened on other projects, 20 merged, 20 open and 6 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 48 pull requests opened on other projects, 20 merged, 22 open and 6 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
@@ -273,19 +225,8 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 
 Changes are tested before they are merged, and claims in the READMEs are checked against the code, so a claim that does not hold gets corrected rather than kept.
 
-<p>
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
-<img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white" alt="Rust" />
-<img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white" alt="C++" />
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript" />
-<img src="https://img.shields.io/badge/Qt%20%2F%20PySide6-41CD52?style=flat-square&logo=qt&logoColor=white" alt="Qt / PySide6" />
-<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white" alt="OpenCV" />
-<img src="https://img.shields.io/badge/CMake-064F8C?style=flat-square&logo=cmake&logoColor=white" alt="CMake" />
-<img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git" />
-</p>
-
 <br/>
 
 ### Contact
 
-**[GitHub](https://github.com/heykav)** · **[Website](https://krishnaanubhav.com)** · **[X](https://x.com/heykav)**
+**[Website](https://krishnaanubhav.com)** · **[LinkedIn](https://www.linkedin.com/in/krishnaanubhav)** · **[X](https://x.com/heykav)** · **[GitHub](https://github.com/heykav)**
