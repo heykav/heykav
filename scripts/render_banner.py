@@ -90,11 +90,11 @@ def anim(kind, start, dur):
     return f"animation:{name} {CYCLE}s {ease} infinite"
 
 
-TICK_SIZE = 12
+TICK_SIZE = 14
 TICK_W = 0.62   # nominal monospace advance; textLength pins the real width
 TICK_GAP = 80   # px between the end of one copy and the start of the next
 TICK_SPEED = 55  # px per second
-STRIP_Y, STRIP_H = 300, 28
+STRIP_Y, STRIP_H = 300, 32
 
 
 def ticker_markup(p, items):
@@ -112,7 +112,7 @@ def ticker_markup(p, items):
         seq += items
     width = round(n_chars(seq) * ADVANCE)
     shift = width + TICK_GAP
-    base = STRIP_Y + 19
+    base = STRIP_Y + 21
     used = set()
 
     def copy(x0):
@@ -163,14 +163,14 @@ def render(p, light, ticker_items):
     keys = "\n".join(KEYS.values())
     path = "M 800 246 C 850 242, 890 230, 930 218 S 1000 190, 1050 164 S 1110 114, 1160 84"
 
-    return f'''<svg width="1200" height="328" viewBox="0 0 1200 328" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bn-t bn-d">
+    return f'''<svg width="1200" height="332" viewBox="0 0 1200 332" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bn-t bn-d">
 <title id="bn-t">Krishna Anubhav: finance, engineering and quantitative systems</title>
 <desc id="bn-d">Animated profile banner for Krishna Anubhav (Kavy). Engineer, then SaaS founder and operator, then MBA, now investment banking. I spent years building businesses; now I am learning how investors value them. The rising line and bars on the right are decorative and carry no data. The ticker along the bottom reads: {ticker_text}</desc>
 <defs>
 <linearGradient id="bn-signal" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="{p["sig_a"]}"/><stop offset="100%" stop-color="{p["sig_b"]}"/></linearGradient>
 <linearGradient id="bn-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="{p["sig_a"]}" stop-opacity="{p["fade_op"]}"/><stop offset="100%" stop-color="{p["sig_a"]}" stop-opacity="0"/></linearGradient>
 <pattern id="bn-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="{p["grid"]}" stroke-width="1"/></pattern>
-<clipPath id="bn-clip"><rect width="1200" height="328" rx="14"/></clipPath>
+<clipPath id="bn-clip"><rect width="1200" height="332" rx="14"/></clipPath>
 <clipPath id="bn-type"><rect class="a" style="{a_type}" x="56" y="226" width="{TYPE_W}" height="26"/></clipPath>
 <path id="bn-route" d="{path}"/>
 {glyph_defs}
@@ -196,7 +196,7 @@ def render(p, light, ticker_items):
 @media (prefers-reduced-motion:reduce){{.a,.cycle,.blink,.ring,.drift,.breath,.tk{{animation:none!important}}.ring{{opacity:0}}.dot{{display:none}}}}
 </style>
 <g clip-path="url(#bn-clip)">
-<rect width="1200" height="328" fill="{p["bg"]}"/>
+<rect width="1200" height="332" fill="{p["bg"]}"/>
 <rect width="1200" height="32" fill="{p["bar"]}"/>
 <circle cx="24" cy="16" r="6" fill="#FF5F57"/><circle cx="44" cy="16" r="6" fill="#FEBC2E"/><circle cx="64" cy="16" r="6" fill="#28C840"/>
 <text x="600" y="21" text-anchor="middle" font-family='{MONO}' font-size="13" fill="{p["bar_text"]}" letter-spacing="0.5">kavy@github</text>
@@ -213,7 +213,7 @@ def render(p, light, ticker_items):
 <circle class="a pop" style="{a_n3}" cx="1160" cy="84" r="4.5" fill="{p["end_node"]}"/>
 <circle class="ring" cx="1160" cy="84" r="4.5" fill="none" stroke="{p["end_node"]}" stroke-width="1.6"/>
 <g class="a dot" style="{a_dot}"><circle r="9" fill="{p["end_node"]}" fill-opacity="0.18"/><circle r="3.6" fill="{p["end_node"]}"/><animateMotion dur="4.5s" begin="0s" repeatCount="indefinite" rotate="0"><mpath href="#bn-route"/></animateMotion></g>
-<text class="a" style="{a_eyebrow}" x="56" y="84" font-family='{MONO}' font-size="13" fill="{p["eyebrow"]}" letter-spacing="2.4">FINANCE × ENGINEERING × QUANTITATIVE SYSTEMS</text>
+<text class="a" style="{a_eyebrow}" x="56" y="84" font-family='{MONO}' font-size="15" fill="{p["eyebrow"]}" letter-spacing="2.4">FINANCE × ENGINEERING × QUANTITATIVE SYSTEMS</text>
 <text class="a" style="{a_name}" x="56" y="144" font-family='{SERIF}' font-size="50" font-weight="700" fill="{p["name"]}">Krishna Anubhav</text>
 <text class="a" style="{a_role}" x="56" y="184" font-family='{SANS}' font-size="19" fill="{p["role"]}">Engineer <tspan fill="{p["arrow"]}">→</tspan> SaaS founder/operator <tspan fill="{p["arrow"]}">→</tspan> MBA <tspan fill="{p["arrow"]}">→</tspan> Investment banking</text>
 <rect class="a rule" style="{a_rule}" x="56" y="206" width="48" height="2" fill="url(#bn-signal)"/>

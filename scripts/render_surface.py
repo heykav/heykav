@@ -38,8 +38,8 @@ N_COLORS = 14
 
 DARK = dict(
     bg="#090A09", bar="#111211", bar_line="#2a2c29", bar_text="#9a9c96", grid="#1a1b1a",
-    eyebrow="#00FF66", title="#F4F5F2", body="#9a9c96", note="#6b6d68", edge="#090A09",
-    edge_op="0.55", axis="#3d3f3b", label="#6b6d68",
+    eyebrow="#00FF66", title="#F4F5F2", body="#9a9c96", note="#8a8c87", edge="#090A09",
+    edge_op="0.55", axis="#3d3f3b", label="#8a8c87",
     ramp=["#06361b", "#0a6b33", "#00b35a", "#00FF66", "#B6FF2E", "#efff9a"],
 )
 LIGHT = dict(
@@ -159,7 +159,7 @@ def render(p):
         ys = ";".join(fmt(project(point, a)[1]) for a in angles)
         x0, y0, _ = project(point, angles[0])
         return (f'<text x="{fmt(x0)}" y="{fmt(y0)}" text-anchor="{anchor}" font-family=\'{MONO}\' '
-                f'font-size="12" fill="{p["label"]}" letter-spacing="1">{text}'
+                f'font-size="15" fill="{p["label"]}" letter-spacing="1">{text}'
                 f'<animate attributeName="x" dur="{CYCLE}s" repeatCount="indefinite" values="{xs}"/>'
                 f'<animate attributeName="y" dur="{CYCLE}s" repeatCount="indefinite" values="{ys}"/></text>')
 
@@ -195,15 +195,14 @@ polygon[class]{{stroke:{p["edge"]};stroke-opacity:{p["edge_op"]};stroke-width:0.
 {floor_poly}
 {polys}
 {labels}
-<text x="56" y="96" font-family='{MONO}' font-size="13" fill="{p["eyebrow"]}" letter-spacing="2.4">OPTIONS × VOLATILITY</text>
-<text x="56" y="150" font-family='{SERIF}' font-size="40" font-weight="700" fill="{p["title"]}">The smile,</text>
-<text x="56" y="196" font-family='{SERIF}' font-size="40" font-weight="700" fill="{p["title"]}">in three dimensions</text>
-<text x="56" y="240" font-family='{MONO}' font-size="14" fill="{p["body"]}">σ(k, T): moneyness × maturity.</text>
-<text x="56" y="264" font-family='{MONO}' font-size="14" fill="{p["body"]}">Volatility across strike and expiry.</text>
+<text x="56" y="96" font-family='{MONO}' font-size="16" fill="{p["eyebrow"]}" letter-spacing="2.4">OPTIONS × VOLATILITY</text>
+<text x="56" y="152" font-family='{SERIF}' font-size="46" font-weight="700" fill="{p["title"]}">The smile,</text>
+<text x="56" y="204" font-family='{SERIF}' font-size="46" font-weight="700" fill="{p["title"]}">in three dimensions</text>
+<text x="56" y="252" font-family='{MONO}' font-size="17" fill="{p["body"]}">σ(k, T): volatility across strike and expiry.</text>
 {legend}
-<text x="56" y="346" font-family='{MONO}' font-size="12" fill="{p["note"]}">lower σ</text>
-<text x="{56 + N_COLORS * 14}" y="346" text-anchor="end" font-family='{MONO}' font-size="12" fill="{p["note"]}">higher σ</text>
-<text x="56" y="392" font-family='{MONO}' font-size="11" fill="{p["note"]}">Illustrative: a parametric smile, not market data.</text>
+<text x="56" y="350" font-family='{MONO}' font-size="14" fill="{p["note"]}">lower σ</text>
+<text x="{56 + N_COLORS * 14}" y="346" text-anchor="end" font-family='{MONO}' font-size="14" fill="{p["note"]}">higher σ</text>
+<text x="56" y="394" font-family='{MONO}' font-size="14" fill="{p["note"]}">Illustrative: a parametric smile, not market data.</text>
 </g>
 </svg>
 '''
