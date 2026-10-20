@@ -97,7 +97,7 @@ Drawn from each repo's code and docs as they stand on `main`. Anything schematic
 These are pull requests I have opened on other people's projects. Most are bug, documentation or packaging fixes; a few are enhancements or list additions, two of which add my own vanna to a curated list.
 
 <!-- AUTO:patchsummary:start -->
-As of 2026-10-18 there are 48: 21 merged, 20 open and 7 closed without merging.
+As of 2026-10-20 there are 48: 22 merged, 19 open and 7 closed without merging.
 <!-- AUTO:patchsummary:end -->
 
 Open pull requests are waiting on review and are not shipped work. Counts and statuses are read from GitHub by `scripts/update_profile.py`, not written by hand.
@@ -106,7 +106,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 <summary><strong>The full list, grouped by status</strong>, including QuantLib, Qlib, zipline and Riskfolio-Lib.</summary>
 
 <!-- AUTO:patches:start -->
-#### Merged (21)
+#### Merged (22)
 
 [**QuantLib**](https://github.com/lballabio/QuantLib/pull/2779) — the C++ quantitative finance library had a `NaN` in its Gauss-Laguerre quadrature. Past order ~200, one of the weights underflows to exactly `0.0`, and `inf × 0` is `NaN` in IEEE 754. The fix re-derives the weight in log-space so the underflow no longer occurs. It is tested against the real consumer (`AnalyticHestonEngine`) and was independently re-derived in NumPy as a check.
 
@@ -146,11 +146,13 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 
 [**bashtage/arch**](https://github.com/bashtage/arch/pull/865) — TST: actually seed TestForecasting fixtures.
 
+[**wilsonfreitas/awesome-quant**](https://github.com/wilsonfreitas/awesome-quant/pull/707) — Add vanna to Financial Instruments & Pricing.
+
 [**NandhaKishorM/laya**](https://github.com/NandhaKishorM/laya/pull/103) — Fix single-option choice question crash in DecisionModel.forward.
 
 [**wangzhe3224/awesome-systematic-trading**](https://github.com/wangzhe3224/awesome-systematic-trading/pull/175) — Add vanna to Pricing.
 
-#### Open, awaiting review (20)
+#### Open, awaiting review (19)
 
 [**matching-engine**](https://github.com/AsthaMishra/matching-engine/pull/2) — an out-of-range price and a malformed one were rejected with the identical error reason, so when debugging real order flow the log gave no way to tell which one had happened.
 
@@ -188,8 +190,6 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 
 [**bukosabino/ta**](https://github.com/bukosabino/ta/pull/371) — Fix TSI tests: check_less_precise removed from pandas.
 
-[**wilsonfreitas/awesome-quant**](https://github.com/wilsonfreitas/awesome-quant/pull/707) — Add vanna to Financial Instruments & Pricing.
-
 [**PyPortfolio/PyPortfolioOpt**](https://github.com/PyPortfolio/PyPortfolioOpt/pull/764) — Add return_raw option to BlackLittermanModel.bl_weights.
 
 #### Closed without merging (7)
@@ -215,7 +215,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 48 pull requests opened on other projects, 21 merged, 20 open and 7 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 48 pull requests opened on other projects, 22 merged, 19 open and 7 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
