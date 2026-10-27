@@ -1,0 +1,24 @@
+<svg width="1200" height="220" viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wt wd">
+<title id="wt">How I work</title>
+<desc id="wd">Five steps for every upstream fix: reproduce the bug, make the smallest fix, add a test that fails before and passes after, open a pull request in plain words, and leave the decision to the maintainer.</desc>
+<defs>
+<pattern id="wg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e3df" stroke-width="1"/></pattern>
+<clipPath id="wc"><rect width="1200" height="220" rx="14"/></clipPath>
+</defs>
+<style>
+.pk{animation:pk 9s linear infinite}
+.hl{animation:hl 9s linear infinite}
+@keyframes pk{0%{transform:translateX(0);opacity:1}94%{opacity:1}100%{transform:translateX(1120px);opacity:0}}
+@keyframes hl{0%,100%{opacity:.0}50%{opacity:.5}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<g clip-path="url(#wc)">
+<rect width="1200" height="220" fill="#F4F5F2"/>
+<rect width="1200" height="220" fill="url(#wg)"/>
+<text x="36" y="40" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="14" fill="#00A84A" letter-spacing="2.4">EVERY UPSTREAM FIX</text>
+<rect x="36" y="64" width="196" height="104" rx="10" fill="#eceeea" stroke="#c4c7c0"/><text x="52" y="92" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#00A84A">1</text><text x="52" y="118" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="15" font-weight="700" fill="#111211" letter-spacing="1">REPRODUCE</text><text x="52" y="144" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#54564f">Make the bug fail</text><path d="M238 116 L264 116" stroke="#aab0a3" stroke-width="2"/><path d="M258 110 L264 116 L258 122" fill="none" stroke="#aab0a3" stroke-width="2"/><rect x="270" y="64" width="196" height="104" rx="10" fill="#eceeea" stroke="#c4c7c0"/><text x="286" y="92" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#00A84A">2</text><text x="286" y="118" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="15" font-weight="700" fill="#111211" letter-spacing="1">FIX</text><text x="286" y="144" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#54564f">Smallest change</text><path d="M472 116 L498 116" stroke="#aab0a3" stroke-width="2"/><path d="M492 110 L498 116 L492 122" fill="none" stroke="#aab0a3" stroke-width="2"/><rect x="504" y="64" width="196" height="104" rx="10" fill="#eceeea" stroke="#c4c7c0"/><text x="520" y="92" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#00A84A">3</text><text x="520" y="118" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="15" font-weight="700" fill="#111211" letter-spacing="1">TEST</text><text x="520" y="144" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#54564f">Fails before, passes after</text><path d="M706 116 L732 116" stroke="#aab0a3" stroke-width="2"/><path d="M726 110 L732 116 L726 122" fill="none" stroke="#aab0a3" stroke-width="2"/><rect x="738" y="64" width="196" height="104" rx="10" fill="#eceeea" stroke="#c4c7c0"/><text x="754" y="92" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#00A84A">4</text><text x="754" y="118" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="15" font-weight="700" fill="#111211" letter-spacing="1">PULL REQUEST</text><text x="754" y="144" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#54564f">Plain words, honest scope</text><path d="M940 116 L966 116" stroke="#aab0a3" stroke-width="2"/><path d="M960 110 L966 116 L960 122" fill="none" stroke="#aab0a3" stroke-width="2"/><rect x="972" y="64" width="196" height="104" rx="10" fill="#eceeea" stroke="#c4c7c0"/><text x="988" y="92" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#00A84A">5</text><text x="988" y="118" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="15" font-weight="700" fill="#111211" letter-spacing="1">REVIEW</text><text x="988" y="144" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#54564f">Maintainer decides</text>
+<rect class="pk" x="44" y="184" width="12" height="12" rx="3" fill="#5f9a00"/>
+<line x1="36" y1="190" x2="1168" y2="190" stroke="#aab0a3" stroke-dasharray="4 5"/>
+<rect x="0.5" y="0.5" width="1199" height="219" rx="14" fill="none" stroke="#c4c7c0"/>
+</g>
+</svg>

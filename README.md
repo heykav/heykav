@@ -37,29 +37,14 @@ The question I keep asking of a tool, my own included, is whether it helps me un
 ### Selected work
 
 <!-- AUTO:projects:start -->
-**[vanna](https://github.com/heykav/vanna)**  
-Options pricing and P&L attribution: Black-Scholes and a binomial tree, with each trade's P&L split into Greeks and an honest residual. Backtests run on simulated prices only.  
-`Python` `PySide6` `NumPy`
-
-**[pe-financial-calculator](https://github.com/heykav/pe-financial-calculator)**  
-Rivet, a browser-based LBO and DCF calculator for a first-pass look at a deal. Illustrative: gross returns, no taxes, fees or three-statement model.  
-`JavaScript` `HTML/CSS`
-
-**[microprice-rust](https://github.com/heykav/microprice-rust)**  
-A Rust micro-price estimator (a Markov chain over queue imbalance). Research code on synthetic data only: it does not beat the naive mid-price, and the README shows the numbers.  
-`Rust` `Market Microstructure`
-
-**[quantdeck](https://github.com/heykav/quantdeck)**  
-Event-driven backtesting in Python, market orders only, filled at the next bar's open plus slippage. Runs offline on CSV files. Backtest only: no live or paper trading.  
-`Python` `Backtesting`
-
-**[fpga-sim-core](https://github.com/heykav/fpga-sim-core)**  
-A C++20 cycle model of an FPGA-style tick-to-trade path. Latency is counted in simulated cycles on synthetic data, so it is not a hardware or FPGA measurement.  
-`C++` `CMake`
-
-**[photoface](https://github.com/heykav/photoface)**  
-A local desktop app that finds, clusters and lets you correct faces in a photo library. A face you fix by hand is pinned and never moved again.  
-`Python` `PySide6` `OpenCV`
+<p align="center">
+<a href="https://github.com/heykav/vanna"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/vanna.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/cards/vanna-light.svg" /><img src="assets/cards/vanna.svg" width="49%" alt="vanna: Options pricing and P&amp;L attribution: Black-Scholes and a binomial tree, with each trade&#x27;s P&amp;L split into Greeks and an honest residual. Backtests run on simulated prices only." /></picture></a>
+<a href="https://github.com/heykav/pe-financial-calculator"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/pe-financial-calculator.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/cards/pe-financial-calculator-light.svg" /><img src="assets/cards/pe-financial-calculator.svg" width="49%" alt="pe-financial-calculator: Rivet, a browser-based LBO and DCF calculator for a first-pass look at a deal. Illustrative: gross returns, no taxes, fees or three-statement model." /></picture></a>
+<a href="https://github.com/heykav/microprice-rust"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/microprice-rust.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/cards/microprice-rust-light.svg" /><img src="assets/cards/microprice-rust.svg" width="49%" alt="microprice-rust: A Rust micro-price estimator (a Markov chain over queue imbalance). Research code on synthetic data only: it does not beat the naive mid-price, and the README shows the numbers." /></picture></a>
+<a href="https://github.com/heykav/quantdeck"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/quantdeck.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/cards/quantdeck-light.svg" /><img src="assets/cards/quantdeck.svg" width="49%" alt="quantdeck: Event-driven backtesting in Python, market orders only, filled at the next bar&#x27;s open plus slippage. Runs offline on CSV files. Backtest only: no live or paper trading." /></picture></a>
+<a href="https://github.com/heykav/fpga-sim-core"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/fpga-sim-core.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/cards/fpga-sim-core-light.svg" /><img src="assets/cards/fpga-sim-core.svg" width="49%" alt="fpga-sim-core: A C++20 cycle model of an FPGA-style tick-to-trade path. Latency is counted in simulated cycles on synthetic data, so it is not a hardware or FPGA measurement." /></picture></a>
+<a href="https://github.com/heykav/photoface"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/photoface.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/cards/photoface-light.svg" /><img src="assets/cards/photoface.svg" width="49%" alt="photoface: A local desktop app that finds, clusters and lets you correct faces in a photo library. A face you fix by hand is pinned and never moved again." /></picture></a>
+</p>
 <!-- AUTO:projects:end -->
 
 #### How three of them work
@@ -224,6 +209,12 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 ### How I work
 
 Changes are tested before they are merged, and claims in the READMEs are checked against the code, so a claim that does not hold gets corrected rather than kept.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/workflow.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/workflow-light.svg" />
+  <img src="assets/workflow.svg" width="100%" alt="Five steps for every upstream fix: reproduce the bug, make the smallest fix, add a test that fails before and passes after, open a pull request in plain words, and leave the decision to the maintainer." />
+</picture>
 
 <br/>
 

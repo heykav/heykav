@@ -1,0 +1,42 @@
+<svg width="640" height="250" viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+<title id="t">microprice-rust</title>
+<desc id="d">A Rust micro-price estimator (a Markov chain over queue imbalance). Research code on synthetic data only: it does not beat the naive mid-price, and the README shows the numbers. Decorative graphic, no data.</desc>
+<defs>
+<pattern id="g" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="#e2e3df" stroke-width="1"/></pattern>
+<clipPath id="c"><rect width="640" height="250" rx="14"/></clipPath>
+<radialGradient id="o" cx="0.78" cy="0.55" r="0.5"><stop offset="0%" stop-color="#00A84A" stop-opacity="0.08"/><stop offset="100%" stop-color="#00A84A" stop-opacity="0"/></radialGradient>
+</defs>
+<style>
+.rise{transform-box:fill-box;transform-origin:50% 100%;animation:rise 8s cubic-bezier(.2,.8,.2,1) infinite}
+.grow{transform-box:fill-box;transform-origin:50% 100%;animation:rise 8s cubic-bezier(.2,.8,.2,1) infinite}
+.pop{transform-box:fill-box;transform-origin:50% 50%;animation:pop 8s cubic-bezier(.2,.9,.3,1.4) infinite}
+.draw{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 8s ease-out infinite}
+.blink{animation:blink 2.4s ease-in-out infinite}
+.drift{animation:drift 5s ease-in-out infinite alternate}
+.packet{animation:packet 3.2s linear infinite}
+.sweep{animation:sweep 6s linear infinite}
+@keyframes rise{0%,86%{transform:scaleY(1)}87%{transform:scaleY(0)}100%{transform:scaleY(1)}}
+@keyframes pop{0%,86%{transform:scale(1)}87%{transform:scale(0)}100%{transform:scale(1)}}
+@keyframes draw{0%,86%{stroke-dashoffset:0}87%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(22px)}}
+@keyframes packet{0%{transform:translateX(0);opacity:1}92%{opacity:1}100%{transform:translateX(212px);opacity:0}}
+@keyframes sweep{from{transform:translateX(-40px)}to{transform:translateX(680px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<g clip-path="url(#c)">
+<rect width="640" height="250" fill="#F4F5F2"/>
+<rect y="30" width="640" height="220" fill="url(#g)"/>
+<rect x="340" y="30" width="300" height="220" fill="url(#o)"/>
+<rect width="640" height="30" fill="#eceeea"/>
+<circle cx="20" cy="15" r="5" fill="#FF5F57"/><circle cx="38" cy="15" r="5" fill="#FEBC2E"/><circle cx="56" cy="15" r="5" fill="#28C840"/>
+<text x="320" y="19" text-anchor="middle" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="12" fill="#54564f">microprice.rs</text>
+<rect y="30" width="640" height="1" fill="#c4c7c0"/>
+<text x="28" y="66" font-family='Georgia,"Times New Roman",serif' font-size="26" font-weight="700" fill="#111211">microprice-rust</text>
+<text x="28" y="98" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#3d3f3b">A Rust micro-price estimator (a Markov</text><text x="28" y="118" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#3d3f3b">chain over queue imbalance). Research</text><text x="28" y="138" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#3d3f3b">code on synthetic data only: it does not</text><text x="28" y="158" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#3d3f3b">beat the naive mid-price, and the README</text><text x="28" y="178" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="13" fill="#3d3f3b">shows the numbers.</text>
+<rect x="28" y="210" width="44" height="22" rx="11" fill="#e6e8e3"/><text x="50" y="225" text-anchor="middle" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="11" fill="#3d3f3b">Rust</text><rect x="80" y="210" width="169" height="22" rx="11" fill="#e6e8e3"/><text x="164" y="225" text-anchor="middle" font-family='ui-monospace,"SFMono-Regular","DM Mono",Menlo,Consolas,monospace' font-size="11" fill="#3d3f3b">Market Microstructure</text>
+<rect class="grow" style="animation-delay:0.00s" x="472" y="164" width="16" height="26" rx="2" fill="#00A84A" fill-opacity="0.95"/><rect class="grow" style="animation-delay:0.12s" x="452" y="146" width="16" height="44" rx="2" fill="#00A84A" fill-opacity="0.83"/><rect class="grow" style="animation-delay:0.24s" x="432" y="122" width="16" height="68" rx="2" fill="#00A84A" fill-opacity="0.71"/><rect class="grow" style="animation-delay:0.36s" x="412" y="98" width="16" height="92" rx="2" fill="#00A84A" fill-opacity="0.59"/><rect class="grow" style="animation-delay:0.48s" x="392" y="72" width="16" height="118" rx="2" fill="#00A84A" fill-opacity="0.47"/><rect class="grow" style="animation-delay:0.00s" x="520" y="170" width="16" height="20" rx="2" fill="#aab0a3"/><rect class="grow" style="animation-delay:0.12s" x="540" y="156" width="16" height="34" rx="2" fill="#aab0a3"/><rect class="grow" style="animation-delay:0.24s" x="560" y="140" width="16" height="50" rx="2" fill="#aab0a3"/><rect class="grow" style="animation-delay:0.36s" x="580" y="124" width="16" height="66" rx="2" fill="#aab0a3"/><rect class="grow" style="animation-delay:0.48s" x="600" y="108" width="16" height="82" rx="2" fill="#aab0a3"/><line x1="506.0" y1="68" x2="506.0" y2="194" stroke="#54564f" stroke-dasharray="3 3"/><circle class="drift" cx="497.0" cy="72" r="5" fill="#5f9a00"/><line x1="396" y1="190" x2="616" y2="190" stroke="#aab0a3"/>
+<rect class="sweep" x="0" y="31" width="40" height="219" fill="#00A84A" fill-opacity="0.035"/>
+<rect x="0.5" y="0.5" width="639" height="249" rx="14" fill="none" stroke="#c4c7c0"/>
+</g>
+</svg>
