@@ -33,6 +33,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import render_banner  # noqa: E402
+import render_cards  # noqa: E402
 USER = "heykav"
 OWN_REPO = "heykav"  # this profile repo itself is never a "shipped project"
 PR_SEARCH_LIMIT = 1000  # gh search caps at 1000; hitting it means results were cut off
@@ -350,6 +351,17 @@ def write_if_changed(path, content):
     return False
 
 
+def card_files(projects):
+    out = []
+    for pr in projects:
+        for suffix, pal in (("", render_cards.DARK), ("-light", render_cards.LIGHT)):
+            rel = f"assets/cards/{pr['name']}{suffix}.svg"
+            out.append((rel, ROOT / rel, render_cards.card(pr, pal)))
+    out.append(("assets/workflow.svg", ROOT / "assets" / "workflow.svg", render_cards.workflow(render_cards.DARK)))
+    out.append(("assets/workflow-light.svg", ROOT / "assets" / "workflow-light.svg", render_cards.workflow(render_cards.LIGHT)))
+    return out
+
+
 def main():
     projects = fetch_projects()
     patches = fetch_patches()
@@ -368,7 +380,7 @@ def main():
 
     readme_path = ROOT / "README.md"
     text = readme_path.read_text(encoding="utf-8")
-    text = replace_marker_block(text, "projects", render_projects_table(projects))
+    text = replace_marker_block(text, "projects", render_cards.cards_markup(projects))
     text = replace_marker_block(text, "patchsummary", patch_summary(text, counts))
     text = replace_marker_block(text, "patches", render_patches_block(patches))
 
@@ -406,7 +418,7 @@ def main():
          render_banner.render(render_banner.DARK, False, ticker)),
         ("assets/banner-light.svg", ROOT / "assets" / "banner-light.svg",
          render_banner.render(render_banner.LIGHT, True, ticker)),
-    ] if write_if_changed(path, content)]
+    ] + card_files(projects) if write_if_changed(path, content)]
 
     print(f"projects: {len(projects)}, patches: {len(patches)} "
           f"({counts['merged']} merged, {counts['open']} open, {counts['closed']} closed), "
