@@ -351,12 +351,17 @@ def write_if_changed(path, content):
     return False
 
 
+WALL = [[]]
+
+
 def card_files(projects):
     out = []
     for pr in projects:
         for suffix, pal in (("", render_cards.DARK), ("-light", render_cards.LIGHT)):
             rel = f"assets/cards/{pr['name']}{suffix}.svg"
             out.append((rel, ROOT / rel, render_cards.card(pr, pal)))
+    out.append(("assets/merged-wall.svg", ROOT / "assets" / "merged-wall.svg", render_cards.wall(WALL[0], render_cards.DARK)))
+    out.append(("assets/merged-wall-light.svg", ROOT / "assets" / "merged-wall-light.svg", render_cards.wall(WALL[0], render_cards.LIGHT)))
     out.append(("assets/workflow.svg", ROOT / "assets" / "workflow.svg", render_cards.workflow(render_cards.DARK)))
     out.append(("assets/workflow-light.svg", ROOT / "assets" / "workflow-light.svg", render_cards.workflow(render_cards.LIGHT)))
     return out
@@ -399,6 +404,13 @@ def main():
             repo = patch["url"].split("/")[4]
             if repo not in merged_repos:
                 merged_repos.append(repo)
+    wall_counts = {}
+    for patch in patches:
+        if patch["state"] == "merged":
+            owner_repo = "/".join(patch["url"].split("/")[3:5])
+            wall_counts[owner_repo] = wall_counts.get(owner_repo, 0) + 1
+    wall_entries = sorted(wall_counts.items(), key=lambda kv: (-kv[1], kv[0].lower()))
+    WALL[0] = wall_entries
     langs = " \u00b7 ".join(f"{lang} {round(pct)}%" for lang, pct in lang_mix[:4])
     ticker = [
         (str(counts["merged"]), " PULL REQUESTS MERGED INTO OTHER PROJECTS"),
