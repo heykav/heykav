@@ -270,3 +270,63 @@ def cards_markup(projects):
             f'<source media="(prefers-color-scheme: light)" srcset="assets/cards/{n}-light.svg" />'
             f'<img src="assets/cards/{n}.svg" width="49%" alt="{esc(n)}: {esc(pr["summary"])}" /></picture></a>')
     return '<p align="center">\n' + "\n".join(cells) + "\n</p>"
+
+
+def wall(entries, p):
+    """Two rows of pills, one per upstream repo with a merged PR, scrolling in opposite directions.
+
+    entries: list of (owner/repo, merged_count). The group moves, the text inside is static, so it
+    stays intact in Safari. The first frame is the finished layout.
+    """
+    W, H = 1200, 250
+    rows = [entries[0::2], entries[1::2]]
+    out = []
+    for ri, row in enumerate(rows):
+        pills, x = [], 0
+        for name, n in row:
+            label = name + (f"  x{n}" if n > 1 else "")
+            w = 36 + 8.3 * len(label)
+            pills.append((x, w, label))
+            x += w + 14
+        span = x
+        reps = max(2, int(W // span) + 2)
+        body = []
+        for rep in range(reps):
+            for px, w, label in pills:
+                ox = px + rep * span
+                body.append(
+                    f'<rect x="{ox:.0f}" y="0" width="{w:.0f}" height="38" rx="19" fill="{p["bar"]}" stroke="{p["bar_line"]}"/>'
+                    f'<circle cx="{ox + 18:.0f}" cy="19" r="4" fill="{p["a"] if ri == 0 else p["b"]}"/>'
+                    f'<text x="{ox + 30:.0f}" y="24" font-family=\'{MONO}\' font-size="13" fill="{p["body"]}">{esc(label)}</text>')
+        direction = "wallL" if ri == 0 else "wallR"
+        dur = max(30, span / 28)
+        out.append((ri, span, dur, direction, "".join(body)))
+    css_rows, groups = [], []
+    for ri, span, dur, direction, body in out:
+        y = 96 + ri * 60
+        css_rows.append(
+            f'@keyframes {direction}{ri}{{from{{transform:translateX({0 if direction == "wallL" else -span:.0f}px)}}'
+            f'to{{transform:translateX({-span if direction == "wallL" else 0:.0f}px)}}}}'
+            f'.r{ri}{{animation:{direction}{ri} {dur:.0f}s linear infinite}}')
+        groups.append(f'<g transform="translate(0 {y})"><g class="r{ri}">{body}</g></g>')
+    total = sum(n for _, n in entries)
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wlt wld">
+<title id="wlt">Projects with a merged pull request</title>
+<desc id="wld">{total} merged pull requests across {len(entries)} projects: {esc(", ".join(n for n, _ in entries))}.</desc>
+<defs>
+<pattern id="wlg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="{p["grid"]}" stroke-width="1"/></pattern>
+<clipPath id="wlc"><rect width="{W}" height="{H}" rx="14"/></clipPath>
+<linearGradient id="wlf" x1="0" x2="1"><stop offset="0" stop-color="{p["bg"]}"/><stop offset="0.08" stop-color="{p["bg"]}" stop-opacity="0"/><stop offset="0.92" stop-color="{p["bg"]}" stop-opacity="0"/><stop offset="1" stop-color="{p["bg"]}"/></linearGradient>
+</defs>
+<style>{"".join(css_rows)}@media (prefers-reduced-motion:reduce){{*{{animation:none!important}}}}</style>
+<g clip-path="url(#wlc)">
+<rect width="{W}" height="{H}" fill="{p["bg"]}"/>
+<rect width="{W}" height="{H}" fill="url(#wlg)"/>
+<rect width="{W}" height="{H}" fill="url(#wlf)"/>
+<text x="36" y="48" font-family='{MONO}' font-size="14" fill="{p["a"]}" letter-spacing="2.4">MERGED INTO</text>
+<text x="{W - 36}" y="48" text-anchor="end" font-family='{MONO}' font-size="14" fill="{p["muted"]}">{total} merged pull requests, {len(entries)} projects</text>
+{"".join(groups)}
+<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="14" fill="none" stroke="{p["bar_line"]}"/>
+</g>
+</svg>
+'''

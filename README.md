@@ -79,6 +79,12 @@ Drawn from each repo's code and docs as they stand on `main`. Anything schematic
 
 ### Patches upstream
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/merged-wall.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/merged-wall-light.svg" />
+  <img src="assets/merged-wall.svg" width="100%" alt="Projects that have merged one of my pull requests, drifting past in two rows." />
+</picture>
+
 These are pull requests I have opened on other people's projects. Most are bug, documentation or packaging fixes; a few are enhancements or list additions, two of which add my own vanna to a curated list.
 
 <!-- AUTO:patchsummary:start -->
@@ -200,7 +206,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 48 pull requests opened on other projects, 24 merged, 17 open and 7 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 41%, Rust 36%, C++ 9%, JavaScript 7%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 48 pull requests opened on other projects, 24 merged, 17 open and 7 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 43%, Rust 34%, C++ 8%, JavaScript 8%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 
