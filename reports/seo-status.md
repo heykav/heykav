@@ -1,6 +1,6 @@
 # SEO / link health
 
-_Last checked: 2026-10-29 10:21 UTC, by `scripts/seo_health_check.py`. Regenerated daily; hand edits here will just be overwritten._
+_Last checked: 2026-10-30 10:24 UTC, by `scripts/seo_health_check.py`. Regenerated daily; hand edits here will just be overwritten._
 
 ## Live pages
 
@@ -9,11 +9,12 @@ _Last checked: 2026-10-29 10:21 UTC, by `scripts/seo_health_check.py`. Regenerat
 - **OK** (200) [pe-financial-calculator](https://heykav.github.io/pe-financial-calculator/)
 - **OK** (200) [quantdeck](https://heykav.github.io/quantdeck/)
 - **OK** (200) [vanna](https://heykav.github.io/vanna/)
+- **OK** (200) [volfit](https://heykav.github.io/volfit/)
 
 ## Homepage URL vs. actual Pages URL
 
-Every repo's `homepage` field matches its live Pages URL.
+- `volfit`: homepage was `(none)`, Pages serves `https://heykav.github.io/volfit` — **not fixed — SEO_PAT secret not set**
 
 ## Repos missing a description or topics
 
-None — every real repo has both set.
+- `volfit`: missing description, topics
