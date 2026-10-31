@@ -356,7 +356,7 @@ WALL = [[]]
 
 def card_files(projects):
     out = []
-    for pr in projects:
+    for pr in render_cards.curated(projects):
         for suffix, pal in (("", render_cards.DARK), ("-light", render_cards.LIGHT)):
             rel = f"assets/cards/{pr['name']}{suffix}.svg"
             out.append((rel, ROOT / rel, render_cards.card(pr, pal)))

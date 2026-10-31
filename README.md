@@ -206,7 +206,7 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
-  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 6 original public repos; 48 pull requests opened on other projects, 24 merged, 17 open and 7 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 43%, Rust 34%, C++ 8%, JavaScript 8%" />
+  <img src="assets/stats.svg" width="100%" alt="Krishna Anubhav on GitHub: 8 original public repos; 48 pull requests opened on other projects, 24 merged, 17 open and 7 closed without merging; on GitHub since 2022; language mix across own repos by bytes: Python 38%, Rust 30%, TypeScript 8%, JavaScript 8%" />
 </picture>
 <!-- AUTO:statsalt:end -->
 

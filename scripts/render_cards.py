@@ -260,9 +260,15 @@ def workflow(p):
 '''
 
 
+def curated(projects):
+    """Only repos with a hand-written card graphic get a card, so a newly created repo is never
+    promoted before it has been reviewed. Add its graphic in GRAPHICS and FILES to feature it."""
+    return [pr for pr in projects if pr["name"] in GRAPHICS]
+
+
 def cards_markup(projects):
     cells = []
-    for pr in projects:
+    for pr in curated(projects):
         n = pr["name"]
         cells.append(
             f'<a href="{pr["url"]}"><picture>'
