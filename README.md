@@ -113,8 +113,6 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 
 [**trade-frame**](https://github.com/rburkholder/trade-frame/pull/8) — asked where the meaning of an IQFeed trade-condition code comes from. Answer: nowhere in the repo, on purpose. IQFeed publishes the code table live over the same socket connection, so a hardcoded copy would go stale. Documented that mechanism instead of adding a table.
 
-[**domokane/FinancePy**](https://github.com/domokane/FinancePy/pull/276) — `np.any(volatility) < 0.0`. `np.any()` on a non-empty array is already a bool before it meets the `< 0.0`, so the negative-volatility guard on FX option greeks could never fire. The sibling `delta()` method got this right (`np.any(v < 0.0)`); this one did not. Found by asking why two methods on the same class disagreed about how to validate the same input.
-
 [**pmorissette/ffn**](https://github.com/pmorissette/ffn/pull/405) — Fix rescale for DataFrames with axis=1.
 
 [**skfolio/skfolio**](https://github.com/skfolio/skfolio/pull/404) — fix(portfolio): slice sample_weight per window in rolling_measure.
@@ -128,6 +126,8 @@ Open pull requests are waiting on review and are not shipped work. Counts and st
 [**jealous/stockstats**](https://github.com/jealous/stockstats/pull/206) — Fix VWMA producing NaN when rolling volume sum is zero.
 
 [**man-group/ArcticDB**](https://github.com/man-group/ArcticDB/pull/3442) — Fix LibraryOptions/EnterpriseLibraryOptions.__eq__ crashing on non-matching types.
+
+[**FinancePy-Org/FinancePy**](https://github.com/FinancePy-Org/FinancePy/pull/276) — Fix negative-volatility guard silently skipped in FX option greeks.
 
 [**ranaroussi/yfinance**](https://github.com/ranaroussi/yfinance/pull/2977) — Fix dividends/splits/capital_gains returning None instead of empty Series on price fetch failure.
 
